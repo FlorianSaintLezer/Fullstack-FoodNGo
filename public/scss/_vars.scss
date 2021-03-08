@@ -1,0 +1,54 @@
+// COLORS
+    // THEME
+    $colMain : red; 
+    $colSecond : green;
+    $colThird : blue;
+    // SECONDARY
+    $colDark: rgba(51,51,51,1);
+    $colLight: rgba(245,245,245,1);
+    // ALERT
+    $colSuccess: rgba(40,167,69,1);
+    $colInfo: rgba(23,162,184,1);
+    $colWarning: rgba(255,193,7,1);
+    $colError: rgba(220,53,69,1);
+    $colSuccess2: rgb(80, 207, 109);
+    $colInfo2: rgba(63,202,224,1);
+    $colWarning2: rgba(255,233,47,1);
+    $colError2: rgba(255,93,109,1);
+
+
+//IMAGES
+    //SIZE
+    $imgBig: 200px;
+    $imgSmall: 100px;
+
+
+//BUTTON
+$colBtn1: $colMain;
+$colBtn2: $colSecond;
+//NETWORK
+$colNetFb:rgba(52, 82, 139, 1);
+$colNetTw:rgba(88, 175, 237, 1);
+$colNetGp:rgba(221, 75, 61, 1);
+$colNetIg:rgba(192, 51, 130, 1);
+
+
+//BORDER
+// RADIUS
+$border: 1px solid $colMain;
+$borRadius: 10px;
+// BORDER
+
+
+// PADDING & MARGING
+$padding: 10px;
+$padSection: 30px 0; // Section
+$padTitle: 0 0 15px 0; // Title
+$padBtn: 8px 35px; // Button
+$padInput: 10px; // Input
+$marBot: 10px;
+
+
+// TRANSITIONS 
+$transitAll: all 400;
+$transitColor: color 400;

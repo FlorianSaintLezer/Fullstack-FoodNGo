@@ -1,0 +1,22 @@
+// FLEX
+@mixin flex($fdir, $justc, $alit, $fwrap) {
+    display: flex;
+    flex-direction: $fdir;
+    justify-content: $justc;
+    align-items: $alit;
+    flex-wrap: $fwrap;
+}
+// FONT FAMILY
+@mixin font($ffam, $fweight, $fsize, $lspace: 0) {
+    font-weight: $fweight;
+    font-size: $fsize;
+    letter-spacing: $lspace;
+}
+
+//BG IMAGE
+@mixin bgimg($bgP,$bgR:no-repeat,$bgS:cover,$bgA:local) {
+    background-position: $bgP;
+    background-repeat: $bgR;
+    background-size: $bgS;
+    background-attachment: $bgA;
+}

@@ -1,0 +1,5 @@
+@import "_mixins/font-face";
+@include font-face("fontRegular","../fonts/Roboto-Regular");
+@include font-face("fontLight","../fonts/Roboto-Light");
+@include font-face("fontBlack","../fonts/Roboto-Black");
+@include font-face("fontStylized","../fonts/Allura-Regular");

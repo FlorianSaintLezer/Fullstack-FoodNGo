@@ -1,0 +1,17 @@
+body {
+   background-color: lighten($colThird,30%);
+   background-image: url("../img/herobg.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   font-family: "fontRegular";
+   a {
+    font-family: "fontRegular";
+    h1,h2,h3,h4,h5,h6 {
+      font-family: "fontBlack";
+ 
+    }
+  }
+   * { box-sizing: border-box; }
+ }
