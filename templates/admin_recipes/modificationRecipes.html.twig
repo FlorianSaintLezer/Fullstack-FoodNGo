@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% if isModification %}Food and Go - Modification of {{recipes.recipesName}}
+	{% else %}
+		Add a recipe
+	{% endif %}
+{% endblock %}
+
+{% block titre %}
+	{% if isModification %}Food and Go - Modification of {{recipes.recipesName}}
+	{% else %}
+		Add a recipe
+	{% endif %}
+
+{% endblock %}
+
+
+{% block body %}
+
+	<section class="recipe-edit">
+
+		<div class="edit-title">
+			{% if isModification %}
+				{{recipes.recipesName}}{% else %}Ajout
+			{% endif %}
+		</div>
+
+		<div class="edit-area">
+			<div class="edit-image"><img src='{{ asset('img/' ~ recipes.recipesImage) }}' alt="image"></div>
+			<div class="edit-form">
+				{{form_start(form)}}
+				{{form_widget(form)}}
+
+				<input type="submit" id="upload" class="recipe-btn" value="Submit">
+				{{form_end(form)}}
+			</div>
+		</div>
+
+	</section>
+
+
+{% endblock %}
