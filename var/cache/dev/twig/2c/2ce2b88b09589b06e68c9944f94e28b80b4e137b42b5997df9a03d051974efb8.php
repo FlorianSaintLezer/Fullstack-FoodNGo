@@ -119,6 +119,6 @@ class __TwigTemplate_5bf5dc33e992fdd8175ce25460114c0a5fb337700fa43f633331079fa99
 {% block body %}
 Coucou c'est la page d'accueil
 {% endblock %}
-", "recipes/index.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\templates\\recipes\\index.html.twig");
+", "recipes/index.html.twig", "E:\\DevWeb\\EPCF2\\templates\\recipes\\index.html.twig");
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Repository\RecipesRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RecipesController extends AbstractController
 {
@@ -27,6 +27,6 @@ class RecipesController extends AbstractController
         $recipes = $repository->findAll();
 
         return $this->render('recipes/recipes.html.twig', [
-            'recipes' => $recipes]);
+            'recipes' => $recipes, ]);
     }
 }

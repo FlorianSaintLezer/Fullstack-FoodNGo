@@ -6,10 +6,10 @@ use App\Entity\Recipes;
 use App\Form\RecipesType;
 use App\Repository\RecipesRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminRecipesController extends AbstractController
 {

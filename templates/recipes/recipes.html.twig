@@ -65,10 +65,10 @@
 
 				{% for recipe in recipes %}
 					<tr>
-						<td><img src='{{ asset('img/' ~ recipe.recipesImage) }}' alt="{{recipe.recipesName}}"></td>
-						<td>{{recipe.recipesName}}</td>
+						<td><img src='{{ asset('img/' ~ recipe.image) }}' alt="{{recipe.title}}"></td>
+						<td>{{recipe.title}}</td>
 						<td>Ingrédients ?</td>
-						<td>{{recipe.recipesDescription}}</td>
+						<td>{{recipe.description}}</td>
 						<td>
 							<i class="far fa-eye"></i>
 						</td>

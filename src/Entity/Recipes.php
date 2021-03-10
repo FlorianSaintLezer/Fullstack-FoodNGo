@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\RecipesRepository;
-use Doctrine\Common\Collections\Collection;
-use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -24,74 +25,118 @@ class Recipes
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(
+     *      message="Need a title"
+     * )
+     * @Assert\Length(
+     *      min=5,
+     *      max=255,
+     *      minMessage="Title too short",
+     *      maxMessage="Title too long"
+     * )
      */
-    private $recipesName;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $recipesImage;
+    private $image;
 
     /**
-     * @Vich\UploadableField(mapping="recipes_image", fileNameProperty="recipesImage")
+     * @Vich\UploadableField(
+     *      mapping="recipes_image",
+     *      fileNameProperty="image"
+     * )
      */
     private $imageFile;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min=20,
+     *      minMessage="Description too short"
+     * )
      */
-    private $recipesDescription;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Users::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user_id;
+    private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=Ingredients::class)
+     * @ORM\OrderBy({"name": "ASC"})
      */
-    private $recipesIngredients;
+    private $ingredients;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @var Collection|Comments[]
+     *
+     * @ORM\OneToMany(
+     *      targetEntity="Comments",
+     *      mappedBy="recipes",
+     *      orphanRemoval=true,
+     *      cascade={"persist"}
+     * )
+     * @ORM\OrderBy({"updatedAt": "DESC"})
+     */
+    private $comments;
+
+    ////////// ARRAYS
+
     public function __construct()
     {
-        $this->recipesIngredients = new ArrayCollection();
+        $this->updatedAt = new \DateTime();
+        $this->comments = new ArrayCollection();
+        $this->ingredients = new ArrayCollection();
     }
+
+    ////////// ID
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getRecipesName(): ?string
+    ////////// Title
+
+    public function getTitle(): ?string
     {
-        return $this->recipesName;
+        return $this->title;
     }
 
-    public function setRecipesName(string $recipesName): self
+    public function setTitle(string $title): self
     {
-        $this->recipesName = $recipesName;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getRecipesImage(): ?string
+    ////////// Image
+
+    public function getImage(): ?string
     {
-        return $this->recipesImage;
+        return $this->image;
     }
 
-    public function setRecipesImage(string $recipesImage): self
+    public function setImage(string $image): self
     {
-        $this->recipesImage = $recipesImage;
+        $this->image = $image;
 
         return $this;
     }
+
+    ////////// Image File
+
     public function setImageFile(?File $imageFile = null): self
     {
         $this->imageFile = $imageFile;
@@ -108,63 +153,92 @@ class Recipes
         return $this->imageFile;
     }
 
-    public function getRecipesDescription(): ?string
+    ////////// Description
+
+    public function getDescription(): ?string
     {
-        return $this->recipesDescription;
+        return $this->description;
     }
 
-    public function setRecipesDescription(string $recipesDescription): self
+    public function setDescription(string $description): self
     {
-        $this->recipesDescription = $recipesDescription;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getUserId(): ?Users
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(?Users $user_id): self
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
+    ////////// Ingredients (ARRAY)
 
     /**
      * @return Collection|Ingredients[]
      */
-    public function getRecipesIngredients(): Collection
+    public function getIngredients(): Collection
     {
-        return $this->recipesIngredients;
+        return $this->Ingredients;
     }
 
-    public function addRecipesIngredient(Ingredients $recipesIngredient): self
+    public function addIngredient(Ingredients $ingredient): self
     {
-        if (!$this->recipesIngredients->contains($recipesIngredient)) {
-            $this->recipesIngredients[] = $recipesIngredient;
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients[] = $ingredient;
         }
 
         return $this;
     }
 
-    public function removeRecipesIngredient(Ingredients $recipesIngredient): self
+    public function removeIngredient(Ingredients $ingredient): self
     {
-        $this->recipesIngredients->removeElement($recipesIngredient);
+        $this->ingredients->removeElement($ingredient);
 
         return $this;
     }
+
+    ////////// Updated At
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    //////////////////// FOREIGN KEYS
+    ////////// Author
+
+    public function getAuthor(): ?Users
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Users $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    ////////// Comments (Array)
+
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): void
+    {
+        $comment->setPost($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+        }
+    }
+
+    public function removeComment(Comments $comment): void
+    {
+        $this->comments->removeElement($comment);
     }
 }

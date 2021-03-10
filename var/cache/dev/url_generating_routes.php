@@ -24,10 +24,11 @@ return [
     'admin_recipes_creation' => [[], ['_controller' => 'App\\Controller\\AdminRecipesController::modification'], [], [['text', '/admin/recipes/creation']], [], []],
     'admin_recipes_modification' => [['id'], ['_controller' => 'App\\Controller\\AdminRecipesController::modification'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/recipes']], [], []],
     'admin_recipes_suppression' => [['id'], ['_controller' => 'App\\Controller\\AdminRecipesController::suppression'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/recipes']], [], []],
-    'inscription' => [[], ['_controller' => 'App\\Controller\\AdminSecuController::inscription'], [], [['text', '/inscription']], [], []],
+    'signin' => [[], ['_controller' => 'App\\Controller\\AdminSecuController::signin'], [], [['text', '/signin']], [], []],
     'login' => [[], ['_controller' => 'App\\Controller\\AdminSecuController::login'], [], [['text', '/login']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\AdminSecuController::logout'], [], [['text', '/logout']], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\RecipesController::index'], [], [['text', '/']], [], []],
     'recipes' => [[], ['_controller' => 'App\\Controller\\RecipesController::recipes'], [], [['text', '/recipes']], [], []],
-    'users' => [[], ['_controller' => 'App\\Controller\\UsersController::index'], [], [['text', '/users']], [], []],
+    'profileedit_user' => [[], ['_controller' => 'App\\Controller\\UsersController::edit'], [], [['text', '/profile/edituser']], [], []],
+    'profileedit_password' => [[], ['_controller' => 'App\\Controller\\UsersController::changePassword'], [], [['text', '/profile/editpassword']], [], []],
 ];

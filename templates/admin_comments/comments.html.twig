@@ -29,19 +29,19 @@
 				</tr>
 				{% for comment in comments %}
 					<tr>
-                        <td>{{comment.commentsId}}</td>
-						<td>{{comment.commentsContent}}</td>
-						<td>recette?</td>
-						<td>User ?</td>
+                        <td>{{comment.id}}</td>
+						<td>{{comment.content}}</td>
+						<td>recette? comment.recipe ?</td>
+						<td>User ? comment.author ?</td>
 						<td>
 							<div class="truc">
-								<a href="{{ path('admin_comments_modification',{'id' : comment.commentsId}) }}">
+								<a href="{{ path('admin_comments_modification',{'id' : comment.id}) }}">
 									<i class="fas fa-edit"></i>
 								</a>
 
-								<form method="POST" action="{{ path('admin_comments_suppression', {'id' : comment.commentsId}) }}">
+								<form method="POST" action="{{ path('admin_comments_suppression', {'id' : comment.id}) }}">
 									<input type="hidden" name="_method" value="delete">
-									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ comment.commentsId)}}">
+									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ comment.id)}}">
 
 									<button type="submit" value="Delete" class="deleteComment">
 										<i class="far fa-trash-alt"></i>

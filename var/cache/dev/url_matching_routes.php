@@ -18,12 +18,13 @@ return [
         '/admin' => [[['_route' => 'admin_home', '_controller' => 'App\\Controller\\AdminRecipesController::index'], null, null, null, false, false, null]],
         '/admin/recipes' => [[['_route' => 'admin_recipes', '_controller' => 'App\\Controller\\AdminRecipesController::recipes'], null, null, null, true, false, null]],
         '/admin/recipes/creation' => [[['_route' => 'admin_recipes_creation', '_controller' => 'App\\Controller\\AdminRecipesController::modification'], null, null, null, false, false, null]],
-        '/inscription' => [[['_route' => 'inscription', '_controller' => 'App\\Controller\\AdminSecuController::inscription'], null, null, null, false, false, null]],
+        '/signin' => [[['_route' => 'signin', '_controller' => 'App\\Controller\\AdminSecuController::signin'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\AdminSecuController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\AdminSecuController::logout'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\RecipesController::index'], null, null, null, false, false, null]],
         '/recipes' => [[['_route' => 'recipes', '_controller' => 'App\\Controller\\RecipesController::recipes'], null, null, null, false, false, null]],
-        '/users' => [[['_route' => 'users', '_controller' => 'App\\Controller\\UsersController::index'], null, null, null, false, false, null]],
+        '/profile/edituser' => [[['_route' => 'profileedit_user', '_controller' => 'App\\Controller\\UsersController::edit'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/profile/editpassword' => [[['_route' => 'profileedit_password', '_controller' => 'App\\Controller\\UsersController::changePassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

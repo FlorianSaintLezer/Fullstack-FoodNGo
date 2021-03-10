@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Users;
-use App\Form\InscriptionType;
+use App\Form\SigninType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,12 +15,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AdminSecuController extends AbstractController
 {
     /**
-     * @Route("/inscription", name="inscription")
+     * @Route("/signin", name="signin")
      */
-    public function inscription(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder): Response
+    public function signin(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder): Response
     {
         $users = new Users();
-        $form = $this->createForm(InscriptionType::class, $users);
+        $form = $this->createForm(SigninType::class, $users);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -32,7 +32,7 @@ class AdminSecuController extends AbstractController
             return $this->redirectToRoute('recipes');
         }
 
-        return $this->render('admin_secu/inscription.html.twig', ['form' => $form->createView()]);
+        return $this->render('admin_secu/signin.html.twig', ['form' => $form->createView()]);
     }
 
     /**

@@ -62,8 +62,8 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
 \t\t\t</li>
 \t\t\t<li><a href=\"";
             // line 10
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inscription");
-            echo "\">Inscription</a></li>
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signin");
+            echo "\">Sign in</a></li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
             // line 12
@@ -132,7 +132,7 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('recipes') }}\">Recipes</a>
 \t\t\t</li>
-\t\t\t<li><a href=\"{{ path('inscription') }}\">Inscription</a></li>
+\t\t\t<li><a href=\"{{ path('signin') }}\">Sign in</a></li>
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('login') }}\">Login</a>
 \t\t\t</li>
@@ -154,6 +154,6 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
 \t\t</li>
 \t</ul>
 </nav>
-", "navbar.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\templates\\navbar.html.twig");
+", "navbar.html.twig", "E:\\DevWeb\\EPCF2\\templates\\navbar.html.twig");
     }
 }

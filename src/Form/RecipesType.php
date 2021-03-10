@@ -4,18 +4,19 @@ namespace App\Form;
 
 use App\Entity\Recipes;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class RecipesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('recipesName')
-            ->add('recipesDescription')
-            ->add('imageFile',FileType::class,['required'=>false])
+            ->add('title')
+            ->add('description', TextareaType::class)
+            ->add('imageFile', FileType::class, ['required' => false])
         ;
     }
 
