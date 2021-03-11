@@ -11,6 +11,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'targetEntity' => [
                 'App\\Entity\\Recipes',
             ],
+            'inversedBy' => [
+                'comments',
+            ],
             'nullable' => [
                 1 => false,
             ],

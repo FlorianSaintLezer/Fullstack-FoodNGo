@@ -77,11 +77,22 @@ class Recipes
      */
     private $author;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="recipes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
     public function __construct()
     {
         $this->updatedAt = new \DateTime();
         $this->comments = new ArrayCollection();
         $this->ingredients = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 
     public function getId(): ?int
@@ -141,7 +152,6 @@ class Recipes
         return $this;
     }
 
-
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
@@ -192,6 +202,18 @@ class Recipes
     public function setAuthor(?Users $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -11,7 +11,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 '/admin/comments/{id}',
             ],
             'name' => [
-                'admin_comments_suppression',
+                'admin_comments_delete',
             ],
             'methods' => [
                 [

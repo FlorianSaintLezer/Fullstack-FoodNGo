@@ -17,14 +17,14 @@ class AdminRecipesController extends AbstractController
     private $entityManager;
     private $security;
 
-    public function __construct(EntityManagerInterface $entityManager, Security $security) { 
-
+    public function __construct(EntityManagerInterface $entityManager, Security $security)
+    {
         $this->security = $security;
         $this->entityManager = $entityManager;
     }
-    
+
     /**
-     * @Route("/admin", name="admin_home")
+     * @Route("/adminhome", name="admin_home")
      */
     public function index(): Response
     {

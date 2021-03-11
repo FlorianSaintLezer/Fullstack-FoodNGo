@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'bd2b0a7bf9ac36d0194b79e342a0b83322e416fa',
+    'reference' => '8d89c8cc7aea2023667871afa3d280d934a03589',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'bd2b0a7bf9ac36d0194b79e342a0b83322e416fa',
+      'reference' => '8d89c8cc7aea2023667871afa3d280d934a03589',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -181,6 +181,15 @@
       array (
       ),
       'reference' => '56070bebac6e77230ed7d306ad13528e60732871',
+    ),
+    'easycorp/easyadmin-bundle' => 
+    array (
+      'pretty_version' => 'v3.2.7',
+      'version' => '3.2.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '48f71e3c95a5b1afffd99e5cee350f313dad4038',
     ),
     'egulias/email-validator' => 
     array (
@@ -833,6 +842,15 @@
       ),
       'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
     ),
+    'symfony/polyfill-uuid' => 
+    array (
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9773608c15d3fe6ba2b6456a124777a7b8ffee2a',
+    ),
     'symfony/process' => 
     array (
       'pretty_version' => 'v5.2.4',
@@ -1008,6 +1026,15 @@
       array (
       ),
       'reference' => '5ebbb5f0e8bfaa0b4b37cb25ff97f83b18caf221',
+    ),
+    'symfony/uid' => 
+    array (
+      'pretty_version' => 'v5.2.4',
+      'version' => '5.2.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '959f69a8c0d68a37311eeabd630a0ef0979bc1d0',
     ),
     'symfony/validator' => 
     array (

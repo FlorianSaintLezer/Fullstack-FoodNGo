@@ -9,12 +9,12 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     [
         'Symfony\\Component\\Routing\\Annotation\\Route' => [
             'path' => [
-                '/admin/comments/creation',
+                '/admin/comments/add',
                 '/admin/comments/{id}',
             ],
             'name' => [
-                'admin_comments_creation',
-                'admin_comments_modification',
+                'admin_comments_add',
+                'admin_comments_edit',
             ],
             'methods' => [
                 1 => [
