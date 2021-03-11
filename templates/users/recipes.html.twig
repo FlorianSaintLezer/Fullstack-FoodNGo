@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Food and Go - Recipes
+{% endblock %}
+
+{% block titre %}Recipes
+
+{% endblock %}
+
+
+{% block body %}
+
+
+	{# 
+							{% for recipe in recipes %}
+								<option value="{{ path("filterYear", {'year':recipe.year}) }}">{{ recipe.year }}</option>
+							{% endfor %}
+						</select>
+						<select name="vineyards" id="vineyard-select">
+							<option value="">-- Filter by Vineyard --</option>
+							{% for recipe in recipes %}
+								<option value="{{ path("filterYear", {'year':recipe.vineyard.name}) }}">{{ recipe.vineyard.name }}</option>
+							{% endfor %}
+						</select>
+						<select name="vineyards" id="vineyard-select">
+							<option value="">-- Filter by Country --</option>
+							{% for recipe in recipes %}
+								<option value="{{ path("filterYear", {'year':recipe.vineyard.country}) }}">{{ recipe.vineyard.country }}</option>
+							{% endfor %}
+						</select>
+						<select name="vineyards" id="vineyard-select">
+							<option value="">-- Filter by Vineyard --</option>
+							{% for recipe in recipes %}
+								<option value="{{ path("filterYear", {'year':recipe.vineyard.region}) }}">{{ recipe.vineyard.region }}</option>
+							{% endfor %}
+						</select> #}
+	{# <select name="vineyard" id="vineyard-select" onchange="location = this.value;">
+																<option value="">--Filter by Vineyards--</option>
+																{% for recipe in recipes %}
+																	<option value="{{ path("filterVineyard", {'name':vineyard.name}) }}">{{ vineyard.name }}</option>
+																{% endfor %}
+															</select> #}
+	{# <select name="vineyard" id="vineyard-select">
+																<option value="">--Filter by Vineyards--</option>
+																{% for vineyard in vineyards %}
+																	<option>{{ vineyard.region }}</option>
+																{% endfor %}
+															</select>
+															<select name="vineyard" id="vineyard-select">
+																<option value="">--Filter by Vineyards--</option>
+																{% for vineyard in vineyards %}
+																	<option>{{ vineyard.name }}</option>
+																{% endfor %}
+															</select> #}
+	{# <section>
+					<div class="table-recipes"> <table cellspacing="0">
+						<tr>
+							<th>Image</th>
+							<th>Name</th>
+							<th>Ingrédients</th>
+							<th>Description</th>
+							<th></th>
+						</tr>
+		
+						{% for recipe in recipes %}
+							<tr>
+								<td><img src='{{ asset('img/' ~ recipe.image) }}' alt="{{recipe.title}}"></td>
+								<td>{{recipe.title}}</td>
+								<td>Ingrédients ?</td>
+								<td>{{recipe.description}}</td>
+								<td>
+									<i class="far fa-eye"></i>
+								</td>
+							</tr>
+						{% endfor %}
+		
+					</table>
+				</div>
+		
+			</section> #}
+		<section class="recipes"> 
+		<div class="cards">
+			{% for recipe in recipes %}
+				<div class="card" style="background-image: url('{{ asset('img/' ~ recipe.image) }}');">
+					<div class="content">
+						<h2 class="title">{{recipe.title}}</h2>
+						{# <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p> #}
+						<button class="cardBtn">View Recipe</button>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+{% endblock %}

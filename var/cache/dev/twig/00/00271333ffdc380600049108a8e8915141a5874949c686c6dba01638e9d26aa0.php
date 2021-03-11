@@ -70,7 +70,7 @@ class __TwigTemplate_5857f34b0889717d1de50712cb30a0e41686ddec319d752ac285b12ce14
         echo "\t";
         if ((isset($context["isModification"]) || array_key_exists("isModification", $context) ? $context["isModification"] : (function () { throw new RuntimeError('Variable "isModification" does not exist.', 4, $this->source); })())) {
             echo "Food and Go - Modification of ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 4, $this->source); })()), "recipesName", [], "any", false, false, false, 4), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 4, $this->source); })()), "title", [], "any", false, false, false, 4), "html", null, true);
             echo "
 \t";
         } else {
@@ -100,7 +100,7 @@ class __TwigTemplate_5857f34b0889717d1de50712cb30a0e41686ddec319d752ac285b12ce14
         echo "\t";
         if ((isset($context["isModification"]) || array_key_exists("isModification", $context) ? $context["isModification"] : (function () { throw new RuntimeError('Variable "isModification" does not exist.', 11, $this->source); })())) {
             echo "Food and Go - Modification of ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 11, $this->source); })()), "recipesName", [], "any", false, false, false, 11), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 11, $this->source); })()), "title", [], "any", false, false, false, 11), "html", null, true);
             echo "
 \t";
         } else {
@@ -139,7 +139,7 @@ class __TwigTemplate_5857f34b0889717d1de50712cb30a0e41686ddec319d752ac285b12ce14
         if ((isset($context["isModification"]) || array_key_exists("isModification", $context) ? $context["isModification"] : (function () { throw new RuntimeError('Variable "isModification" does not exist.', 24, $this->source); })())) {
             // line 25
             echo "\t\t\t\t";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 25, $this->source); })()), "recipesName", [], "any", false, false, false, 25), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 25, $this->source); })()), "title", [], "any", false, false, false, 25), "html", null, true);
         } else {
             echo "Ajout
 \t\t\t";
@@ -150,7 +150,7 @@ class __TwigTemplate_5857f34b0889717d1de50712cb30a0e41686ddec319d752ac285b12ce14
 \t\t<div class=\"edit-area\">
 \t\t\t<div class=\"edit-image\"><img src='";
         // line 30
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 30, $this->source); })()), "recipesImage", [], "any", false, false, false, 30))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, (isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 30, $this->source); })()), "image", [], "any", false, false, false, 30))), "html", null, true);
         echo "' alt=\"image\"></div>
 \t\t\t<div class=\"edit-form\">
 \t\t\t\t";
@@ -202,14 +202,14 @@ class __TwigTemplate_5857f34b0889717d1de50712cb30a0e41686ddec319d752ac285b12ce14
         return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}
-\t{% if isModification %}Food and Go - Modification of {{recipes.recipesName}}
+\t{% if isModification %}Food and Go - Modification of {{recipes.title}}
 \t{% else %}
 \t\tAdd a recipe
 \t{% endif %}
 {% endblock %}
 
 {% block titre %}
-\t{% if isModification %}Food and Go - Modification of {{recipes.recipesName}}
+\t{% if isModification %}Food and Go - Modification of {{recipes.title}}
 \t{% else %}
 \t\tAdd a recipe
 \t{% endif %}
@@ -223,12 +223,12 @@ class __TwigTemplate_5857f34b0889717d1de50712cb30a0e41686ddec319d752ac285b12ce14
 
 \t\t<div class=\"edit-title\">
 \t\t\t{% if isModification %}
-\t\t\t\t{{recipes.recipesName}}{% else %}Ajout
+\t\t\t\t{{recipes.title}}{% else %}Ajout
 \t\t\t{% endif %}
 \t\t</div>
 
 \t\t<div class=\"edit-area\">
-\t\t\t<div class=\"edit-image\"><img src='{{ asset('img/' ~ recipes.recipesImage) }}' alt=\"image\"></div>
+\t\t\t<div class=\"edit-image\"><img src='{{ asset('img/' ~ recipes.image) }}' alt=\"image\"></div>
 \t\t\t<div class=\"edit-form\">
 \t\t\t\t{{form_start(form)}}
 \t\t\t\t{{form_widget(form)}}
@@ -242,6 +242,6 @@ class __TwigTemplate_5857f34b0889717d1de50712cb30a0e41686ddec319d752ac285b12ce14
 
 
 {% endblock %}
-", "admin_recipes/modificationRecipes.html.twig", "E:\\DevWeb\\EPCF2\\templates\\admin_recipes\\modificationRecipes.html.twig");
+", "admin_recipes/modificationRecipes.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2 backup\\templates\\admin_recipes\\modificationRecipes.html.twig");
     }
 }

@@ -18,10 +18,13 @@
     $colError2: rgba(255,93,109,1);
 
 
-//IMAGES
-    //SIZE
+//SIZE
+    //IMAGE
     $imgBig: 200px;
     $imgSmall: 100px;
+
+    //NAVBAR 
+    $navHeight:140px;
 
 
 //BUTTON
@@ -53,3 +56,19 @@ $marBot: 10px;
 // TRANSITIONS 
 $transitAll: all 400;
 $transitColor: color 400;
+    // EFFECTS
+    $effectBezier: cubic-bezier(0.2, 1, 0.3, 1);
+    // GLOBAL TRANSITION TIME
+    $transTime: 700ms;
+
+// BREAKPOINTS
+$breakPMd: 600px;
+$breakPLg: 800px;
+
+// SHADOWNS
+    // CARDS
+    $cardShadow : 0 1px 1px rgba(0,0,0,0.1), 
+    0 2px 2px rgba(0,0,0,0.1), 
+    0 4px 4px rgba(0,0,0,0.1), 
+    0 8px 8px rgba(0,0,0,0.1),
+    0 16px 16px rgba(0,0,0,0.1);

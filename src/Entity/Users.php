@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -87,27 +89,27 @@ class Users implements UserInterface
      */
     private $updatedAt;
 
-    // /**
-    //  * @ORM\ManyToOne(targetEntity=Roles::class)
-    //  * @ORM\JoinColumn(nullable=false)
-    //  */
-    // private $roles;
+    /**
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="author", orphanRemoval=true)
+     */
+    private $comments;
 
-    ////////// ARRAYS
+    /**
+     * @ORM\OneToMany(targetEntity=Recipes::class, mappedBy="author", orphanRemoval=true)
+     */
+    private $recipes;
 
     public function __construct()
     {
         $this->updatedAt = new \DateTime();
+        $this->comments = new ArrayCollection();
+        $this->recipes = new ArrayCollection();
     }
-
-    ////////// ID
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-    ////////// Username
 
     public function getUsername(): ?string
     {
@@ -121,8 +123,6 @@ class Users implements UserInterface
         return $this;
     }
 
-    ////////// Email
-
     public function getEmail(): ?string
     {
         return $this->email;
@@ -134,8 +134,6 @@ class Users implements UserInterface
 
         return $this;
     }
-
-    ////////// Password
 
     public function getPassword(): ?string
     {
@@ -149,8 +147,6 @@ class Users implements UserInterface
         return $this;
     }
 
-    ////////// Verify password
-
     public function getVerificationPassword(): ?string
     {
         return $this->verificationPassword;
@@ -163,8 +159,6 @@ class Users implements UserInterface
         return $this;
     }
 
-    ////////// Image
-
     public function getImage(): ?string
     {
         return $this->image;
@@ -176,8 +170,6 @@ class Users implements UserInterface
 
         return $this;
     }
-
-    ////////// Image File
 
     public function setImageFile(?File $imageFile = null): self
     {
@@ -195,45 +187,22 @@ class Users implements UserInterface
         return $this->imageFile;
     }
 
-    ////////// Updated At
-
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    ////////// Role
-
     public function getRoles()
     {
         return ['ROLE_USER'];
     }
-
-    // public function getRoles(): ?Roles
-    // {
-    //     return $this->roles;
-    // }
-
-    // public function setRole(?Roles $roles): self
-    // {
-    //     $this->roles = $roles;
-
-    //     return $this;
-    // }
-
-    // public function getRole()
-    // {
-    //     return ['ROLE_USER'];
-    // }
-
-    ////////// Pas encore tout compris l'utilité de ce truc
 
     public function getSalt()
     {
@@ -241,5 +210,65 @@ class Users implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getAuthor() === $this) {
+                $comment->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Recipes[]
+     */
+    public function getRecipes(): Collection
+    {
+        return $this->recipes;
+    }
+
+    public function addRecipe(Recipes $recipe): self
+    {
+        if (!$this->recipes->contains($recipe)) {
+            $this->recipes[] = $recipe;
+            $recipe->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecipe(Recipes $recipe): self
+    {
+        if ($this->recipes->removeElement($recipe)) {
+            // set the owning side to null (unless already changed)
+            if ($recipe->getAuthor() === $this) {
+                $recipe->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 }

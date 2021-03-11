@@ -10,15 +10,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class AdminRecipesController extends AbstractController
 {
+    private $entityManager;
+    private $security;
+
+    public function __construct(EntityManagerInterface $entityManager, Security $security) { 
+
+        $this->security = $security;
+        $this->entityManager = $entityManager;
+    }
+    
     /**
      * @Route("/admin", name="admin_home")
      */
     public function index(): Response
     {
-        return $this->render('admin_recipes/admin.html.twig');
+        return $this->render('admin/admin.html.twig');
     }
 
     /**
@@ -28,14 +38,14 @@ class AdminRecipesController extends AbstractController
     {
         $recipes = $repository->findAll();
 
-        return $this->render('admin_recipes/adminRecipes.html.twig', ['recipes' => $recipes]);
+        return $this->render('admin/admin_recipes.html.twig', ['recipes' => $recipes]);
     }
 
     /**
-     * @Route("/admin/recipes/creation", name="admin_recipes_creation")
-     * @Route("/admin/recipes/{id}", name="admin_recipes_modification",  methods="GET|POST")
+     * @Route("/admin/recipes/creation", name="admin_recipes_add")
+     * @Route("/admin/recipes/{id}", name="admin_recipes_edit",  methods="GET|POST")
      */
-    public function modification(Recipes $recipes = null, Request $request, EntityManagerInterface $entityManager): Response
+    public function modification(Recipes $recipes = null, Request $request): Response
     {
         if (!$recipes) {
             $recipes = new Recipes();
@@ -43,15 +53,18 @@ class AdminRecipesController extends AbstractController
         $form = $this->createForm(RecipesType::class, $recipes);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->security->getUser();
+            // dd($user); //var_dump
+            $recipes->setAuthor($user);
             $modif = null !== $recipes->getId();
-            $entityManager->persist($recipes);
-            $entityManager->flush();
+            $this->entityManager->persist($recipes);
+            $this->entityManager->flush();
             $this->addFlash('success', ($modif) ? 'Recipe has been successfully edited' : 'Recipe has been successfully added');
 
             return $this->redirectToRoute('admin_recipes');
         }
 
-        return $this->render('admin_recipes/modificationRecipes.html.twig', [
+        return $this->render('admin/edit_recipe.html.twig', [
             'recipes' => $recipes,
             'form' => $form->createView(),
             'isModification' => null !== $recipes->getid(),
@@ -59,7 +72,7 @@ class AdminRecipesController extends AbstractController
     }
 
     /**
-     * @Route("/admin/recipes/{id}", name="admin_recipes_suppression", methods="delete")
+     * @Route("/admin/recipes/{id}", name="admin_recipes_delete", methods="delete")
      */
     public function suppression(Recipes $recipes, Request $request, EntityManagerInterface $entityManager): Response
     {

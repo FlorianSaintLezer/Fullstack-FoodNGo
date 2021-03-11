@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Food and Go - Recipes Admin
+{% endblock %}
+
+{% block titre %}Recipes Admin
+
+{% endblock %}
+
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+	<div id="alert" class="alert-success">{{message}}<button id="alert-close"><i class="far fa-times-circle"></i></button></div>
+	{% endfor %}
+
+
+	<section class="admin-recipes">
+		<a class="secondButton" href="{{ path('admin_recipes_add') }}">
+			<i class="fas fa-plus"></i>
+		</a>
+		<div class="table-recipes">
+			<table cellspacing="0">
+				<tr>
+					<th>Image</th>
+					<th>Name</th>
+					<th>Ingrédients</th>
+					<th>Description</th>
+					<th></th>
+				</tr>
+				{% for recipe in recipes %}
+					<tr>
+						<td><img src='{{ asset('img/' ~ recipe.image) }}' alt="{{recipe.title}}"></td>
+						<td>{{recipe.title}}</td>
+						<td>Ingrédients ?</td>
+						<td>{{recipe.description}}</td>
+						<td>
+							<div class="truc">
+								<a href="{{ path('admin_recipes_edit',{'id' : recipe.id}) }}">
+									<i class="fas fa-edit"></i>
+								</a>
+
+								<form method="POST" action="{{ path('admin_recipes_delete', {'id' : recipe.id}) }}">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ recipe.id)}}">
+
+									<button type="submit" value="Delete" class="deleteRecipe">
+										<i class="far fa-trash-alt"></i>
+									</button>
+
+								</form>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</section>
+{% endblock %}

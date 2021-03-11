@@ -49,54 +49,59 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
         echo "\"></a>
 \t<ul id=\"navbarMenu\" class=\"navbarMenu\">
 
-\t\t";
-        // line 5
-        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 5, $this->source); })()), "user", [], "any", false, false, false, 5)) {
-            // line 6
-            echo "\t
+
+\t
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 8
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recipes");
-            echo "\">Recipes</a>
+        // line 8
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recipes");
+        echo "\">Recipes</a>
 \t\t\t</li>
 \t\t\t<li><a href=\"";
-            // line 10
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signin");
-            echo "\">Sign in</a></li>
+        // line 10
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signin");
+        echo "\">Sign in</a></li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 12
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
-            echo "\">Login</a>
+        // line 12
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+        echo "\">Login</a>
 \t\t\t</li>
-\t\t";
-        } else {
-            // line 15
-            echo "\t\t\t<li>
+
+\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 16
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_recipes");
-            echo "\">Recipes(admin)</a>
+        // line 16
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_recipes");
+        echo "\">Recipes(admin)</a>
 \t\t\t</li>
-\t\t\t";
-            // line 21
-            echo "\t\t\t<li>
+\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 22
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
-            echo "\">Logout</a>
+        // line 19
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_comments");
+        echo "\">Comments(admin)</a>
 \t\t\t</li>
-\t\t";
-        }
-        // line 25
-        echo "\t\t<li class=\"toggle\">
+\t\t\t<li>
+\t\t\t\t<a href=\"";
+        // line 22
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_user");
+        echo "\">Profil</a>
+\t\t\t</li>
+
+\t\t\t<li>
+\t\t\t\t<a href=\"";
+        // line 26
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+        echo "\">Logout</a>
+\t\t\t</li>
+
+\t\t<li class=\"toggle\">
 \t\t\t<a href=\"javascript:void(0);\" onclick=\"responsiveNavbar()\">
 \t\t\t\t<i class=\"fa fa-bars\"></i>
 \t\t\t</a>
 \t\t</li>
 \t</ul>
 </nav>
+<div class=\"navLines\"></div>
 ";
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -118,7 +123,7 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
 
     public function getDebugInfo()
     {
-        return array (  93 => 25,  87 => 22,  84 => 21,  79 => 16,  76 => 15,  70 => 12,  65 => 10,  60 => 8,  56 => 6,  54 => 5,  46 => 2,  43 => 1,);
+        return array (  93 => 26,  86 => 22,  80 => 19,  74 => 16,  67 => 12,  62 => 10,  57 => 8,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -127,7 +132,7 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
 \t<a href=\"{{ path('home') }}\"><img src=\"{{ asset('img/logo.png')}}\"></a>
 \t<ul id=\"navbarMenu\" class=\"navbarMenu\">
 
-\t\t{% if not app.user %}
+
 \t
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('recipes') }}\">Recipes</a>
@@ -136,17 +141,21 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('login') }}\">Login</a>
 \t\t\t</li>
-\t\t{% else %}
+
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('admin_recipes') }}\">Recipes(admin)</a>
 \t\t\t</li>
-\t\t\t{# <li>
+\t\t\t<li>
 \t\t\t\t<a href=\"{{ path('admin_comments') }}\">Comments(admin)</a>
-\t\t\t</li> #}
+\t\t\t</li>
+\t\t\t<li>
+\t\t\t\t<a href=\"{{ path('edit_user') }}\">Profil</a>
+\t\t\t</li>
+
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('logout') }}\">Logout</a>
 \t\t\t</li>
-\t\t{% endif %}
+
 \t\t<li class=\"toggle\">
 \t\t\t<a href=\"javascript:void(0);\" onclick=\"responsiveNavbar()\">
 \t\t\t\t<i class=\"fa fa-bars\"></i>
@@ -154,6 +163,7 @@ class __TwigTemplate_e8ba89be4f7aec8f879b1c3c5225ca755719fe0ff4b994ff0be62080ade
 \t\t</li>
 \t</ul>
 </nav>
-", "navbar.html.twig", "E:\\DevWeb\\EPCF2\\templates\\navbar.html.twig");
+<div class=\"navLines\"></div>
+", "navbar.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2 backup\\templates\\navbar.html.twig");
     }
 }

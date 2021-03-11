@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Food and Go - Recipes Admin
+{% endblock %}
+
+{% block titre %}Recipes Admin
+
+{% endblock %}
+
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+	<div id="alert" class="alert-success">{{message}}<button id="alert-close"><i class="far fa-times-circle"></i></button></div>
+	{% endfor %}
+
+
+	<section class="admin-comments">
+		<a class="secondButton" href="{{ path('admin_comments_add') }}">
+			<i class="fas fa-plus"></i>
+		</a>
+		<div class="table-comments">
+			<table cellspacing="0">
+				<tr>
+					<th>ID</th>
+					<th>Content</th>
+					<th>Nom recette ?</th>
+					<th>Nom user ?</th>
+					<th></th>
+				</tr>
+				{% for comment in comments %}
+					<tr>
+                        <td>{{comment.id}}</td>
+						<td>{{comment.content}}</td>
+						<td>recette? comment.recipe ?</td>
+						<td>User ? comment.author ?</td>
+						<td>
+							<div class="truc">
+								<a href="{{ path('admin_comments_edit',{'id' : comment.id}) }}">
+									<i class="fas fa-edit"></i>
+								</a>
+
+								<form method="POST" action="{{ path('admin_comments_delete', {'id' : comment.id}) }}">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ comment.id)}}">
+
+									<button type="submit" value="Delete" class="deleteComment">
+										<i class="far fa-trash-alt"></i>
+									</button>
+
+								</form>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</section>
+{% endblock %}
+

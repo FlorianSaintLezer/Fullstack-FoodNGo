@@ -14,7 +14,7 @@ class RecipesController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('recipes/index.html.twig', [
+        return $this->render('default/index.html.twig', [
             'controller_name' => 'RecipesController',
         ]);
     }
@@ -26,7 +26,7 @@ class RecipesController extends AbstractController
     {
         $recipes = $repository->findAll();
 
-        return $this->render('recipes/recipes.html.twig', [
+        return $this->render('users/recipes.html.twig', [
             'recipes' => $recipes, ]);
     }
 }

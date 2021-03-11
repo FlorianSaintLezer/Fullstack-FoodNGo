@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentsRepository;
+use App\Entity\Users;
+use App\Entity\Recipes;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentsRepository;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -31,37 +34,31 @@ class Comments
     private $content;
 
     /**
-     * @ORM\Column(type="datetime", "nullable=true")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Recipes::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $recipe;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Users::class)
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
 
-    ////////// ARRAYS
+    /**
+     * @ORM\ManyToOne(targetEntity=Recipes::class, inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $recipe;
 
     public function __construct()
     {
         $this->updatedAt = new \DateTime();
     }
 
-    ////////// ID
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
-    ////////// Content
 
     public function getContent(): ?string
     {
@@ -75,22 +72,29 @@ class Comments
         return $this;
     }
 
-    ////////// Updated At
-
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    //////////////////// FOREIGN KEYS
-    ////////// Recipes
+    public function getAuthor(): ?Users
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Users $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
 
     public function getRecipe(): ?Recipes
     {
@@ -100,20 +104,6 @@ class Comments
     public function setRecipe(?Recipes $recipe): self
     {
         $this->recipe = $recipe;
-
-        return $this;
-    }
-
-    ////////// Author
-
-    public function getAuthor(): ?Users
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(Users $author): self
-    {
-        $this->author = $author;
 
         return $this;
     }

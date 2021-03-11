@@ -29,10 +29,10 @@ class AdminSecuController extends AbstractController
             $em->persist($users);
             $em->flush();
 
-            return $this->redirectToRoute('recipes');
+            return $this->redirectToRoute('home');
         }
 
-        return $this->render('admin_secu/signin.html.twig', ['form' => $form->createView()]);
+        return $this->render('default/signin.html.twig', ['form' => $form->createView()]);
     }
 
     /**
@@ -40,7 +40,7 @@ class AdminSecuController extends AbstractController
      */
     public function login(AuthenticationUtils $util): Response
     {
-        return $this->render('admin_secu/login.html.twig', [
+        return $this->render('default/login.html.twig', [
             'lastUsername' => $util->getLastUsername(),
             'error' => $util->getLastAuthenticationError(),
         ]);

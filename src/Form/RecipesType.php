@@ -16,7 +16,7 @@ class RecipesType extends AbstractType
         $builder
             ->add('title')
             ->add('description', TextareaType::class)
-            ->add('imageFile', FileType::class, ['required' => false])
+            ->add('imageFile', FileType::class, ['required'=>False])
         ;
     }
 

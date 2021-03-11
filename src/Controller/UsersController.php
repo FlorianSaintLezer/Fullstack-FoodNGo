@@ -11,18 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-/**
- * @Route("/profile", name="profile")
- */
-// * @IsGranted("ROLE_USER")
+
 class UsersController extends AbstractController
 {
     /**
-     * @Route("/edituser", methods="GET|POST", name="edit_user")
+     * @Route("/edit_user", methods="GET|POST", name="edit_user")
      */
     public function edit(Request $request): Response
     {
-        $user = $this->getUsers();
+        $user = $this->getUser();
 
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
@@ -35,7 +32,7 @@ class UsersController extends AbstractController
             return $this->redirectToRoute('edit_user');
         }
 
-        return $this->render('users/editUser.html.twig', [
+        return $this->render('users/edit_user.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
@@ -60,7 +57,7 @@ class UsersController extends AbstractController
             return $this->redirectToRoute('logout');
         }
 
-        return $this->render('users/editPassword.html.twig', [
+        return $this->render('users/edit_password.html.twig', [
             'form' => $form->createView(),
         ]);
     }

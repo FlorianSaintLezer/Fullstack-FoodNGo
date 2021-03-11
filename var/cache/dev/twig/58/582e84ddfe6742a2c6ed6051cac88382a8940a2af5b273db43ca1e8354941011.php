@@ -136,18 +136,18 @@ class __TwigTemplate_3e039b43a9aca152e2ecd1e8e7c6f545986c99f5dc1437ba897d1728d0e
             echo "\t\t\t\t\t<tr>
 \t\t\t\t\t\t<td><img src='";
             // line 68
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["recipe"], "recipesImage", [], "any", false, false, false, 68))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["recipe"], "image", [], "any", false, false, false, 68))), "html", null, true);
             echo "' alt=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "recipesName", [], "any", false, false, false, 68), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "title", [], "any", false, false, false, 68), "html", null, true);
             echo "\"></td>
 \t\t\t\t\t\t<td>";
             // line 69
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "recipesName", [], "any", false, false, false, 69), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "title", [], "any", false, false, false, 69), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t<td>Ingrédients ?</td>
 \t\t\t\t\t\t<td>";
             // line 71
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "recipesDescription", [], "any", false, false, false, 71), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "description", [], "any", false, false, false, 71), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t<i class=\"far fa-eye\"></i>
@@ -258,10 +258,10 @@ class __TwigTemplate_3e039b43a9aca152e2ecd1e8e7c6f545986c99f5dc1437ba897d1728d0e
 
 \t\t\t\t{% for recipe in recipes %}
 \t\t\t\t\t<tr>
-\t\t\t\t\t\t<td><img src='{{ asset('img/' ~ recipe.recipesImage) }}' alt=\"{{recipe.recipesName}}\"></td>
-\t\t\t\t\t\t<td>{{recipe.recipesName}}</td>
+\t\t\t\t\t\t<td><img src='{{ asset('img/' ~ recipe.image) }}' alt=\"{{recipe.title}}\"></td>
+\t\t\t\t\t\t<td>{{recipe.title}}</td>
 \t\t\t\t\t\t<td>Ingrédients ?</td>
-\t\t\t\t\t\t<td>{{recipe.recipesDescription}}</td>
+\t\t\t\t\t\t<td>{{recipe.description}}</td>
 \t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t<i class=\"far fa-eye\"></i>
 \t\t\t\t\t\t</td>
@@ -274,6 +274,6 @@ class __TwigTemplate_3e039b43a9aca152e2ecd1e8e7c6f545986c99f5dc1437ba897d1728d0e
 \t</section>
 
 {% endblock %}
-", "recipes/recipes.html.twig", "E:\\DevWeb\\EPCF2\\templates\\recipes\\recipes.html.twig");
+", "recipes/recipes.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2 backup\\templates\\recipes\\recipes.html.twig");
     }
 }
