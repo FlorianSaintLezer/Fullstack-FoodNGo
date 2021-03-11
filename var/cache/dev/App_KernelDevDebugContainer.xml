@@ -460,9 +460,6 @@
     <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
-    <service id="App\Form\CommentsType" class="App\Form\CommentsType" autowire="true" autoconfigure="true">
-      <tag name="form.type"/>
-    </service>
     <service id="App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -960,7 +957,6 @@
         <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
-        <argument>App\Form\CommentsType</argument>
         <argument>App\Form\EditPasswordType</argument>
         <argument>App\Form\RecipesType</argument>
         <argument>App\Form\SigninType</argument>
@@ -1329,7 +1325,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.RobtRe8"/>
+      <argument type="service" id=".service_locator.FnnAb5v"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6115,8 +6111,6 @@
     <service id=".abstract.instanceof.App\Controller\UsersController" class="App\Controller\UsersController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CommentsType" class="App\Form\CommentsType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\CommentsType" class="App\Form\CommentsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RecipesType" class="App\Form\RecipesType" autowire="true" abstract="true"/>
@@ -6893,10 +6887,9 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.RobtRe8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.FnnAb5v" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Form\CommentsType" type="service" id="App\Form\CommentsType"/>
         <argument key="App\Form\EditPasswordType" type="service" id="App\Form\EditPasswordType"/>
         <argument key="App\Form\RecipesType" type="service" id="App\Form\RecipesType"/>
         <argument key="App\Form\SigninType" type="service" id="App\Form\SigninType"/>
