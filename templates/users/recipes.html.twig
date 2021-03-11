@@ -9,86 +9,40 @@
 
 
 {% block body %}
-
-
-	{# 
-							{% for recipe in recipes %}
-								<option value="{{ path("filterYear", {'year':recipe.year}) }}">{{ recipe.year }}</option>
-							{% endfor %}
-						</select>
-						<select name="vineyards" id="vineyard-select">
-							<option value="">-- Filter by Vineyard --</option>
-							{% for recipe in recipes %}
-								<option value="{{ path("filterYear", {'year':recipe.vineyard.name}) }}">{{ recipe.vineyard.name }}</option>
-							{% endfor %}
-						</select>
-						<select name="vineyards" id="vineyard-select">
-							<option value="">-- Filter by Country --</option>
-							{% for recipe in recipes %}
-								<option value="{{ path("filterYear", {'year':recipe.vineyard.country}) }}">{{ recipe.vineyard.country }}</option>
-							{% endfor %}
-						</select>
-						<select name="vineyards" id="vineyard-select">
-							<option value="">-- Filter by Vineyard --</option>
-							{% for recipe in recipes %}
-								<option value="{{ path("filterYear", {'year':recipe.vineyard.region}) }}">{{ recipe.vineyard.region }}</option>
-							{% endfor %}
-						</select> #}
-	{# <select name="vineyard" id="vineyard-select" onchange="location = this.value;">
-																<option value="">--Filter by Vineyards--</option>
-																{% for recipe in recipes %}
-																	<option value="{{ path("filterVineyard", {'name':vineyard.name}) }}">{{ vineyard.name }}</option>
-																{% endfor %}
-															</select> #}
-	{# <select name="vineyard" id="vineyard-select">
-																<option value="">--Filter by Vineyards--</option>
-																{% for vineyard in vineyards %}
-																	<option>{{ vineyard.region }}</option>
-																{% endfor %}
-															</select>
-															<select name="vineyard" id="vineyard-select">
-																<option value="">--Filter by Vineyards--</option>
-																{% for vineyard in vineyards %}
-																	<option>{{ vineyard.name }}</option>
-																{% endfor %}
-															</select> #}
-	{# <section>
-					<div class="table-recipes"> <table cellspacing="0">
-						<tr>
-							<th>Image</th>
-							<th>Name</th>
-							<th>Ingrédients</th>
-							<th>Description</th>
-							<th></th>
-						</tr>
-		
-						{% for recipe in recipes %}
-							<tr>
-								<td><img src='{{ asset('img/' ~ recipe.image) }}' alt="{{recipe.title}}"></td>
-								<td>{{recipe.title}}</td>
-								<td>Ingrédients ?</td>
-								<td>{{recipe.description}}</td>
-								<td>
-									<i class="far fa-eye"></i>
-								</td>
-							</tr>
-						{% endfor %}
-		
-					</table>
+	<section>
+		<div class="tabs">
+			<button class="tablink active" onclick="openTab(event, 'filter1')">ALL</button>
+			<button class="tablink" onclick="openTab(event, 'filter2')">Starters</button>
+			<button class="tablink" onclick="openTab(event, 'filter3')">Dishes</button>
+			<button class="tablink" onclick="openTab(event, 'filter4')">Desserts</button>
+			<button class="tablink" onclick="openTab(event, 'filter5')">Drinks</button>
+		</div>
+		<div class="tabcontent" id="filter1" style="display:block;">
+			<section class="recipes">
+				<div class="cards">
+					{% for recipe in recipes %}
+						<div class="card" style="background-image: url('{{ asset('img/' ~ recipe.image) }}');">
+							<div class="content">
+								<h2 class="title">{{recipe.title}}</h2>
+								{# <p class="summary">Bref résumé</p> #}
+								<button class="cardBtn">View Recipe</button>
+							</div>
+						</div>
+					{% endfor %}
 				</div>
-		
-			</section> #}
-		<section class="recipes"> 
-		<div class="cards">
-			{% for recipe in recipes %}
-				<div class="card" style="background-image: url('{{ asset('img/' ~ recipe.image) }}');">
-					<div class="content">
-						<h2 class="title">{{recipe.title}}</h2>
-						{# <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p> #}
-						<button class="cardBtn">View Recipe</button>
-					</div>
-				</div>
-			{% endfor %}
+			</section>
+		</div>
+		<div id="filter2" class="tabcontent">
+			<h3>Filtre2</h3>
+		</div>
+		<div id="filter3" class="tabcontent">
+			<h3>Filtre3</h3>
+		</div>
+		<div id="filter4" class="tabcontent">
+			<h3>Filtre4</h3>
+		</div>
+		<div id="filter5" class="tabcontent">
+			<h3>Filtre5</h3>
 		</div>
 	</section>
 

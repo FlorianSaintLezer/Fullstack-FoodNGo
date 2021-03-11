@@ -108,44 +108,57 @@ class __TwigTemplate_45d3e2595956376bca88951bb83a7a777ce7ac2d57127065b672001bf9e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
-        echo "
-
-\t";
-        // line 37
-        echo "\t";
-        // line 43
-        echo "\t";
-        // line 55
-        echo "\t";
-        // line 81
-        echo "\t\t<section class=\"recipes\"> 
-\t\t<div class=\"cards\">
-\t\t\t";
-        // line 83
+        echo "\t<section>
+\t\t<div class=\"tabs\">
+\t\t\t<button class=\"tablink active\" onclick=\"openTab(event, 'filter1')\">ALL</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter2')\">Starters</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter3')\">Dishes</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter4')\">Desserts</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter5')\">Drinks</button>
+\t\t</div>
+\t\t<div class=\"tabcontent\" id=\"filter1\" style=\"display:block;\">
+\t\t\t<section class=\"recipes\">
+\t\t\t\t<div class=\"cards\">
+\t\t\t\t\t";
+        // line 23
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 83, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 23, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["recipe"]) {
-            // line 84
-            echo "\t\t\t\t<div class=\"card\" style=\"background-image: url('";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["recipe"], "image", [], "any", false, false, false, 84))), "html", null, true);
+            // line 24
+            echo "\t\t\t\t\t\t<div class=\"card\" style=\"background-image: url('";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["recipe"], "image", [], "any", false, false, false, 24))), "html", null, true);
             echo "');\">
-\t\t\t\t\t<div class=\"content\">
-\t\t\t\t\t\t<h2 class=\"title\">";
-            // line 86
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "title", [], "any", false, false, false, 86), "html", null, true);
+\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t<h2 class=\"title\">";
+            // line 26
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "title", [], "any", false, false, false, 26), "html", null, true);
             echo "</h2>
-\t\t\t\t\t\t";
-            // line 88
-            echo "\t\t\t\t\t\t<button class=\"cardBtn\">View Recipe</button>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t";
+\t\t\t\t\t\t\t\t";
+            // line 28
+            echo "\t\t\t\t\t\t\t\t<button class=\"cardBtn\">View Recipe</button>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recipe'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 92
-        echo "\t\t</div>
+        // line 32
+        echo "\t\t\t\t</div>
+\t\t\t</section>
+\t\t</div>
+\t\t<div id=\"filter2\" class=\"tabcontent\">
+\t\t\t<h3>Filtre2</h3>
+\t\t</div>
+\t\t<div id=\"filter3\" class=\"tabcontent\">
+\t\t\t<h3>Filtre3</h3>
+\t\t</div>
+\t\t<div id=\"filter4\" class=\"tabcontent\">
+\t\t\t<h3>Filtre4</h3>
+\t\t</div>
+\t\t<div id=\"filter5\" class=\"tabcontent\">
+\t\t\t<h3>Filtre5</h3>
+\t\t</div>
 \t</section>
 
 ";
@@ -169,7 +182,7 @@ class __TwigTemplate_45d3e2595956376bca88951bb83a7a777ce7ac2d57127065b672001bf9e
 
     public function getDebugInfo()
     {
-        return array (  148 => 92,  139 => 88,  135 => 86,  129 => 84,  125 => 83,  121 => 81,  119 => 55,  117 => 43,  115 => 37,  111 => 12,  101 => 11,  80 => 6,  60 => 3,  37 => 1,);
+        return array (  147 => 32,  138 => 28,  134 => 26,  128 => 24,  124 => 23,  111 => 12,  101 => 11,  80 => 6,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -185,90 +198,44 @@ class __TwigTemplate_45d3e2595956376bca88951bb83a7a777ce7ac2d57127065b672001bf9e
 
 
 {% block body %}
-
-
-\t{# 
-\t\t\t\t\t\t\t{% for recipe in recipes %}
-\t\t\t\t\t\t\t\t<option value=\"{{ path(\"filterYear\", {'year':recipe.year}) }}\">{{ recipe.year }}</option>
-\t\t\t\t\t\t\t{% endfor %}
-\t\t\t\t\t\t</select>
-\t\t\t\t\t\t<select name=\"vineyards\" id=\"vineyard-select\">
-\t\t\t\t\t\t\t<option value=\"\">-- Filter by Vineyard --</option>
-\t\t\t\t\t\t\t{% for recipe in recipes %}
-\t\t\t\t\t\t\t\t<option value=\"{{ path(\"filterYear\", {'year':recipe.vineyard.name}) }}\">{{ recipe.vineyard.name }}</option>
-\t\t\t\t\t\t\t{% endfor %}
-\t\t\t\t\t\t</select>
-\t\t\t\t\t\t<select name=\"vineyards\" id=\"vineyard-select\">
-\t\t\t\t\t\t\t<option value=\"\">-- Filter by Country --</option>
-\t\t\t\t\t\t\t{% for recipe in recipes %}
-\t\t\t\t\t\t\t\t<option value=\"{{ path(\"filterYear\", {'year':recipe.vineyard.country}) }}\">{{ recipe.vineyard.country }}</option>
-\t\t\t\t\t\t\t{% endfor %}
-\t\t\t\t\t\t</select>
-\t\t\t\t\t\t<select name=\"vineyards\" id=\"vineyard-select\">
-\t\t\t\t\t\t\t<option value=\"\">-- Filter by Vineyard --</option>
-\t\t\t\t\t\t\t{% for recipe in recipes %}
-\t\t\t\t\t\t\t\t<option value=\"{{ path(\"filterYear\", {'year':recipe.vineyard.region}) }}\">{{ recipe.vineyard.region }}</option>
-\t\t\t\t\t\t\t{% endfor %}
-\t\t\t\t\t\t</select> #}
-\t{# <select name=\"vineyard\" id=\"vineyard-select\" onchange=\"location = this.value;\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"\">--Filter by Vineyards--</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{% for recipe in recipes %}
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"{{ path(\"filterVineyard\", {'name':vineyard.name}) }}\">{{ vineyard.name }}</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{% endfor %}
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</select> #}
-\t{# <select name=\"vineyard\" id=\"vineyard-select\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"\">--Filter by Vineyards--</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{% for vineyard in vineyards %}
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option>{{ vineyard.region }}</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{% endfor %}
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</select>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"vineyard\" id=\"vineyard-select\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"\">--Filter by Vineyards--</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{% for vineyard in vineyards %}
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option>{{ vineyard.name }}</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{% endfor %}
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</select> #}
-\t{# <section>
-\t\t\t\t\t<div class=\"table-recipes\"> <table cellspacing=\"0\">
-\t\t\t\t\t\t<tr>
-\t\t\t\t\t\t\t<th>Image</th>
-\t\t\t\t\t\t\t<th>Name</th>
-\t\t\t\t\t\t\t<th>Ingrédients</th>
-\t\t\t\t\t\t\t<th>Description</th>
-\t\t\t\t\t\t\t<th></th>
-\t\t\t\t\t\t</tr>
-\t\t
-\t\t\t\t\t\t{% for recipe in recipes %}
-\t\t\t\t\t\t\t<tr>
-\t\t\t\t\t\t\t\t<td><img src='{{ asset('img/' ~ recipe.image) }}' alt=\"{{recipe.title}}\"></td>
-\t\t\t\t\t\t\t\t<td>{{recipe.title}}</td>
-\t\t\t\t\t\t\t\t<td>Ingrédients ?</td>
-\t\t\t\t\t\t\t\t<td>{{recipe.description}}</td>
-\t\t\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t\t\t<i class=\"far fa-eye\"></i>
-\t\t\t\t\t\t\t\t</td>
-\t\t\t\t\t\t\t</tr>
-\t\t\t\t\t\t{% endfor %}
-\t\t
-\t\t\t\t\t</table>
+\t<section>
+\t\t<div class=\"tabs\">
+\t\t\t<button class=\"tablink active\" onclick=\"openTab(event, 'filter1')\">ALL</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter2')\">Starters</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter3')\">Dishes</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter4')\">Desserts</button>
+\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter5')\">Drinks</button>
+\t\t</div>
+\t\t<div class=\"tabcontent\" id=\"filter1\" style=\"display:block;\">
+\t\t\t<section class=\"recipes\">
+\t\t\t\t<div class=\"cards\">
+\t\t\t\t\t{% for recipe in recipes %}
+\t\t\t\t\t\t<div class=\"card\" style=\"background-image: url('{{ asset('img/' ~ recipe.image) }}');\">
+\t\t\t\t\t\t\t<div class=\"content\">
+\t\t\t\t\t\t\t\t<h2 class=\"title\">{{recipe.title}}</h2>
+\t\t\t\t\t\t\t\t{# <p class=\"summary\">Bref résumé</p> #}
+\t\t\t\t\t\t\t\t<button class=\"cardBtn\">View Recipe</button>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t{% endfor %}
 \t\t\t\t</div>
-\t\t
-\t\t\t</section> #}
-\t\t<section class=\"recipes\"> 
-\t\t<div class=\"cards\">
-\t\t\t{% for recipe in recipes %}
-\t\t\t\t<div class=\"card\" style=\"background-image: url('{{ asset('img/' ~ recipe.image) }}');\">
-\t\t\t\t\t<div class=\"content\">
-\t\t\t\t\t\t<h2 class=\"title\">{{recipe.title}}</h2>
-\t\t\t\t\t\t{# <p class=\"copy\">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p> #}
-\t\t\t\t\t\t<button class=\"cardBtn\">View Recipe</button>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t{% endfor %}
+\t\t\t</section>
+\t\t</div>
+\t\t<div id=\"filter2\" class=\"tabcontent\">
+\t\t\t<h3>Filtre2</h3>
+\t\t</div>
+\t\t<div id=\"filter3\" class=\"tabcontent\">
+\t\t\t<h3>Filtre3</h3>
+\t\t</div>
+\t\t<div id=\"filter4\" class=\"tabcontent\">
+\t\t\t<h3>Filtre4</h3>
+\t\t</div>
+\t\t<div id=\"filter5\" class=\"tabcontent\">
+\t\t\t<h3>Filtre5</h3>
 \t\t</div>
 \t</section>
 
 {% endblock %}
-", "users/recipes.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2 backup\\templates\\users\\recipes.html.twig");
+", "users/recipes.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\templates\\users\\recipes.html.twig");
     }
 }

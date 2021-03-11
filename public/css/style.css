@@ -231,13 +231,13 @@ body * {
 
 nav {
   text-transform: uppercase;
-  background-color: #f0f0f0;
+  background-color: white;
   padding: 0 5% 0 5%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 140px;
   position: relative;
 }
 nav ul {
@@ -280,12 +280,12 @@ nav a {
   nav ul.responsive {
     flex-direction: column;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 140px;
   }
   nav ul.responsive li:not(:last-child) {
     display: block;
     width: 100%;
-    background-color: #BB727F;
+    background-color: white;
     z-index: 50;
     height: 100px;
     position: relative;
@@ -301,9 +301,11 @@ nav a {
     transform: translate(0, -50%);
   }
 }
-:root {
-  --d: 700ms;
-  --e: cubic-bezier(0.2, 1, 0.3, 1);
+.navLines {
+  height: 10px;
+  border-top: 1px solid #BB727F;
+  border-bottom: 1px solid #BB727F;
+  margin: 0 1vw;
 }
 
 .cards {
@@ -365,7 +367,7 @@ nav a {
   width: 100%;
   height: 200%;
   pointer-events: none;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 25%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.45) 75%, rgba(0, 0, 0, 0.6) 100%);
   transform: translateY(-50%);
   transition: transform calc(700ms * 2) cubic-bezier(0.2, 1, 0.3, 1);
 }
@@ -380,17 +382,17 @@ nav a {
   transition: transform 700ms cubic-bezier(0.2, 1, 0.3, 1);
   z-index: 1;
 }
-.content > * + * {
-  margin-top: 1rem;
-}
 
 .title {
+  background-color: white;
+  color: #BB727F;
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
+  width: 160%;
 }
 
-.copy {
+.summary {
   font-size: 1.125rem;
   font-style: italic;
   line-height: 1.35;
@@ -457,6 +459,59 @@ nav a {
 .card:focus-within .content,
 .card:focus-within .content > *:not(.title) {
     transition-duration: 0s;
+  }
+}
+/* Style the tab */
+.tabs {
+  overflow: hidden;
+  border-bottom: double 1px #BB727F;
+  width: 90%;
+  max-width: 1284px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tabs button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tabs button:hover {
+  background-color: #dcb7bd;
+}
+
+/* Create an active/current tablink class */
+.tabs button.active {
+  background-color: #BB727F;
+  color: white;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+}
+
+.tabcontent {
+  animation: fadeEffect 1s;
+  /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
