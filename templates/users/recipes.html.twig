@@ -9,14 +9,26 @@
 
 
 {% block body %}
+
+	{% for category in categories %}
+		<a href="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</a>
+
+	{% endfor %}
+	<div class="tabs">
+	<button class="tablink"><a href="{{ path("recipes") }}">ALL</a></button>
+	{% for category in categories %}
+		<button class="tablink"><a href="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</a></button>
+	{% endfor %}
+	</div>
+
 	<section>
-		<div class="tabs">
+		{# <div class="tabs">
 			<button class="tablink active" onclick="openTab(event, 'filter1')">ALL</button>
 			<button class="tablink" onclick="openTab(event, 'filter2')">Starters</button>
 			<button class="tablink" onclick="openTab(event, 'filter3')">Dishes</button>
 			<button class="tablink" onclick="openTab(event, 'filter4')">Desserts</button>
 			<button class="tablink" onclick="openTab(event, 'filter5')">Drinks</button>
-		</div>
+		</div> #}
 		<div class="tabcontent" id="filter1" style="display:block;">
 			<section class="recipes">
 				<div class="cards">
@@ -25,7 +37,7 @@
 							<div class="content">
 								<h2 class="title">{{recipe.title}}</h2>
 								{# <p class="summary">Bref résumé</p> #}
-								<button class="cardBtn">View Recipe</button>
+								<a href="{{ path('show_recipe', {'id' : recipe.id }) }}" class="cardBtn">View Recipe</a>
 							</div>
 						</div>
 					{% endfor %}
@@ -33,7 +45,11 @@
 			</section>
 		</div>
 		<div id="filter2" class="tabcontent">
-			<h3>Filtre2</h3>
+			<h3>
+				Entrées
+
+
+			</h3>
 		</div>
 		<div id="filter3" class="tabcontent">
 			<h3>Filtre3</h3>
@@ -45,8 +61,6 @@
 			<h3>Filtre5</h3>
 		</div>
 	</section>
-
-
 
 
 {% endblock %}

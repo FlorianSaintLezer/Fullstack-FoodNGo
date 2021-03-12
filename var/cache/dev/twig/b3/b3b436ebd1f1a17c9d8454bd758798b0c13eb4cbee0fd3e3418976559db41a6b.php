@@ -57,51 +57,58 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
         echo "\">Recipes</a>
 \t\t</li>
 
-\t\t";
-        // line 10
-        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 11
-            echo "\t\t\t<li>
-\t\t\t\t<a href=\"";
-            // line 12
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
-            echo "\">Admin Dashboard</a>
-\t\t\t</li>
 
 \t\t";
-        } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
-            // line 16
-            echo "\t\t\t<li>
+        // line 11
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 12
+            echo "
+\t\t\t";
+            // line 13
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 14
+                echo "\t\t\t\t<li>
+\t\t\t\t\t<a href=\"";
+                // line 15
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
+                echo "\">Admin Dashboard</a>
+\t\t\t\t</li>
+\t\t\t";
+            }
+            // line 18
+            echo "
+\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 17
+            // line 20
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
             echo "\">Profile</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 20
+            // line 23
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
             echo "\">Logout</a>
 \t\t\t</li>
 
+
 \t\t";
         } else {
-            // line 24
+            // line 28
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 25
+            // line 29
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signin");
             echo "\">Sign in</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-            // line 28
+            // line 32
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
             echo "\">Login</a>
 \t\t\t</li>
 \t\t";
         }
-        // line 31
+        // line 35
         echo "
 
 \t\t<li class=\"toggle\">
@@ -133,7 +140,7 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
 
     public function getDebugInfo()
     {
-        return array (  105 => 31,  99 => 28,  93 => 25,  90 => 24,  83 => 20,  77 => 17,  74 => 16,  67 => 12,  64 => 11,  62 => 10,  56 => 7,  46 => 2,  43 => 1,);
+        return array (  112 => 35,  106 => 32,  100 => 29,  97 => 28,  89 => 23,  83 => 20,  79 => 18,  73 => 15,  70 => 14,  68 => 13,  65 => 12,  63 => 11,  56 => 7,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -147,18 +154,22 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
 \t\t\t<a href=\"{{ path('recipes') }}\">Recipes</a>
 \t\t</li>
 
-\t\t{% if is_granted('ROLE_ADMIN') %}
-\t\t\t<li>
-\t\t\t\t<a href=\"{{ path('admin') }}\">Admin Dashboard</a>
-\t\t\t</li>
 
-\t\t{% elseif is_granted('ROLE_USER') %}
+\t\t{% if is_granted('ROLE_USER') %}
+
+\t\t\t{% if is_granted('ROLE_ADMIN') %}
+\t\t\t\t<li>
+\t\t\t\t\t<a href=\"{{ path('admin') }}\">Admin Dashboard</a>
+\t\t\t\t</li>
+\t\t\t{% endif %}
+
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('profile') }}\">Profile</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('logout') }}\">Logout</a>
 \t\t\t</li>
+
 
 \t\t{% else %}
 \t\t\t<li>

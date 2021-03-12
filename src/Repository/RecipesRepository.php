@@ -19,6 +19,17 @@ class RecipesRepository extends ServiceEntityRepository
         parent::__construct($registry, Recipes::class);
     }
 
+    public function getRecipesByCategory($category)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.category = :val')
+            ->setParameter('val', $category)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
     // /**
     //  * @return Recipes[] Returns an array of Recipes objects
     //  */

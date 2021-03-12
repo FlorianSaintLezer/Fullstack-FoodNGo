@@ -52,6 +52,10 @@ return [
                         .'|(*:227)'
                     .')'
                 .')'
+                .'|/recipes/(?'
+                    .'|([^/]++)(*:257)'
+                    .'|category/([^/]++)(*:282)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -69,6 +73,10 @@ return [
         227 => [
             [['_route' => 'admin_recipes_edit', '_controller' => 'App\\Controller\\AdminRecipesController::modification'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null],
             [['_route' => 'admin_recipes_delete', '_controller' => 'App\\Controller\\AdminRecipesController::suppression'], ['id'], ['DELETE' => 0], null, false, true, null],
+        ],
+        257 => [[['_route' => 'show_recipe', '_controller' => 'App\\Controller\\RecipesController::showRecipe'], ['id'], null, null, false, true, null]],
+        282 => [
+            [['_route' => 'filterCategory', '_controller' => 'App\\Controller\\RecipesController::filterCategory'], ['category'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

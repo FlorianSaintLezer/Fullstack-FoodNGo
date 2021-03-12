@@ -108,34 +108,74 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
-        echo "\t<section>
-\t\t<div class=\"tabs\">
-\t\t\t<button class=\"tablink active\" onclick=\"openTab(event, 'filter1')\">ALL</button>
-\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter2')\">Starters</button>
-\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter3')\">Dishes</button>
-\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter4')\">Desserts</button>
-\t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter5')\">Drinks</button>
-\t\t</div>
-\t\t<div class=\"tabcontent\" id=\"filter1\" style=\"display:block;\">
+        echo "
+\t";
+        // line 13
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 13, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 14
+            echo "\t\t<a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("filterCategory", ["category" => twig_get_attribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 14)]), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["category"], "name", [], "any", false, false, false, 14), "html", null, true);
+            echo "</a>
+
+\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 17
+        echo "\t<div class=\"tabs\">
+\t<button class=\"tablink\"><a href=\"";
+        // line 18
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recipes");
+        echo "\">ALL</a></button>
+\t";
+        // line 19
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 19, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 20
+            echo "\t\t<button class=\"tablink\"><a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("filterCategory", ["category" => twig_get_attribute($this->env, $this->source, $context["category"], "id", [], "any", false, false, false, 20)]), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["category"], "name", [], "any", false, false, false, 20), "html", null, true);
+            echo "</a></button>
+\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 22
+        echo "\t</div>
+
+\t<section>
+\t\t";
+        // line 32
+        echo "\t\t<div class=\"tabcontent\" id=\"filter1\" style=\"display:block;\">
 \t\t\t<section class=\"recipes\">
 \t\t\t\t<div class=\"cards\">
 \t\t\t\t\t";
-        // line 23
+        // line 35
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 23, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 35, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["recipe"]) {
-            // line 24
+            // line 36
             echo "\t\t\t\t\t\t<div class=\"card\" style=\"background-image: url('";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["recipe"], "image", [], "any", false, false, false, 24))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["recipe"], "image", [], "any", false, false, false, 36))), "html", null, true);
             echo "');\">
 \t\t\t\t\t\t\t<div class=\"content\">
 \t\t\t\t\t\t\t\t<h2 class=\"title\">";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "title", [], "any", false, false, false, 26), "html", null, true);
+            // line 38
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recipe"], "title", [], "any", false, false, false, 38), "html", null, true);
             echo "</h2>
 \t\t\t\t\t\t\t\t";
-            // line 28
-            echo "\t\t\t\t\t\t\t\t<button class=\"cardBtn\">View Recipe</button>
+            // line 40
+            echo "\t\t\t\t\t\t\t\t<a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_recipe", ["id" => twig_get_attribute($this->env, $this->source, $context["recipe"], "id", [], "any", false, false, false, 40)]), "html", null, true);
+            echo "\" class=\"cardBtn\">View Recipe</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t";
@@ -143,12 +183,16 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recipe'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
+        // line 44
         echo "\t\t\t\t</div>
 \t\t\t</section>
 \t\t</div>
 \t\t<div id=\"filter2\" class=\"tabcontent\">
-\t\t\t<h3>Filtre2</h3>
+\t\t\t<h3>
+\t\t\t\tEntrées
+
+
+\t\t\t</h3>
 \t\t</div>
 \t\t<div id=\"filter3\" class=\"tabcontent\">
 \t\t\t<h3>Filtre3</h3>
@@ -160,8 +204,6 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
 \t\t\t<h3>Filtre5</h3>
 \t\t</div>
 \t</section>
-
-
 
 
 ";
@@ -185,7 +227,7 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
 
     public function getDebugInfo()
     {
-        return array (  147 => 32,  138 => 28,  134 => 26,  128 => 24,  124 => 23,  111 => 12,  101 => 11,  80 => 6,  60 => 3,  37 => 1,);
+        return array (  187 => 44,  176 => 40,  172 => 38,  166 => 36,  162 => 35,  157 => 32,  152 => 22,  141 => 20,  137 => 19,  133 => 18,  130 => 17,  118 => 14,  114 => 13,  111 => 12,  101 => 11,  80 => 6,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -201,14 +243,26 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
 
 
 {% block body %}
+
+\t{% for category in categories %}
+\t\t<a href=\"{{ path(\"filterCategory\", {'category':category.id}) }}\">{{category.name}}</a>
+
+\t{% endfor %}
+\t<div class=\"tabs\">
+\t<button class=\"tablink\"><a href=\"{{ path(\"recipes\") }}\">ALL</a></button>
+\t{% for category in categories %}
+\t\t<button class=\"tablink\"><a href=\"{{ path(\"filterCategory\", {'category':category.id}) }}\">{{category.name}}</a></button>
+\t{% endfor %}
+\t</div>
+
 \t<section>
-\t\t<div class=\"tabs\">
+\t\t{# <div class=\"tabs\">
 \t\t\t<button class=\"tablink active\" onclick=\"openTab(event, 'filter1')\">ALL</button>
 \t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter2')\">Starters</button>
 \t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter3')\">Dishes</button>
 \t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter4')\">Desserts</button>
 \t\t\t<button class=\"tablink\" onclick=\"openTab(event, 'filter5')\">Drinks</button>
-\t\t</div>
+\t\t</div> #}
 \t\t<div class=\"tabcontent\" id=\"filter1\" style=\"display:block;\">
 \t\t\t<section class=\"recipes\">
 \t\t\t\t<div class=\"cards\">
@@ -217,7 +271,7 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
 \t\t\t\t\t\t\t<div class=\"content\">
 \t\t\t\t\t\t\t\t<h2 class=\"title\">{{recipe.title}}</h2>
 \t\t\t\t\t\t\t\t{# <p class=\"summary\">Bref résumé</p> #}
-\t\t\t\t\t\t\t\t<button class=\"cardBtn\">View Recipe</button>
+\t\t\t\t\t\t\t\t<a href=\"{{ path('show_recipe', {'id' : recipe.id }) }}\" class=\"cardBtn\">View Recipe</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t{% endfor %}
@@ -225,7 +279,11 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
 \t\t\t</section>
 \t\t</div>
 \t\t<div id=\"filter2\" class=\"tabcontent\">
-\t\t\t<h3>Filtre2</h3>
+\t\t\t<h3>
+\t\t\t\tEntrées
+
+
+\t\t\t</h3>
 \t\t</div>
 \t\t<div id=\"filter3\" class=\"tabcontent\">
 \t\t\t<h3>Filtre3</h3>
@@ -237,8 +295,6 @@ class __TwigTemplate_07d8780187fb7ad53458eeadc8690cf5ca17cd3d9dc7810c90be0c703d1
 \t\t\t<h3>Filtre5</h3>
 \t\t</div>
 \t</section>
-
-
 
 
 {% endblock %}
