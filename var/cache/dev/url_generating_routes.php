@@ -30,6 +30,6 @@ return [
     'admin' => [[], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], [], [['text', '/admin']], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\RecipesController::index'], [], [['text', '/']], [], []],
     'recipes' => [[], ['_controller' => 'App\\Controller\\RecipesController::recipes'], [], [['text', '/recipes']], [], []],
-    'edit_user' => [[], ['_controller' => 'App\\Controller\\UsersController::edit'], [], [['text', '/edit_user']], [], []],
+    'profile' => [[], ['_controller' => 'App\\Controller\\UsersController::edit'], [], [['text', '/profile']], [], []],
     'edit_password' => [[], ['_controller' => 'App\\Controller\\UsersController::changePassword'], [], [['text', '/editpassword']], [], []],
 ];

@@ -12,8 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
 class AdminSecuController extends AbstractController
 {
+    
     /**
      * @Route("/signin", name="signin")
      */

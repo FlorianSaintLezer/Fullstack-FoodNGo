@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
-use App\Form\Type\EditPasswordType;
 use App\Form\UsersType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\Type\EditPasswordType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class UsersController extends AbstractController
 {
     /**
-     * @Route("/edit_user", methods="GET|POST", name="edit_user")
+     * @Route("/profile", methods="GET|POST", name="profile")
      */
     public function edit(Request $request): Response
     {
@@ -29,10 +29,10 @@ class UsersController extends AbstractController
 
             $this->addFlash('success', 'Profile successfully updated');
 
-            return $this->redirectToRoute('edit_user');
+            return $this->redirectToRoute('profile');
         }
 
-        return $this->render('users/edit_user.html.twig', [
+        return $this->render('users/profile.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
@@ -41,7 +41,7 @@ class UsersController extends AbstractController
     /**
      * @Route("/editpassword", methods="GET|POST", name="edit_password")
      */
-    public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
+    public function changePassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
 
@@ -49,9 +49,9 @@ class UsersController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $passwordCrypt = $encoder->encodePassword($users, $form->get('newPassword')->getData());
+            $passwordCrypt = $encoder->encodePassword($user, $form->get('newPassword')->getData());
             $user->setPassword($passwordCrypt);
-            $em->persist($users);
+            $em->persist($user);
             $em->flush();
 
             return $this->redirectToRoute('logout');

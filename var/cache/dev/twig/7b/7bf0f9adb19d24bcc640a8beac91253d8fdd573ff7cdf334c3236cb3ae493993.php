@@ -284,6 +284,6 @@ class __TwigTemplate_b9b006f3fd66f8733843c1aba7dfab3b2eb98da39856d9c307af05d51bb
 \t\t</div>
 \t</section>
 {% endblock %}
-", "admin/admin_recipes.html.twig", "E:\\DevWeb\\EPCF2\\templates\\admin\\admin_recipes.html.twig");
+", "admin/admin_recipes.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\templates\\admin\\admin_recipes.html.twig");
     }
 }

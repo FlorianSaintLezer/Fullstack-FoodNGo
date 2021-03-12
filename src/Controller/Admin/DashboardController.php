@@ -31,12 +31,16 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::section('Administration');
-        yield MenuItem::linkToCrud('Recipes', 'fas fa-list', Recipes::class);
+        yield MenuItem::section('Manage recipes');
+        yield MenuItem::linkToCrud('Recipes', 'fas fa-utensils', Recipes::class);
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Categories::class);
-        yield MenuItem::linkToCrud('Comments', 'fas fa-list', Comments::class);
-        yield MenuItem::linkToCrud('Users', 'fas fa-list', Users::class);
-
+        yield MenuItem::section('');
+        yield MenuItem::section('Manage users');
+        yield MenuItem::linkToCrud('Comments', 'fas fa-comments', Comments::class);
+        yield MenuItem::linkToCrud('Users', 'fas fa-users', Users::class);
+        yield MenuItem::section('');
+        yield MenuItem::section('Return Home');
+        yield MenuItem::linkToRoute('Back','fas fa-sign-out-alt', 'home');
     }
 
     public function adminDashboard()
@@ -48,9 +52,9 @@ class DashboardController extends AbstractDashboardController
     }
 
 
-    // public function configureDashboard(): Dashboard
-    // {
-    //     return Dashboard::new()
-    //         ->setTitle('EPCF2');
-    // }
+    public function configureDashboard(): Dashboard
+    {
+        return Dashboard::new()
+            ->setTitle('<img src="./img/logo.png"><span class="text-small">Admin</span>');
+    }
 }

@@ -74,8 +74,8 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
             echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
             // line 17
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_user");
-            echo "\">Profil</a>
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
+            echo "\">Profile</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"";
@@ -154,7 +154,7 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
 
 \t\t{% elseif is_granted('ROLE_USER') %}
 \t\t\t<li>
-\t\t\t\t<a href=\"{{ path('edit_user') }}\">Profil</a>
+\t\t\t\t<a href=\"{{ path('profile') }}\">Profile</a>
 \t\t\t</li>
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('logout') }}\">Logout</a>

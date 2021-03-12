@@ -71,7 +71,8 @@
     --text-on-primary: var(--white);
     --text-muted: var(--gray-500);
 
-    --link-color: hsl(230, 60%, 60%);
+    /* --link-color: hsl(230, 60%, 60%); */
+    --link-color: #BB727F;
     --link-hover-color: hsl(230, 60%, 75%);
     --link-hover-decoration: none;
 
