@@ -17,6 +17,10 @@ class RecipesType extends AbstractType
             ->add('title')
             ->add('description', TextareaType::class)
             ->add('imageFile', FileType::class, ['required'=>False])
+            ->add('category', EntityType::class, [
+                'class' => Categories::class,
+                'choice_label' => 'name',
+            ])      
         ;
     }
 

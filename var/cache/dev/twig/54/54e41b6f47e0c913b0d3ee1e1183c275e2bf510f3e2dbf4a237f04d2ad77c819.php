@@ -121,6 +121,6 @@ class __TwigTemplate_956c66f1c0e68a0fa365314af8c6da92129fc3cb80827c7bde7d0acad82
 Les dernières recettes
 (il faut mettre un nombre limité)
 {% endblock %}
-", "default/index.html.twig", "E:\\DevWeb\\EPCF2\\templates\\default\\index.html.twig");
+", "default/index.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\templates\\default\\index.html.twig");
     }
 }

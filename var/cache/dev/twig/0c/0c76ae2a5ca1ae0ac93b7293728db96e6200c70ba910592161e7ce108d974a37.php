@@ -98,7 +98,7 @@ class __TwigTemplate_f52491566458f190fae76a4d5b1c8eafe40379d2d306b6f0ed4fa46f57e
         echo "
 
 \t\t<button type=\"submit\">
-\t\t\t<i class=\"fa fa-save\" aria-hidden=\"true\"></i>
+\t\t\t<i class=\"fa fa-save\" aria-hidden=\"true\"></i> Confirm
 \t\t</button>
 \t\t";
         // line 15
@@ -108,7 +108,7 @@ class __TwigTemplate_f52491566458f190fae76a4d5b1c8eafe40379d2d306b6f0ed4fa46f57e
         // line 16
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_password");
         echo "\">
-\t\t\t<i class=\"fa fa-lock\" aria-hidden=\"true\"></i>
+\t\t\t<i class=\"fa fa-lock\" aria-hidden=\"true\"></i> Change your password
 \t\t</a>
 \t</section>
 
@@ -151,16 +151,16 @@ class __TwigTemplate_f52491566458f190fae76a4d5b1c8eafe40379d2d306b6f0ed4fa46f57e
 \t\t{{form_widget(form)}}
 
 \t\t<button type=\"submit\">
-\t\t\t<i class=\"fa fa-save\" aria-hidden=\"true\"></i>
+\t\t\t<i class=\"fa fa-save\" aria-hidden=\"true\"></i> Confirm
 \t\t</button>
 \t\t{{form_end(form)}}
 \t\t<a href=\"{{ path('edit_password') }}\">
-\t\t\t<i class=\"fa fa-lock\" aria-hidden=\"true\"></i>
+\t\t\t<i class=\"fa fa-lock\" aria-hidden=\"true\"></i> Change your password
 \t\t</a>
 \t</section>
 
 
 {% endblock %}
-", "users/edit_user.html.twig", "E:\\DevWeb\\EPCF2\\templates\\users\\edit_user.html.twig");
+", "users/edit_user.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\templates\\users\\edit_user.html.twig");
     }
 }

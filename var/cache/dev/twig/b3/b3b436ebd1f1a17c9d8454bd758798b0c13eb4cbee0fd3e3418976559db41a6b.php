@@ -50,39 +50,59 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
 \t<ul id=\"navbarMenu\" class=\"navbarMenu\">
 
 
-\t
-\t\t\t<li>
-\t\t\t\t<a href=\"";
-        // line 8
+\t\t<li>
+\t\t\t<a href=\"";
+        // line 7
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recipes");
         echo "\">Recipes</a>
-\t\t\t</li>
-\t\t\t<li><a href=\"";
+\t\t</li>
+
+\t\t";
         // line 10
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signin");
-        echo "\">Sign in</a></li>
-\t\t\t<li>
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 11
+            echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-        // line 12
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
-        echo "\">Login</a>
+            // line 12
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
+            echo "\">Admin Dashboard</a>
 \t\t\t</li>
 
-\t\t\t";
-        // line 21
-        echo "\t\t\t<li>
+\t\t";
+        } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 16
+            echo "\t\t\t<li>
 \t\t\t\t<a href=\"";
-        // line 22
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_user");
-        echo "\">Profil</a>
+            // line 17
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_user");
+            echo "\">Profil</a>
 \t\t\t</li>
-
 \t\t\t<li>
 \t\t\t\t<a href=\"";
-        // line 26
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
-        echo "\">Logout</a>
+            // line 20
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+            echo "\">Logout</a>
 \t\t\t</li>
+
+\t\t";
+        } else {
+            // line 24
+            echo "\t\t\t<li>
+\t\t\t\t<a href=\"";
+            // line 25
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signin");
+            echo "\">Sign in</a>
+\t\t\t</li>
+\t\t\t<li>
+\t\t\t\t<a href=\"";
+            // line 28
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+            echo "\">Login</a>
+\t\t\t</li>
+\t\t";
+        }
+        // line 31
+        echo "
 
 \t\t<li class=\"toggle\">
 \t\t\t<a href=\"javascript:void(0);\" onclick=\"responsiveNavbar()\">
@@ -113,7 +133,7 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
 
     public function getDebugInfo()
     {
-        return array (  83 => 26,  76 => 22,  73 => 21,  67 => 12,  62 => 10,  57 => 8,  46 => 2,  43 => 1,);
+        return array (  105 => 31,  99 => 28,  93 => 25,  90 => 24,  83 => 20,  77 => 17,  74 => 16,  67 => 12,  64 => 11,  62 => 10,  56 => 7,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -123,28 +143,32 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
 \t<ul id=\"navbarMenu\" class=\"navbarMenu\">
 
 
-\t
+\t\t<li>
+\t\t\t<a href=\"{{ path('recipes') }}\">Recipes</a>
+\t\t</li>
+
+\t\t{% if is_granted('ROLE_ADMIN') %}
 \t\t\t<li>
-\t\t\t\t<a href=\"{{ path('recipes') }}\">Recipes</a>
-\t\t\t</li>
-\t\t\t<li><a href=\"{{ path('signin') }}\">Sign in</a></li>
-\t\t\t<li>
-\t\t\t\t<a href=\"{{ path('login') }}\">Login</a>
+\t\t\t\t<a href=\"{{ path('admin') }}\">Admin Dashboard</a>
 \t\t\t</li>
 
-\t\t\t{# <li>
-\t\t\t\t<a href=\"{{ path('admin_recipes') }}\">Recipes(admin)</a>
-\t\t\t</li>
-\t\t\t<li>
-\t\t\t\t<a href=\"{{ path('admin_comments') }}\">Comments(admin)</a>
-\t\t\t</li> #}
+\t\t{% elseif is_granted('ROLE_USER') %}
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('edit_user') }}\">Profil</a>
 \t\t\t</li>
-
 \t\t\t<li>
 \t\t\t\t<a href=\"{{ path('logout') }}\">Logout</a>
 \t\t\t</li>
+
+\t\t{% else %}
+\t\t\t<li>
+\t\t\t\t<a href=\"{{ path('signin') }}\">Sign in</a>
+\t\t\t</li>
+\t\t\t<li>
+\t\t\t\t<a href=\"{{ path('login') }}\">Login</a>
+\t\t\t</li>
+\t\t{% endif %}
+
 
 \t\t<li class=\"toggle\">
 \t\t\t<a href=\"javascript:void(0);\" onclick=\"responsiveNavbar()\">
@@ -154,6 +178,6 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
 \t</ul>
 </nav>
 <div class=\"navLines\"></div>
-", "navbar.html.twig", "E:\\DevWeb\\EPCF2\\templates\\navbar.html.twig");
+", "navbar.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\templates\\navbar.html.twig");
     }
 }

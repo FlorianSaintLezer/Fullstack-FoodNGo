@@ -6,6 +6,8 @@ use App\Entity\Categories;
 use App\Entity\Comments;
 use App\Entity\Recipes;
 use App\Entity\Users;
+use App\Entity\Roles;
+
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -17,6 +19,7 @@ class DashboardController extends AbstractDashboardController
 {
     /**
      * @Route("/admin", name="admin")
+     * 
      */
     public function index(): Response
     {
@@ -33,7 +36,17 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Categories::class);
         yield MenuItem::linkToCrud('Comments', 'fas fa-list', Comments::class);
         yield MenuItem::linkToCrud('Users', 'fas fa-list', Users::class);
+
     }
+
+    public function adminDashboard()
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        // // or add an optional message - seen by developers
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
+    }
+
 
     // public function configureDashboard(): Dashboard
     // {

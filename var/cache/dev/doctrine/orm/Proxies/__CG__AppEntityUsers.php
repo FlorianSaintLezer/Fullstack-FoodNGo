@@ -66,10 +66,10 @@ class Users extends \App\Entity\Users implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'username', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'verificationPassword', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'image', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'imageFile', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'updatedAt', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'comments', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'recipes'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'username', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'verificationPassword', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'image', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'imageFile', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'updatedAt', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'comments', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'recipes', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'roles'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'username', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'verificationPassword', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'image', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'imageFile', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'updatedAt', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'comments', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'recipes'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'username', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'email', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'password', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'verificationPassword', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'image', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'imageFile', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'updatedAt', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'comments', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'recipes', '' . "\0" . 'App\\Entity\\Users' . "\0" . 'roles'];
     }
 
     /**
@@ -359,12 +359,23 @@ class Users extends \App\Entity\Users implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getRoles()
+    public function getRoles(): array
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRoles', []);
 
         return parent::getRoles();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRoles(array $roles): \App\Entity\Users
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRoles', [$roles]);
+
+        return parent::setRoles($roles);
     }
 
     /**
