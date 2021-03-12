@@ -87,6 +87,6 @@ class __TwigTemplate_3c3b88912bae7877c4f04980cba2460cf1b7d3727fea55b95988a4eca36
 {% else %}
     {{ field.formattedValue }}
 {% endif %}
-", "@EasyAdmin/crud/field/collection.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\vendor\\easycorp\\easyadmin-bundle\\src\\Resources\\views\\crud\\field\\collection.html.twig");
+", "@EasyAdmin/crud/field/collection.html.twig", "E:\\DevWeb\\EPCF2\\vendor\\easycorp\\easyadmin-bundle\\src\\Resources\\views\\crud\\field\\collection.html.twig");
     }
 }

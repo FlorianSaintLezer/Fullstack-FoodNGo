@@ -95,6 +95,6 @@ class __TwigTemplate_9bd34f6c0b91fe02e63926b23c60815f8e1abadaa83d8c70fabe96dee10
 {% if ea_select2_locale != 'en' %}
     <script src=\"{{ asset('bundles/easyadmin/select2/i18n/' ~ ea_select2_locale ~ '.js') }}\"></script>
 {% endif %}
-", "@EasyAdmin/crud/includes/_select2_widget.html.twig", "C:\\Users\\a2124872\\Desktop\\EPCF2\\vendor\\easycorp\\easyadmin-bundle\\src\\Resources\\views\\crud\\includes\\_select2_widget.html.twig");
+", "@EasyAdmin/crud/includes/_select2_widget.html.twig", "E:\\DevWeb\\EPCF2\\vendor\\easycorp\\easyadmin-bundle\\src\\Resources\\views\\crud\\includes\\_select2_widget.html.twig");
     }
 }

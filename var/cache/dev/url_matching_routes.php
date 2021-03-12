@@ -22,7 +22,7 @@ return [
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\AdminSecuController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\AdminSecuController::logout'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\Admin\\DashboardController::index'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\RecipesController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\RecipesController::home'], null, null, null, false, false, null]],
         '/recipes' => [[['_route' => 'recipes', '_controller' => 'App\\Controller\\RecipesController::recipes'], null, null, null, false, false, null]],
         '/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UsersController::edit'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/editpassword' => [[['_route' => 'edit_password', '_controller' => 'App\\Controller\\UsersController::changePassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],

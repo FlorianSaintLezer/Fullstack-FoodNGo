@@ -1,8 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Food and Go - Home{% endblock %}
+{% block title %}Food and Go - Home
+{% endblock %}
 
 {% block body %}
-Les dernières recettes
-(il faut mettre un nombre limité)
-{% endblock %}
+
+	<h1>Liste des recettes</h1>
+	<section class="latest-recipes">
+
+		{% for recipe in recipes %}
+			{% set append %}
+			{% if loop.first %}first
+			{% endif %}
+			{% if loop.last %}last
+			{% endif %}
+			{% endset %}
+			<div class="last-recipe {{ append }}" style="background-image: url('{{ asset('img/' ~ recipe.image) }}');"></div>
+			
+		{% endfor %}
+	</div>
+</section>{% endblock %}
