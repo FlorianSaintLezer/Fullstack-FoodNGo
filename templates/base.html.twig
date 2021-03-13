@@ -6,19 +6,23 @@
 			{% block title %}FoodGO
 			{% endblock %}
 		</title>
-		{# BOOTSTRAP #}
+		{# BOOTSTRAP IS EVIL #}
 		{# <link
-		rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> #}
-		{# FONTAWESOME #}
+				rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> #}
+		{# FONTAWESOME it's awesome #}
 		<link
-		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
-		{# STYLE #}
+		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous"> {# STYLE #}
 		<link rel="stylesheet" href="{{ asset("css/style.css") }}"> {% block stylesheets %}{% endblock %}
 		</head>
 		<body>
-            {% include "navbar.html.twig" %}
+			{% include "navbar.html.twig" %}
 			{% block body %}{% endblock %}
 			{% block javascripts %}{% endblock %}
+			{% include "footer.html.twig" %}
+
+			{# FLICKTY for Carousels #}
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js" integrity="sha512-cA8gcgtYJ+JYqUe+j2JXl6J3jbamcMQfPe0JOmQGDescd+zqXwwgneDzniOd3k8PcO7EtTW6jA7L4Bhx03SXoA==" crossorigin="anonymous"></script>
+			{# JAVASCRIPT because ... MAGIC ! #}
 			<script type="text/javascript" src="{{ asset("js/script.js") }}"></script>
 
 		</body>

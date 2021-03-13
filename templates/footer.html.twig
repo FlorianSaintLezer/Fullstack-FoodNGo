@@ -1,0 +1,64 @@
+{# Site footer #}
+<footer class="site-footer">
+	<div class="container site-footer-content">
+		<div class="site-footer-head">
+			<p>Retrouvez-nous sur :</p>
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-linkedin-in fa-stack-1x"></i>
+				</span>
+			</a>
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-instagram fa-stack-1x"></i>
+				</span>
+			</a>
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-twitter fa-stack-1x"></i>
+				</span>
+			</a>
+
+
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-youtube fa-stack-1x"></i>
+				</span>
+
+			</a>
+		</div>
+
+		{# <div class="site-footer-body">
+			<div class="site-summary">
+				<span class="food">Food'n</span>
+				<span class="go">go</span>
+				site trop bien
+			</div>
+			<ul class="site-categories">
+				<li>Catégories</li>
+				{% for category in categories %}
+					<li>
+						<a href="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</a>
+					</li>
+				{% endfor %}
+			</ul>
+			<ul class="site-last-recipes">
+				<li>Dernières recettes</li>
+				{% for recipe in recipes %}
+					<li>
+						<a href="{{ path('show_recipe', {'id' : recipe.id }) }}">{{recipe.title}}</a>
+					</li>
+				{% endfor %}
+
+			</ul>
+		</div> #}
+		<div class="site-footer-footer">
+			Site développé avec passion par
+			<a href="http://floriansaintlezer.fr" target="_blank">Florian Saint-Lezer</a>
+		</div>
+
+	</footer>
