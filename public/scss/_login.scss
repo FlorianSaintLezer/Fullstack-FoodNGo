@@ -1,19 +1,13 @@
+.login {
+    padding: $padSection;
+}
 .form-login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: $colLight;
-    width: 300px;
-    margin: -140px 0 0 -182px;
+    margin: 0 auto;
+    position: relative;
+    background: white;
+    width: 600px;
     padding: 40px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    h2 {
-        margin: 10px 0 20px;
-        line-height: 1;
-        color: $colMain;
-        font-size: 18px;
-        font-weight: 400;
-    }
     input {
         outline: none;
         display: block;
@@ -21,33 +15,28 @@
         margin: 0 0 20px;
         padding: 10px 15px;
         border: 1px solid $colSecond;
+        outline: 1px solid transparent;
         color: $colMain;
         box-sizing: border-box;
         font-size: 14px;
         font-weight: 400;
         transition: 0.2s linear;
-        &input:focus {
-            color: $colSecond;
-            border: 1px solid $colMain;
+        &:focus {
+            outline: 1px solid $colMain;
         }
     }
     button {
-        cursor: pointer;
-        background: $colMain;
-        width: 100%;
-        padding: 10px 15px;
-        border: 0;
-        color: $colThird;
-        font-size: 14px;
-        font-weight: 400;
-        &:hover {
-            background: darken($colMain,0.5);
+        @extend %mainButton;
+        width:100%;
+        :hover {
+            background: red;
         }
     }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:$breakPMd) {
     .form-login {
         width: 100%;
+        margin: 0;
     }
 }

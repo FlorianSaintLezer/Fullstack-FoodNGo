@@ -1,4 +1,4 @@
-// CONTENT WIDTH 90%
+// CONTAINER
 %container {
     width: 90%;
     height: 100%;
@@ -6,6 +6,7 @@
     margin: 0 auto;
     position: relative;
 }
+
 // POSITION
 %absCenterXY {
     position: absolute;
@@ -19,12 +20,19 @@
     left: 0%;
     transform: translate(0, -50%);  
 }
+%relCenterXY {
+    position:relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 %relCenterY {
     position: relative;
     top: 50%;
     left: 0%;
     transform: translate(0, -50%);  
 }
+
 // IMAGE FLUID
 %imgFluid {
     height: 100%;
@@ -33,19 +41,23 @@
 }
 // BUTTON
 %mainButton {
-    padding: 2em;
-    font-weight: 800;
-    background: linear-gradient(to right, $colBtn1, $colBtn2);
+    cursor: $cursorClick;
+    background: $colBtn;
+    padding: $padBtn;
+    border: $borBtn;
     color: $colLight;
-    border-radius: $borRadius;
+    font-weight: $weightBold;
+    font-size: $sizeText ;
+    letter-spacing: $letterSpace;
 }
+
 // INPUT
 %inputLight {
     padding: $padInput;
     background-color: $colLight;
     border: $border;
     border-radius: $borRadius;
-    color: $colDark;
+    color: $colMain;
 }
 %inputDark {
     padding: $padInput;
@@ -85,4 +97,22 @@
     opacity: .5;
     position: absolute;
     z-index: 0;   
+}
+// TITLES
+%nice-title {
+    text-transform: uppercase;
+    text-align: center;
+    margin: $marTitle;
+    line-height: 1;
+    :first-child {
+      color: $colSecond;
+      font-size: $sizeTitle1;
+      font-family: "fontSerif";
+    }
+    :nth-child(2){
+      color: $colMain;
+      font-size: $sizeTitle2;
+      font-family: "fontRegular";
+      font-weight: bold;
+    }
 }

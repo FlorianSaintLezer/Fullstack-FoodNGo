@@ -89,26 +89,39 @@ class __TwigTemplate_89c11da26c210725912799224a255f6c50b3afa283f49e9f3f341b2242f
         echo "\t";
         if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 7, $this->source); })())) {
             // line 8
-            echo "\t\t<div id=\"alert\" class=\"alert-error\">Error<buttonid=\"alert-close\"><i class=\"far fa-times-circle\"></i></button></div>
+            echo "\t\t<div id=\"alert\" class=\"alert-error\">Error<buttonid=\"alert-close\">
+\t\t\t\t<i class=\"far fa-times-circle\"></i>
+\t\t\t</button>
+\t\t</div>
 \t";
         }
-        // line 10
-        echo "\t<section class=\"form-login\">
-\t\t<form method=\"post\" action=\"";
-        // line 11
+        // line 13
+        echo "\t<section class=\"login container\">
+\t\t<div class=\"form-login\">
+\t\t\t<form method=\"post\" action=\"";
+        // line 15
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
         echo "\">
-\t\t\t<h2>Please login</h2>
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<Label>Username</Label>
-\t\t\t\t<input type=\"username\" require name=\"_username\" class=\"form-control\" placeholder=\"Username\">
-\t\t\t</div>
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<Label>Password</Label>
-\t\t\t\t<input type=\"password\" require name=\"_password\" class=\"form-control\" placeholder=\"Password\">
-\t\t\t</div>
-\t\t\t<button type=\"submit\">Login</button>
-\t\t</form>
+\t\t\t\t<h2 class=\"nice-title\">
+\t\t\t\t\t<span>Connecte-toi et</span>
+\t\t\t\t\t<span>Go</span>
+\t\t\t\t</h2>
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<Label>Username</Label>
+\t\t\t\t\t<input type=\"username\" require name=\"_username\" class=\"form-control\" placeholder=\"Username\">
+\t\t\t\t</div>
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<Label>Password</Label>
+\t\t\t\t\t<input type=\"password\" require name=\"_password\" class=\"form-control\" placeholder=\"Password\">
+\t\t\t\t</div>
+\t\t\t\t<button class=\"main-button\" type=\"submit\">Connexion</button>
+\t\t\t\t<p class=\"under-button\">Première visite ? <a href=\"";
+        // line 29
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("signin");
+        echo "\" class=\"go\">Je m'inscris.</a>
+\t\t\t\t</p>
+\t\t\t</form>
+\t\t</div>
 \t</section>
 ";
         
@@ -131,7 +144,7 @@ class __TwigTemplate_89c11da26c210725912799224a255f6c50b3afa283f49e9f3f341b2242f
 
     public function getDebugInfo()
     {
-        return array (  99 => 11,  96 => 10,  92 => 8,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  120 => 29,  103 => 15,  99 => 13,  92 => 8,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -143,21 +156,31 @@ class __TwigTemplate_89c11da26c210725912799224a255f6c50b3afa283f49e9f3f341b2242f
 
 {% block body %}
 \t{% if error %}
-\t\t<div id=\"alert\" class=\"alert-error\">Error<buttonid=\"alert-close\"><i class=\"far fa-times-circle\"></i></button></div>
+\t\t<div id=\"alert\" class=\"alert-error\">Error<buttonid=\"alert-close\">
+\t\t\t\t<i class=\"far fa-times-circle\"></i>
+\t\t\t</button>
+\t\t</div>
 \t{% endif %}
-\t<section class=\"form-login\">
-\t\t<form method=\"post\" action=\"{{path('login')}}\">
-\t\t\t<h2>Please login</h2>
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<Label>Username</Label>
-\t\t\t\t<input type=\"username\" require name=\"_username\" class=\"form-control\" placeholder=\"Username\">
-\t\t\t</div>
-\t\t\t<div class=\"form-group\">
-\t\t\t\t<Label>Password</Label>
-\t\t\t\t<input type=\"password\" require name=\"_password\" class=\"form-control\" placeholder=\"Password\">
-\t\t\t</div>
-\t\t\t<button type=\"submit\">Login</button>
-\t\t</form>
+\t<section class=\"login container\">
+\t\t<div class=\"form-login\">
+\t\t\t<form method=\"post\" action=\"{{path('login')}}\">
+\t\t\t\t<h2 class=\"nice-title\">
+\t\t\t\t\t<span>Connecte-toi et</span>
+\t\t\t\t\t<span>Go</span>
+\t\t\t\t</h2>
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<Label>Username</Label>
+\t\t\t\t\t<input type=\"username\" require name=\"_username\" class=\"form-control\" placeholder=\"Username\">
+\t\t\t\t</div>
+\t\t\t\t<div class=\"form-group\">
+\t\t\t\t\t<Label>Password</Label>
+\t\t\t\t\t<input type=\"password\" require name=\"_password\" class=\"form-control\" placeholder=\"Password\">
+\t\t\t\t</div>
+\t\t\t\t<button class=\"main-button\" type=\"submit\">Connexion</button>
+\t\t\t\t<p class=\"under-button\">Première visite ? <a href=\"{{ path('signin') }}\" class=\"go\">Je m'inscris.</a>
+\t\t\t\t</p>
+\t\t\t</form>
+\t\t</div>
 \t</section>
 {% endblock %}
 ", "default/login.html.twig", "E:\\DevWeb\\EPCF2\\templates\\default\\login.html.twig");

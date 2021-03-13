@@ -1,22 +1,51 @@
 body {
    background-color: lighten($colThird,30%);
    font-family: "fontRegular";
+   color: $colSecond;
+   font-size: 1rem;
    a {
     font-family: "fontRegular";
+    color: $colSecond;
     h1,h2,h3,h4,h5,h6 {
-      font-family: "fontBlack";
+      font-family: "fontSerif";
  
     }
   }
    * { box-sizing: border-box; }
  }
  .container {
-   width: 90%;
-   margin: 0 auto;
-   max-width: 1284px;
+  @extend %container;
  }
  @media screen and (max-width:$breakPMd) {
   .container { 
     width: 100%;
   }
+}
+
+.under-button {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 100;
+  :first-child {
+      color: $colMain;
+      font-family: "fontRegular";
+      font-weight: 600;
+  }
+}
+ .nice-title { 
+   text-transform: uppercase;
+   text-align: center;
+   margin: $marTitle;
+   line-height: 1;
+   :first-child {
+     color: $colSecond;
+     font-size: $sizeTitle1;
+     font-family: "fontSerif";
+   }
+   :nth-child(2){
+     color: $colMain;
+     font-size: $sizeTitle2;
+     font-family: "fontRegular";
+     font-weight: bold;
+   }
  }

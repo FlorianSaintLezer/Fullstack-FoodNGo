@@ -61,22 +61,15 @@ a {
   font-family: "fontRegular";
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/Roboto-Regular.eot");
-  src: url("../fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Regular.ttf") format("truetype");
+  src: url("../fonts/Verdana.eot");
+  src: url("../fonts/Verdana.eot?#iefix") format("embedded-opentype"), url("../fonts/Verdana.ttf") format("truetype");
 }
 @font-face {
-  font-family: "fontLight";
+  font-family: "fontSerif";
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/Roboto-Light.eot");
-  src: url("../fonts/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Light.ttf") format("truetype");
-}
-@font-face {
-  font-family: "fontBlack";
-  font-weight: normal;
-  font-style: normal;
-  src: url("../fonts/Roboto-Black.eot");
-  src: url("../fonts/Roboto-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Black.ttf") format("truetype");
+  src: url("../fonts/Georgia.eot");
+  src: url("../fonts/Georgia.eot?#iefix") format("embedded-opentype"), url("../fonts/Georgia.ttf") format("truetype");
 }
 @font-face {
   font-family: "fontStylized";
@@ -85,24 +78,40 @@ a {
   src: url("../fonts/Allura-Regular.eot");
   src: url("../fonts/Allura-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Allura-Regular.ttf") format("truetype");
 }
+.container {
+  width: 90%;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cardBtn, .form-login button {
+  cursor: pointer;
+  background: #bb727f;
+  padding: 10px 35px;
+  border: 0;
+  color: #f0f0f0;
+  font-weight: 800;
+  font-size: 1em;
+  letter-spacing: 0.1rem;
+}
+
 body {
   background-color: white;
   font-family: "fontRegular";
+  color: #707070;
+  font-size: 1rem;
 }
 body a {
   font-family: "fontRegular";
+  color: #707070;
 }
 body a h1, body a h2, body a h3, body a h4, body a h5, body a h6 {
-  font-family: "fontBlack";
+  font-family: "fontSerif";
 }
 body * {
   box-sizing: border-box;
-}
-
-.container {
-  width: 90%;
-  margin: 0 auto;
-  max-width: 1284px;
 }
 
 @media screen and (max-width: 600px) {
@@ -110,6 +119,35 @@ body * {
     width: 100%;
   }
 }
+.under-button {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 100;
+}
+.under-button :first-child {
+  color: #bb727f;
+  font-family: "fontRegular";
+  font-weight: 600;
+}
+
+.nice-title {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 1em 0 2em;
+  line-height: 1;
+}
+.nice-title :first-child {
+  color: #707070;
+  font-size: 1.8125em;
+  font-family: "fontSerif";
+}
+.nice-title :nth-child(2) {
+  color: #bb727f;
+  font-size: 2.125em;
+  font-family: "fontRegular";
+  font-weight: bold;
+}
+
 .latest-recipes {
   width: 90%;
   max-width: 1024px;
@@ -130,10 +168,10 @@ body * {
 }
 
 .site-footer {
-  background-color: #BB727F;
+  background-color: #bb727f;
   color: white;
   width: 100%;
-  padding: 30px 0;
+  padding: 2em 0;
 }
 .site-footer .site-footer-content {
   display: flex;
@@ -146,7 +184,7 @@ body * {
   width: 100%;
 }
 .site-footer .site-footer-content .site-footer-head :not(:first-child) {
-  color: #BB727F;
+  color: #bb727f;
 }
 .site-footer .site-footer-content .site-footer-head :not(:first-child) .icon-background {
   color: white;
@@ -203,22 +241,17 @@ body * {
   background: #28a745;
 }
 
+.login {
+  padding: 2em 0;
+}
+
 .form-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: #f0f0f0;
-  width: 300px;
-  margin: -140px 0 0 -182px;
+  margin: 0 auto;
+  position: relative;
+  background: white;
+  width: 600px;
   padding: 40px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-}
-.form-login h2 {
-  margin: 10px 0 20px;
-  line-height: 1;
-  color: #BB727F;
-  font-size: 18px;
-  font-weight: 400;
 }
 .form-login input {
   outline: none;
@@ -227,33 +260,27 @@ body * {
   margin: 0 0 20px;
   padding: 10px 15px;
   border: 1px solid #707070;
-  color: #BB727F;
+  outline: 1px solid transparent;
+  color: #bb727f;
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 400;
   transition: 0.2s linear;
 }
-.form-login inputinput:focus {
-  color: #707070;
-  border: 1px solid #BB727F;
+.form-login input:focus {
+  outline: 1px solid #bb727f;
 }
 .form-login button {
-  cursor: pointer;
-  background: #BB727F;
   width: 100%;
-  padding: 10px 15px;
-  border: 0;
-  color: #B5B5B5;
-  font-size: 14px;
-  font-weight: 400;
 }
-.form-login button:hover {
-  background: #ba707d;
+.form-login button :hover {
+  background: red;
 }
 
 @media screen and (max-width: 600px) {
   .form-login {
     width: 100%;
+    margin: 0;
   }
 }
 nav {
@@ -279,7 +306,7 @@ nav ul li:last-child {
   display: none;
 }
 nav a {
-  color: #B5B5B5;
+  color: #b5b5b5;
 }
 
 @media screen and (max-width: 600px) {
@@ -330,8 +357,8 @@ nav a {
 }
 .navLines {
   height: 10px;
-  border-top: 1px solid #BB727F;
-  border-bottom: 1px solid #BB727F;
+  border-top: 1px solid #bb727f;
+  border-bottom: 1px solid #bb727f;
   margin: 0 1vw;
 }
 
@@ -412,7 +439,7 @@ nav a {
 
 .title {
   background-color: white;
-  color: #BB727F;
+  color: #bb727f;
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
@@ -426,15 +453,10 @@ nav a {
 }
 
 .cardBtn {
-  cursor: pointer;
   margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.65rem;
-  font-weight: bold;
   letter-spacing: 0.025rem;
   text-transform: uppercase;
   color: white;
-  background-color: #BB727F;
   border: none;
 }
 .cardBtn:hover {
@@ -491,7 +513,7 @@ nav a {
 /* Style the tab */
 .tabs {
   overflow: hidden;
-  border-bottom: double 1px #BB727F;
+  border-bottom: double 1px #bb727f;
   width: 90%;
   max-width: 1284px;
   margin: 0 auto;
@@ -517,7 +539,7 @@ nav a {
 
 /* Create an active/current tablink class */
 .tabs button.active {
-  background-color: #BB727F;
+  background-color: #bb727f;
   color: white;
 }
 
