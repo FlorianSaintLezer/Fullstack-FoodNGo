@@ -5,44 +5,44 @@
 
 {% block body %}
 
-	<section class="recipe_show">
-		<div class="card" style="background-image: url('{{ asset('img/' ~ recipes.image) }}');">
-			<div class="content">
-				<h2 class="title">{{recipes.title}}</h2>
-				<p>{{recipes.description | raw}}</p>
-				{# {{recipes.comments}} #}
-				{% if app.user and app.user is same as(recipes.author) %}
+	<section class="show-recipe container">
+		<div class="recipe-image" style="background-image: url('{{ asset('img/' ~ recipes.image) }}');"></div>
+		<div class="recipe-content">
+			<p>{{recipes.updatedAt|date("d/m/Y")}}</p>
+			<h2 class="title">{{recipes.title}}</h2>
+			<p>{{recipes.description | raw}}</p>
+			{# {{recipes.comments}} #}
+			{% if app.user and app.user is same as(recipes.author) %}
 				<button type="button">EDIT (peut-être</button>
 				<button type="button">DELETE (peut-être)</button>
-				{% endif %}
-			</div>
+			{% endif %}
 		</div>
 
 
 	</section>
 
 
-	<section
-		class="comments">
+	<section class="comments">
 		{% for comment in recipes.comments %}
-		{# START LOOP #}
-		<div class="comment">
-			<div class="comment-header">
+			{# START LOOP #}
+			<div class="comment">
+				<div class="comment-header">
 
-				<h3>{{comment.author}}</h3>
-				{# <p>{{comment.updatedAt | format(d-m-Y)}}</p> #}
+					<h3>{{comment.author}}</h3>
+					{# <p>{{comment.updatedAt | format(d-m-Y)}}</p> #}
+
+				</div>
+
+				<div class="comment-content">COMMENTAIRE ICI :
+					{{comment.content}}</div>
+				<div class="comment-footer">
+
+					<button type="button">EDIT (peut-être</button>
+					<button type="button">DELETE (peut-être)</button>
+				</div>
+
 
 			</div>
-
-			<div class="comment-content">COMMENTAIRE ICI : {{comment.content}}</div>
-			<div class="comment-footer">
-
-				<button type="button">EDIT (peut-être</button>
-				<button type="button">DELETE (peut-être)</button>
-			</div>
-
-
-		</div>
 		{% endfor %}
 	</section>
 

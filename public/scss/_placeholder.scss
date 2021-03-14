@@ -32,6 +32,10 @@
     left: 0%;
     transform: translate(0, -50%);  
 }
+%relCenter {
+    position: relative;
+    margin: 0 auto;
+}
 
 // IMAGE FLUID
 %imgFluid {
@@ -42,36 +46,38 @@
 // BUTTON
 %mainButton {
     cursor: $cursorClick;
-    background: $colBtn;
+    background-color: $colBtn;
     padding: $padBtn;
-    border: $borBtn;
+    border: $borTransp;
+    outline: $borTransp;
     color: $colLight;
     font-weight: $weightBold;
     font-size: $sizeText ;
     letter-spacing: $letterSpace;
+    transition: $transSmooth;
+    &:hover {
+        background-color: lighten($colBtn, $colVar);
+    }
+    &:active {
+        border: $border2;
+    }
 }
 
 // INPUT
-%inputLight {
+%mainInput {
+    display: block;
+    width: 100%;
+    margin: $marInput;
     padding: $padInput;
-    background-color: $colLight;
-    border: $border;
-    border-radius: $borRadius;
+    border: $border2;
+    outline: $borTransp;
     color: $colMain;
-}
-%inputDark {
-    padding: $padInput;
-    background-color: $colDark;
-    border: $border;
-    border-radius: $borRadius;
-    color: $colDark;
-}
-%inputTransp {
-    padding: $padInput;
-    background-color: transparent;
-    border: none;
-    border-radius: $borRadius;
-    color: $colLight;
+    font-size: $sizeSmall;
+    font-weight: $weightReg;
+    transition: $transSmooth;
+    &:focus {
+        outline: $border;
+    }
 }
 // FONT
 %spanMin {
@@ -81,22 +87,6 @@
 %spanPlus {
     font-weight: 700;
     font-size: 1.1rem;    
-}
-// BG IMAGE
-%bgImage {
-    background-image: url();
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-%overlay {
-    width: 100%;
-    height: 100%;
-    background-color: $colDark;
-    opacity: .5;
-    position: absolute;
-    z-index: 0;   
 }
 // TITLES
 %nice-title {
@@ -116,3 +106,32 @@
       font-weight: bold;
     }
 }
+
+%windowShadow {
+    box-shadow: 0 0 3px $colThird;
+}
+%cardShadow {
+    box-shadow: 0 1px 1px $colThird, 
+    0 2px 2px $colThird, 
+    0 4px 4px $colThird, 
+    0 8px 8px $colThird,
+    0 16px 16px $colThird;
+}
+
+
+// BG IMAGE
+// %bgImage {
+//     background-image: url();
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-attachment: fixed;
+//     background-size: cover;
+// }
+// %overlay {
+//     width: 100%;
+//     height: 100%;
+//     background-color: $colDark;
+//     opacity: .5;
+//     position: absolute;
+//     z-index: 0;   
+// }

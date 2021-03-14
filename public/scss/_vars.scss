@@ -1,11 +1,12 @@
 // COLORS
     // THEME
-    $colMain : rgba(187, 114, 127, 1); 
+    $colMain : rgba(187, 114, 127, 1);
     $colSecond : rgba(112, 112, 112, 1);
     $colThird : rgba(181, 181, 181, 1);
     // SECONDARY
     $colDark: rgba(51,51,51,1);
     $colLight: rgba(240,240,240,1);
+    $colClear: rgba(255,255,255,1); // white here
     // ALERT
     $colSuccess: rgba(40,167,69,1);
     $colInfo: rgba(23,162,184,1);
@@ -20,49 +21,58 @@
     $colNetTw:rgba(88, 175, 237, 1);
     $colNetGp:rgba(221, 75, 61, 1);
     $colNetIg:rgba(192, 51, 130, 1);
+    
+    //DARKEN - LIGHTEN 
+    $colVar: 8%; // opacity for darken / lighten
+
 
 //SIZE
     //IMAGE
     $imgBig: 200px;
     $imgSmall: 100px;
     //NAVBAR 
-    $navHeight:140px;
+    $navHeight:100px;
 
-//BORDER
-    // RADIUS
+//BORDER - OUTLINE
+    $borTransp: 1px solid transparent; //transparent border/outline
     $border: 1px solid $colMain;
+    $border2: 1px solid $colSecond;
+    // RADIUS
     $borRadius: 10px;
 
 // CURSOR
     $cursorClick: pointer;
 
 // FONT
-    $sizeText:1em; // normal size
-    $sizeTitle1: 1.8125em; // title size 1
-    $sizeTitle2: 2.125em; // title size 2
-    $letterSpace: 0.1rem;
+    $sizeSmall:0.875rem;
+    $sizeMenu:1.4rem; // nav
+    $sizeText:1rem; // normal size
+    $sizeTitle1: 1.8125rem; // title size 1
+    $sizeTitle2: 2.125rem; // title size 2
+    $letterSpace: 0.1rem; // letter space
     $weightBold: 800; // bold
     $weightReg:500; // regular
     $weightThin:100; //thin
+
 //BUTTON
     $colBtn: $colMain; // color
     $padBtn: 15px; // padding
-    $borBtn: 0; // border
+    // $borBtn: darken($colBtn, 5%); // border
 
 // PADDING & MARGING
-    $padding: 10px;
-    $padSection: 2em 0; // Section
-    $padTitle: 0 0 15px 0; // Title
-    $padBtn: 10px 35px; // Button
-    $padInput: 10px; // Input
-    $marBot: 10px;
-    $marTitle:1em 0 2em; //Nice Title Margin
-
+    $padWindow: 2.5rem;
+    $padSection: 2em 0; // Section padding
+    //Title
+    $padTitle: 0 0 15px 0; // Title padding
+    $marTitle:1em 0 2em; // Title margin
+    $padBtn: 10px 35px; // Button padding
+    $padInput: .625rem .9rem; // Input padding
+    $marInput: 0 0 1.25rem; // Input margin
 
 
 // TRANSITIONS 
-    $transitAll: all 400;
-    $transitColor: color 400;
+    $transSmooth: 400ms all; // smooth transition
+    // $transitColor: color 400;
     // EFFECTS
     $effectBezier: cubic-bezier(0.2, 1, 0.3, 1);
     // GLOBAL TRANSITION TIME
@@ -73,10 +83,6 @@ $breakPSm: 480px;
 $breakPMd: 600px;
 $breakPLg: 800px;
 
-// SHADOWNS
-    // CARDS
-    $cardShadow : 0 1px 1px rgba(0,0,0,0.1), 
-    0 2px 2px rgba(0,0,0,0.1), 
-    0 4px 4px rgba(0,0,0,0.1), 
-    0 8px 8px rgba(0,0,0,0.1),
-    0 16px 16px rgba(0,0,0,0.1);
+// SHADOWS
+$windowShadow: 0 0 3px $colThird; // for windows
+$cardShadow:0 1px 1px $colThird, 0 2px 2px $colThird, 0 4px 4px $colThird, 0 8px 8px $colThird, 0 16px 16px $colThird; // for cards

@@ -13,6 +13,7 @@
             flex-direction: row;
             align-items: center;
             li {
+                
                 padding-left: 2em;
                 &:last-child {
                     display: none;
@@ -21,6 +22,14 @@
         }
         a {
             color: $colThird;
+            font-size:$sizeMenu;
+            font-family: "fontSerif";
+            img {
+                max-height: calc(#{$navHeight} * 0.75);
+            }
+            &:hover {
+                color: $colMain;
+            }
         }
     }
 @media screen and (max-width: $breakPMd) {

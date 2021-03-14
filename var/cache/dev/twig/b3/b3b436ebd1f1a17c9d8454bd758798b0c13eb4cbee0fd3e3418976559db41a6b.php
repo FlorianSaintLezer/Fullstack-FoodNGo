@@ -46,7 +46,7 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo.png"), "html", null, true);
-        echo "\"></a>
+        echo "\" alt=\"logo\"></a>
 \t<ul id=\"navbarMenu\" class=\"navbarMenu\">
 
 
@@ -146,7 +146,7 @@ class __TwigTemplate_7fceefab02ff0882d24cfe2c3252e93dbc6b07f6728f8295b8fcc3c25ba
     public function getSourceContext()
     {
         return new Source("<nav id=\"nav\" class=\"nav navbar\">
-\t<a href=\"{{ path('home') }}\"><img src=\"{{ asset('img/logo.png')}}\"></a>
+\t<a href=\"{{ path('home') }}\"><img src=\"{{ asset('img/logo.png')}}\" alt=\"logo\"></a>
 \t<ul id=\"navbarMenu\" class=\"navbarMenu\">
 
 

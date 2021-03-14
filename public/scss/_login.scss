@@ -2,41 +2,31 @@
     padding: $padSection;
 }
 .form-login {
-    margin: 0 auto;
-    position: relative;
-    background: white;
+    @extend %relCenter;
+    box-shadow: $windowShadow;
+    background: $colClear;
     width: 600px;
-    padding: 40px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    padding: $padWindow;
     input {
-        outline: none;
-        display: block;
-        width: 100%;
-        margin: 0 0 20px;
-        padding: 10px 15px;
-        border: 1px solid $colSecond;
-        outline: 1px solid transparent;
-        color: $colMain;
-        box-sizing: border-box;
-        font-size: 14px;
-        font-weight: 400;
-        transition: 0.2s linear;
-        &:focus {
-            outline: 1px solid $colMain;
-        }
+        @extend %mainInput;
     }
     button {
         @extend %mainButton;
         width:100%;
-        :hover {
-            background: red;
-        }
+    }
+    li {
+        color: $colError2;
     }
 }
 
-@media screen and (max-width:$breakPMd) {
+@media screen and (max-width:$breakPLg) {
     .form-login {
         width: 100%;
         margin: 0;
+    }
+}
+@media screen and (max-width:$breakPSm) {
+    .form-login {
+       padding: 1rem;
     }
 }

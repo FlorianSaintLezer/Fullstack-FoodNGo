@@ -1,10 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Food and Go - Inscription{% endblock %}
+{% block title %}Food and Go - Inscription
+{% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type="submit" value="OK">
-{{ form_end(form) }}
+	<section class="login container">
+		<div class="form-login">
+			{{ form_start(form) }}
+			<h2 class="nice-title">
+				<span>Inscris-toi et
+				</span>
+				<span>Go</span>
+			</h2>
+			{{ form_widget(form) }}
+			<button class="main-button" type="submit">Inscription</button>
+			<p class="under-button">Déjà inscrit ?
+				<a href="{{ path('login') }}" class="go">Je me connecte.</a>
+			</p>
+			{{ form_end(form) }}
+		</div>
+	</section>
 {% endblock %}
