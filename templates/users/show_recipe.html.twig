@@ -6,18 +6,31 @@
 {% block body %}
 
 	<section class="show-recipe container">
-		<div class="recipe-image" style="background-image: url('{{ asset('img/' ~ recipes.image) }}');"></div>
-		<div class="recipe-content">
-			<p>{{recipes.updatedAt|date("d/m/Y")}}</p>
-			<h2 class="title">{{recipes.title}}</h2>
-			<p>{{recipes.description | raw}}</p>
-			{# {{recipes.comments}} #}
+
+		<div class="recipe-image" style="background-image: url('{{ asset('img/' ~ recipes.image) }}');">
 			{% if app.user and app.user is same as(recipes.author) %}
-				<button type="button">EDIT (peut-être</button>
-				<button type="button">DELETE (peut-être)</button>
+				<div class="recipe-buttons">
+					<button class="recipe-btn" type="submit">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="recipe-btn" type="submit">
+						<i class="fas fa-trash-alt"></i> Supprimer
+					</button>
+				</div>
 			{% endif %}
 		</div>
+		<div class="recipe-content">
+			<div class="content-left">
+				<div class="recipe-date">{{recipes.updatedAt|date("d/m/Y")}}</div>
+				<h2 class="recipe-title">{{recipes.title}}</h2>
+				<div class="recipe-description">{{recipes.description | raw}}</div>
+				{# {{recipes.comments}} #}
+			</div>
 
+			<div
+				class="content-right">{# for more future functionalities #}
+			</div>
+		</div>
 
 	</section>
 
@@ -33,7 +46,7 @@
 
 				</div>
 
-				<div class="comment-content">COMMENTAIRE ICI :
+				<div class="comment-content">
 					{{comment.content}}</div>
 				<div class="comment-footer">
 

@@ -61,11 +61,12 @@
 
 // PADDING & MARGING
     $padWindow: 2.5rem;
-    $padSection: 2em 0; // Section padding
+    $padSection: 2rem 0; // Section padding
+    $padSectionMd: 2rem 0.4rem; // section padding for responsive
     //Title
-    $padTitle: 0 0 15px 0; // Title padding
-    $marTitle:1em 0 2em; // Title margin
-    $padBtn: 10px 35px; // Button padding
+    $padTitle: 0 0 1rem 0; // Title padding (recipe title)
+    $marTitle: 1rem 0 2rem; // Title margin for big title
+    $padBtn: .625rem 2rem; // Button padding
     $padInput: .625rem .9rem; // Input padding
     $marInput: 0 0 1.25rem; // Input margin
 

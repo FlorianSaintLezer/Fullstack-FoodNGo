@@ -62,7 +62,9 @@
         border: $border2;
     }
 }
+// %editButton {
 
+// }
 // INPUT
 %mainInput {
     display: block;
@@ -107,16 +109,16 @@
     }
 }
 
-%windowShadow {
-    box-shadow: 0 0 3px $colThird;
-}
-%cardShadow {
-    box-shadow: 0 1px 1px $colThird, 
-    0 2px 2px $colThird, 
-    0 4px 4px $colThird, 
-    0 8px 8px $colThird,
-    0 16px 16px $colThird;
-}
+// %windowShadow {
+//     box-shadow: 0 0 3px $colThird;
+// }
+// %cardShadow {
+//     box-shadow: 0 1px 1px $colThird, 
+//     0 2px 2px $colThird, 
+//     0 4px 4px $colThird, 
+//     0 8px 8px $colThird,
+//     0 16px 16px $colThird;
+// }
 
 
 // BG IMAGE
