@@ -27,7 +27,7 @@ class RecipesController extends AbstractController
     public function home(RecipesRepository $repository, CategoriesRepository $repositoryC): Response
     {
         // find 5 recipes from the latest updated
-        $recipes = $repository->findBy(
+        $lasts = $repository->findBy(
             [],
             [
                 'updatedAt' => 'desc',
@@ -39,7 +39,7 @@ class RecipesController extends AbstractController
         return $this->render(
             'default/index.html.twig',
             [
-                'recipes' => $recipes,
+                'lasts' => $lasts,
             ],
         );
     }

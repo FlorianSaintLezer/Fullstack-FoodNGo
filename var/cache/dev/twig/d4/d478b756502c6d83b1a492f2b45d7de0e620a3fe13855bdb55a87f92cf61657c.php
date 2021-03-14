@@ -63,32 +63,36 @@ class __TwigTemplate_0c0c5856a9c578c895f1688a820154669e941255e981b8371f833fd7f72
         echo "\t\t<link
 \t\trel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css\" integrity=\"sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==\" crossorigin=\"anonymous\"> ";
         // line 15
-        echo "\t\t<link rel=\"stylesheet\" href=\"";
+        echo "\t\t";
+        // line 16
+        echo "\t\t<link rel=\"stylesheet\" href=\"https://unpkg.com/flickity@2/dist/flickity.min.css\">
+\t\t<link rel=\"stylesheet\" href=\"";
+        // line 17
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/style.css"), "html", null, true);
         echo "\"> ";
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 16
+        // line 18
         echo "\t\t</head>
 \t\t<body>
 \t\t\t";
-        // line 18
-        $this->loadTemplate("navbar.html.twig", "base.html.twig", 18)->display($context);
-        // line 19
-        echo "\t\t\t";
-        $this->displayBlock('body', $context, $blocks);
         // line 20
-        echo "\t\t\t";
-        $this->displayBlock('javascripts', $context, $blocks);
+        $this->loadTemplate("navbar.html.twig", "base.html.twig", 20)->display($context);
         // line 21
         echo "\t\t\t";
-        $this->loadTemplate("footer.html.twig", "base.html.twig", 21)->display($context);
+        $this->displayBlock('body', $context, $blocks);
         // line 22
+        echo "\t\t\t";
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 23
+        echo "\t\t\t";
+        $this->loadTemplate("footer.html.twig", "base.html.twig", 23)->display($context);
+        // line 24
         echo "
 \t\t\t";
-        // line 24
-        echo "\t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js\" integrity=\"sha512-cA8gcgtYJ+JYqUe+j2JXl6J3jbamcMQfPe0JOmQGDescd+zqXwwgneDzniOd3k8PcO7EtTW6jA7L4Bhx03SXoA==\" crossorigin=\"anonymous\"></script>
-\t\t\t";
         // line 26
+        echo "\t\t\t<script src=\"https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js\"></script>
+\t\t\t";
+        // line 28
         echo "\t\t\t<script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/script.js"), "html", null, true);
         echo "\"></script>
@@ -124,7 +128,7 @@ class __TwigTemplate_0c0c5856a9c578c895f1688a820154669e941255e981b8371f833fd7f72
 
     }
 
-    // line 15
+    // line 17
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -142,7 +146,7 @@ class __TwigTemplate_0c0c5856a9c578c895f1688a820154669e941255e981b8371f833fd7f72
 
     }
 
-    // line 19
+    // line 21
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -160,7 +164,7 @@ class __TwigTemplate_0c0c5856a9c578c895f1688a820154669e941255e981b8371f833fd7f72
 
     }
 
-    // line 20
+    // line 22
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -190,7 +194,7 @@ class __TwigTemplate_0c0c5856a9c578c895f1688a820154669e941255e981b8371f833fd7f72
 
     public function getDebugInfo()
     {
-        return array (  164 => 20,  146 => 19,  128 => 15,  108 => 6,  92 => 26,  89 => 24,  86 => 22,  83 => 21,  80 => 20,  77 => 19,  75 => 18,  71 => 16,  66 => 15,  63 => 13,  61 => 12,  59 => 10,  56 => 8,  54 => 6,  47 => 1,);
+        return array (  168 => 22,  150 => 21,  132 => 17,  112 => 6,  96 => 28,  93 => 26,  90 => 24,  87 => 23,  84 => 22,  81 => 21,  79 => 20,  75 => 18,  71 => 17,  68 => 16,  66 => 15,  63 => 13,  61 => 12,  59 => 10,  56 => 8,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -209,6 +213,8 @@ class __TwigTemplate_0c0c5856a9c578c895f1688a820154669e941255e981b8371f833fd7f72
 \t\t{# FONTAWESOME it's awesome #}
 \t\t<link
 \t\trel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css\" integrity=\"sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==\" crossorigin=\"anonymous\"> {# STYLE #}
+\t\t{# FLICKTY for Carousels #}
+\t\t<link rel=\"stylesheet\" href=\"https://unpkg.com/flickity@2/dist/flickity.min.css\">
 \t\t<link rel=\"stylesheet\" href=\"{{ asset(\"css/style.css\") }}\"> {% block stylesheets %}{% endblock %}
 \t\t</head>
 \t\t<body>
@@ -218,7 +224,7 @@ class __TwigTemplate_0c0c5856a9c578c895f1688a820154669e941255e981b8371f833fd7f72
 \t\t\t{% include \"footer.html.twig\" %}
 
 \t\t\t{# FLICKTY for Carousels #}
-\t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js\" integrity=\"sha512-cA8gcgtYJ+JYqUe+j2JXl6J3jbamcMQfPe0JOmQGDescd+zqXwwgneDzniOd3k8PcO7EtTW6jA7L4Bhx03SXoA==\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js\"></script>
 \t\t\t{# JAVASCRIPT because ... MAGIC ! #}
 \t\t\t<script type=\"text/javascript\" src=\"{{ asset(\"js/script.js\") }}\"></script>
 

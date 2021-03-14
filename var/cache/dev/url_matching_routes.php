@@ -25,7 +25,7 @@ return [
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\RecipesController::home'], null, null, null, false, false, null]],
         '/recipes' => [[['_route' => 'recipes', '_controller' => 'App\\Controller\\RecipesController::recipes'], null, null, null, false, false, null]],
         '/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UsersController::edit'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/editpassword' => [[['_route' => 'edit_password', '_controller' => 'App\\Controller\\UsersController::changePassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/editpassword' => [[['_route' => 'edit_password', '_controller' => 'App\\Controller\\UsersController::editPassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

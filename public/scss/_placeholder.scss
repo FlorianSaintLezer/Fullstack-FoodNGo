@@ -59,12 +59,46 @@
         background-color: lighten($colBtn, $colVar);
     }
     &:active {
-        border: $border2;
+        outline: 1px dashed lighten($colMain, $colVar);
+        outline-offset: 3px; 
     }
 }
-// %editButton {
+// CARD
+%mainCard {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    // overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    color: $colClear;
+    background-color: $colClear;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: $borRadius;
+    box-shadow: $cardShadow;
+    border: 2px solid white;
+    .card-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            z-index: 1;
+            .card-title {
+              background-color: white;
+              color: $colMain;
+              font-size: 1.3rem;
+              font-weight: bold;
+              line-height: 1.2;
+              width: 100%;
+            
+            }
+        }
+}
 
-// }
+
 // INPUT
 %mainInput {
     display: block;

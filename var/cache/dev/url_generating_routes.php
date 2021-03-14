@@ -33,5 +33,5 @@ return [
     'show_recipe' => [['id'], ['_controller' => 'App\\Controller\\RecipesController::showRecipe'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/recipes']], [], []],
     'filterCategory' => [['category'], ['_controller' => 'App\\Controller\\RecipesController::filterCategory'], [], [['variable', '/', '[^/]++', 'category', true], ['text', '/recipes/category']], [], []],
     'profile' => [[], ['_controller' => 'App\\Controller\\UsersController::edit'], [], [['text', '/profile']], [], []],
-    'edit_password' => [[], ['_controller' => 'App\\Controller\\UsersController::changePassword'], [], [['text', '/editpassword']], [], []],
+    'edit_password' => [[], ['_controller' => 'App\\Controller\\UsersController::editPassword'], [], [['text', '/editpassword']], [], []],
 ];

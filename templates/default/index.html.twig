@@ -5,18 +5,32 @@
 
 {% block body %}
 
-	<h1>Liste des recettes</h1>
-	<section class="latest-recipes">
+	<h1>Dernières recettes</h1>
+	<section class="latest-recipes container">
+		<div class="not-carousel">
+			{% for last in lasts %}
+				<div class="last-recipe" style="background-image: url('{{ asset('img/' ~ last.image) }}');">
+					<div class="card-content">
+						<h2 class="card-title">{{last.title}}</h2>
+						{# <p class="summary">Bref résumé</p> #}
+						<a href="{{ path('show_recipe', {'id' : last.id }) }}" class="card-button">View Recipe</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 
-		{% for recipe in recipes %}
-			{% set append %}
-			{% if loop.first %}first
-			{% endif %}
-			{% if loop.last %}last
-			{% endif %}
-			{% endset %}
-			<div class="last-recipe {{ append }}" style="background-image: url('{{ asset('img/' ~ recipe.image) }}');"></div>
-			
-		{% endfor %}
-	</div>
-</section>{% endblock %}
+
+		<div class="carousel" data-flickity='{ "wrapAround": true }'>
+			{% for last in lasts %}
+				<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ last.image) }}');">
+					<div class="card-content">
+						<h2 class="card-title">{{last.title}}</h2>
+						{# <p class="summary">Bref résumé</p> #}
+						<a href="{{ path('show_recipe', {'id' : last.id }) }}" class="card-button">View Recipe</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	</section>
+{% endblock %}

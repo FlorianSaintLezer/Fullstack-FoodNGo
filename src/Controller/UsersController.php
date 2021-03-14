@@ -2,15 +2,14 @@
 
 namespace App\Controller;
 
-use App\Form\UsersType;
 use App\Form\Type\EditPasswordType;
+use App\Form\UsersType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
 
 class UsersController extends AbstractController
 {
@@ -41,7 +40,7 @@ class UsersController extends AbstractController
     /**
      * @Route("/editpassword", methods="GET|POST", name="edit_password")
      */
-    public function changePassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em): Response
+    public function editPassword(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
 

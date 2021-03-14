@@ -87,68 +87,71 @@ class __TwigTemplate_956c66f1c0e68a0fa365314af8c6da92129fc3cb80827c7bde7d0acad82
 
         // line 7
         echo "
-\t<h1>Liste des recettes</h1>
-\t<section class=\"latest-recipes\">
-
-\t\t";
+\t<h1>Dernières recettes</h1>
+\t<section class=\"latest-recipes container\">
+\t\t<div class=\"not-carousel\">
+\t\t\t";
         // line 11
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["recipes"]) || array_key_exists("recipes", $context) ? $context["recipes"] : (function () { throw new RuntimeError('Variable "recipes" does not exist.', 11, $this->source); })()));
-        $context['loop'] = [
-          'parent' => $context['_parent'],
-          'index0' => 0,
-          'index'  => 1,
-          'first'  => true,
-        ];
-        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-            $length = count($context['_seq']);
-            $context['loop']['revindex0'] = $length - 1;
-            $context['loop']['revindex'] = $length;
-            $context['loop']['length'] = $length;
-            $context['loop']['last'] = 1 === $length;
-        }
-        foreach ($context['_seq'] as $context["_key"] => $context["recipe"]) {
+        $context['_seq'] = twig_ensure_traversable((isset($context["lasts"]) || array_key_exists("lasts", $context) ? $context["lasts"] : (function () { throw new RuntimeError('Variable "lasts" does not exist.', 11, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["last"]) {
             // line 12
-            echo "\t\t\t";
-            ob_start();
-            // line 13
-            echo "\t\t\t";
-            if (twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 13)) {
-                echo "first
+            echo "\t\t\t\t<div class=\"last-recipe\" style=\"background-image: url('";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["last"], "image", [], "any", false, false, false, 12))), "html", null, true);
+            echo "');\">
+\t\t\t\t\t<div class=\"card-content\">
+\t\t\t\t\t\t<h2 class=\"card-title\">";
+            // line 14
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["last"], "title", [], "any", false, false, false, 14), "html", null, true);
+            echo "</h2>
+\t\t\t\t\t\t";
+            // line 16
+            echo "\t\t\t\t\t\t<a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_recipe", ["id" => twig_get_attribute($this->env, $this->source, $context["last"], "id", [], "any", false, false, false, 16)]), "html", null, true);
+            echo "\" class=\"card-button\">View Recipe</a>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
 \t\t\t";
-            }
-            // line 15
-            echo "\t\t\t";
-            if (twig_get_attribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 15)) {
-                echo "last
-\t\t\t";
-            }
-            // line 17
-            echo "\t\t\t";
-            $context["append"] = ('' === $tmp = ob_get_clean()) ? '' : new Markup($tmp, $this->env->getCharset());
-            // line 18
-            echo "\t\t\t<div class=\"last-recipe ";
-            echo twig_escape_filter($this->env, (isset($context["append"]) || array_key_exists("append", $context) ? $context["append"] : (function () { throw new RuntimeError('Variable "append" does not exist.', 18, $this->source); })()), "html", null, true);
-            echo "\" style=\"background-image: url('";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["recipe"], "image", [], "any", false, false, false, 18))), "html", null, true);
-            echo "');\"></div>
-\t\t\t
-\t\t";
-            ++$context['loop']['index0'];
-            ++$context['loop']['index'];
-            $context['loop']['first'] = false;
-            if (isset($context['loop']['length'])) {
-                --$context['loop']['revindex0'];
-                --$context['loop']['revindex'];
-                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
-            }
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recipe'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['last'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 21
-        echo "\t</div>
-</section>";
+        // line 20
+        echo "\t\t</div>
+
+
+\t\t<div class=\"carousel\" data-flickity='{ \"wrapAround\": true }'>
+\t\t\t";
+        // line 24
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["lasts"]) || array_key_exists("lasts", $context) ? $context["lasts"] : (function () { throw new RuntimeError('Variable "lasts" does not exist.', 24, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["last"]) {
+            // line 25
+            echo "\t\t\t\t<div class=\"carousel-cell\" style=\"background-image: url('";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("img/" . twig_get_attribute($this->env, $this->source, $context["last"], "image", [], "any", false, false, false, 25))), "html", null, true);
+            echo "');\">
+\t\t\t\t\t<div class=\"card-content\">
+\t\t\t\t\t\t<h2 class=\"card-title\">";
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["last"], "title", [], "any", false, false, false, 27), "html", null, true);
+            echo "</h2>
+\t\t\t\t\t\t";
+            // line 29
+            echo "\t\t\t\t\t\t<a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_recipe", ["id" => twig_get_attribute($this->env, $this->source, $context["last"], "id", [], "any", false, false, false, 29)]), "html", null, true);
+            echo "\" class=\"card-button\">View Recipe</a>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['last'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 33
+        echo "\t\t</div>
+
+\t</section>
+";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -169,7 +172,7 @@ class __TwigTemplate_956c66f1c0e68a0fa365314af8c6da92129fc3cb80827c7bde7d0acad82
 
     public function getDebugInfo()
     {
-        return array (  150 => 21,  130 => 18,  127 => 17,  121 => 15,  115 => 13,  112 => 12,  95 => 11,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  151 => 33,  140 => 29,  136 => 27,  130 => 25,  126 => 24,  120 => 20,  109 => 16,  105 => 14,  99 => 12,  95 => 11,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -181,21 +184,35 @@ class __TwigTemplate_956c66f1c0e68a0fa365314af8c6da92129fc3cb80827c7bde7d0acad82
 
 {% block body %}
 
-\t<h1>Liste des recettes</h1>
-\t<section class=\"latest-recipes\">
+\t<h1>Dernières recettes</h1>
+\t<section class=\"latest-recipes container\">
+\t\t<div class=\"not-carousel\">
+\t\t\t{% for last in lasts %}
+\t\t\t\t<div class=\"last-recipe\" style=\"background-image: url('{{ asset('img/' ~ last.image) }}');\">
+\t\t\t\t\t<div class=\"card-content\">
+\t\t\t\t\t\t<h2 class=\"card-title\">{{last.title}}</h2>
+\t\t\t\t\t\t{# <p class=\"summary\">Bref résumé</p> #}
+\t\t\t\t\t\t<a href=\"{{ path('show_recipe', {'id' : last.id }) }}\" class=\"card-button\">View Recipe</a>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t{% endfor %}
+\t\t</div>
 
-\t\t{% for recipe in recipes %}
-\t\t\t{% set append %}
-\t\t\t{% if loop.first %}first
-\t\t\t{% endif %}
-\t\t\t{% if loop.last %}last
-\t\t\t{% endif %}
-\t\t\t{% endset %}
-\t\t\t<div class=\"last-recipe {{ append }}\" style=\"background-image: url('{{ asset('img/' ~ recipe.image) }}');\"></div>
-\t\t\t
-\t\t{% endfor %}
-\t</div>
-</section>{% endblock %}
+
+\t\t<div class=\"carousel\" data-flickity='{ \"wrapAround\": true }'>
+\t\t\t{% for last in lasts %}
+\t\t\t\t<div class=\"carousel-cell\" style=\"background-image: url('{{ asset('img/' ~ last.image) }}');\">
+\t\t\t\t\t<div class=\"card-content\">
+\t\t\t\t\t\t<h2 class=\"card-title\">{{last.title}}</h2>
+\t\t\t\t\t\t{# <p class=\"summary\">Bref résumé</p> #}
+\t\t\t\t\t\t<a href=\"{{ path('show_recipe', {'id' : last.id }) }}\" class=\"card-button\">View Recipe</a>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t{% endfor %}
+\t\t</div>
+
+\t</section>
+{% endblock %}
 ", "default/index.html.twig", "E:\\DevWeb\\EPCF2\\templates\\default\\index.html.twig");
     }
 }
