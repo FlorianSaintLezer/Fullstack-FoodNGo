@@ -23,6 +23,7 @@
       <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
       <parameter key="VichUploaderBundle">Vich\UploaderBundle\VichUploaderBundle</parameter>
       <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
+      <parameter key="FOSCKEditorBundle">FOS\CKEditorBundle\FOSCKEditorBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -80,6 +81,10 @@
       <parameter key="EasyAdminBundle" type="collection">
         <parameter key="path">E:\DevWeb\EPCF2\vendor\easycorp\easyadmin-bundle\src</parameter>
         <parameter key="namespace">EasyCorp\Bundle\EasyAdminBundle</parameter>
+      </parameter>
+      <parameter key="FOSCKEditorBundle" type="collection">
+        <parameter key="path">E:\DevWeb\EPCF2\vendor\friendsofsymfony\ckeditor-bundle\src</parameter>
+        <parameter key="namespace">FOS\CKEditorBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -149,6 +154,7 @@
     <parameter key="twig.form.resources" type="collection">
       <parameter>@VichUploader/Form/fields.html.twig</parameter>
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>@FOSCKEditor/Form/ckeditor_widget.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">E:\DevWeb\EPCF2/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -394,24 +400,6 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
-    <service id="App\Controller\AdminCommentsController" class="App\Controller\AdminCommentsController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <argument type="service" id="doctrine.orm.default_entity_manager"/>
-      <argument type="service" id="security.helper"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.5nX7ca3.App\Controller\AdminCommentsController"/>
-      </call>
-    </service>
-    <service id="App\Controller\AdminRecipesController" class="App\Controller\AdminRecipesController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <argument type="service" id="doctrine.orm.default_entity_manager"/>
-      <argument type="service" id="security.helper"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.5nX7ca3.App\Controller\AdminRecipesController"/>
-      </call>
-    </service>
     <service id="App\Controller\AdminSecuController" class="App\Controller\AdminSecuController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -459,6 +447,15 @@
         <argument type="service" id=".service_locator.7Gh9pQb.App\Controller\Admin\UsersCrudController"/>
       </call>
     </service>
+    <service id="App\Controller\CommentsController" class="App\Controller\CommentsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="security.helper"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.5nX7ca3.App\Controller\CommentsController"/>
+      </call>
+    </service>
     <service id="App\Controller\FooterController" class="App\Controller\FooterController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -469,6 +466,8 @@
     <service id="App\Controller\RecipesController" class="App\Controller\RecipesController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="security.helper"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.5nX7ca3.App\Controller\RecipesController"/>
       </call>
@@ -981,6 +980,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
         <argument>Vich\UploaderBundle\Form\Type</argument>
         <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type</argument>
+        <argument>FOS\CKEditorBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>App\Form\CommentsFormType</argument>
@@ -998,6 +998,7 @@
         <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType</argument>
         <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType</argument>
         <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType</argument>
+        <argument>FOS\CKEditorBundle\Form\Type\CKEditorType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1352,7 +1353,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.zSV5Q1m"/>
+      <argument type="service" id=".service_locator.DE4HLSV"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2102,6 +2103,7 @@
           <argument>E:\DevWeb\EPCF2\vendor\symfony\security-bundle/translations</argument>
           <argument>E:\DevWeb\EPCF2\vendor\twig\extra-bundle/translations</argument>
           <argument>E:\DevWeb\EPCF2\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
+          <argument>E:\DevWeb\EPCF2\vendor\friendsofsymfony\ckeditor-bundle\src/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
@@ -2123,6 +2125,7 @@
             <argument>E:\DevWeb\EPCF2\vendor\symfony\security-bundle/translations</argument>
             <argument>E:\DevWeb\EPCF2\vendor\twig\extra-bundle/translations</argument>
             <argument>E:\DevWeb\EPCF2\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
+            <argument>E:\DevWeb\EPCF2\vendor\friendsofsymfony\ckeditor-bundle\src/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -3645,6 +3648,9 @@
       <call method="addExtension">
         <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="fos_ck_editor.twig_extension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3751,6 +3757,14 @@
       <call method="addPath">
         <argument>E:\DevWeb\EPCF2\vendor\easycorp\easyadmin-bundle\src/Resources/views</argument>
         <argument>!EasyAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>E:\DevWeb\EPCF2\vendor\friendsofsymfony\ckeditor-bundle\src/Resources/views</argument>
+        <argument>FOSCKEditor</argument>
+      </call>
+      <call method="addPath">
+        <argument>E:\DevWeb\EPCF2\vendor\friendsofsymfony\ckeditor-bundle\src/Resources/views</argument>
+        <argument>!FOSCKEditor</argument>
       </call>
       <call method="addPath">
         <argument>E:\DevWeb\EPCF2/templates</argument>
@@ -6149,12 +6163,93 @@
       <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry"/>
       <deprecated package="easycorp/easyadmin-bundle" version="3.2.0">The "%service_id%" service is deprecated, use "EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" instead.</deprecated>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminCommentsController" class="App\Controller\AdminCommentsController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminCommentsController" class="App\Controller\AdminCommentsController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\AdminCommentsController" class="App\Controller\AdminCommentsController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminRecipesController" class="App\Controller\AdminRecipesController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminRecipesController" class="App\Controller\AdminRecipesController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\AdminRecipesController" class="App\Controller\AdminRecipesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="fos_ck_editor.builder.json_builder" class="FOS\CKEditorBundle\Builder\JsonBuilder">
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="fos_ck_editor.command.installer" class="FOS\CKEditorBundle\Command\CKEditorInstallerCommand">
+      <tag name="console.command" command="ckeditor:install"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="fos_ck_editor.installer"/>
+      <call method="setName">
+        <argument>ckeditor:install</argument>
+      </call>
+    </service>
+    <service id="fos_ck_editor.configuration" class="FOS\CKEditorBundle\Config\CKEditorConfiguration">
+      <argument type="collection">
+        <argument key="configs" type="collection">
+          <argument key="main_config" type="collection">
+            <argument key="toolbar" type="collection">
+              <argument type="collection">
+                <argument key="name">styles</argument>
+                <argument key="items" type="collection">
+                  <argument>-</argument>
+                  <argument>-</argument>
+                  <argument>-</argument>
+                  <argument>Bold</argument>
+                  <argument>Italic</argument>
+                  <argument>Underline</argument>
+                  <argument>Strike</argument>
+                  <argument>-</argument>
+                  <argument>NumberedList</argument>
+                  <argument>BulletedList</argument>
+                  <argument>-</argument>
+                  <argument>Outdent</argument>
+                  <argument>Indent</argument>
+                  <argument>-</argument>
+                  <argument>-</argument>
+                  <argument>JustifyLeft</argument>
+                  <argument>JustifyCenter</argument>
+                  <argument>JustifyRight</argument>
+                  <argument>JustifyBlock</argument>
+                  <argument>-</argument>
+                  <argument>Format</argument>
+                  <argument>-</argument>
+                  <argument>TextColor</argument>
+                  <argument>BGColor</argument>
+                </argument>
+              </argument>
+            </argument>
+          </argument>
+        </argument>
+        <argument key="enable">true</argument>
+        <argument key="async">false</argument>
+        <argument key="auto_inline">true</argument>
+        <argument key="inline">false</argument>
+        <argument key="autoload">true</argument>
+        <argument key="jquery">false</argument>
+        <argument key="require_js">false</argument>
+        <argument key="input_sync">false</argument>
+        <argument key="base_path">bundles/fosckeditor/</argument>
+        <argument key="js_path">bundles/fosckeditor/ckeditor.js</argument>
+        <argument key="jquery_path">bundles/fosckeditor/adapters/jquery.js</argument>
+        <argument key="default_config">null</argument>
+        <argument key="plugins" type="collection"/>
+        <argument key="styles" type="collection"/>
+        <argument key="templates" type="collection"/>
+        <argument key="filebrowsers" type="collection"/>
+        <argument key="toolbars" type="collection">
+          <argument key="configs" type="collection"/>
+          <argument key="items" type="collection"/>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_ck_editor.form.type" class="FOS\CKEditorBundle\Form\Type\CKEditorType">
+      <tag name="form.type"/>
+      <argument type="service" id="fos_ck_editor.configuration"/>
+    </service>
+    <service id="fos_ck_editor.installer" class="FOS\CKEditorBundle\Installer\CKEditorInstaller"/>
+    <service id="fos_ck_editor.renderer" class="FOS\CKEditorBundle\Renderer\CKEditorRenderer">
+      <argument type="service" id="fos_ck_editor.builder.json_builder"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="assets.packages"/>
+      <argument type="service" id="request_stack"/>
+      <argument type="service" id="twig"/>
+      <argument type="expression">container.hasParameter('locale') ? parameter('locale') : null</argument>
+    </service>
+    <service id="fos_ck_editor.twig_extension" class="FOS\CKEditorBundle\Twig\CKEditorExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="fos_ck_editor.renderer"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminSecuController" class="App\Controller\AdminSecuController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminSecuController" class="App\Controller\AdminSecuController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminSecuController" class="App\Controller\AdminSecuController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6178,6 +6273,9 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\UsersCrudController" class="App\Controller\Admin\UsersCrudController" autowire="true" abstract="true"/>
     <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\UsersCrudController" class="App\Controller\Admin\UsersCrudController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Admin\UsersCrudController" class="App\Controller\Admin\UsersCrudController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CommentsController" class="App\Controller\CommentsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CommentsController" class="App\Controller\CommentsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CommentsController" class="App\Controller\CommentsController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FooterController" class="App\Controller\FooterController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FooterController" class="App\Controller\FooterController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\FooterController" class="App\Controller\FooterController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6589,42 +6687,6 @@
         <argument key="loader" type="service" id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.CN8_8d2" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\CommentsRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.t5jNp8S" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.kh6LozE" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="comments" type="service" id=".errored..service_locator.kh6LozE.App\Entity\Comments"/>
-        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.PyIw17T" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\RecipesRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator._xLTuF." class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection"/>
-    </service>
-    <service id=".service_locator.CoG0kLa" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
-        <argument key="recipes" type="service" id=".errored..service_locator.CoG0kLa.App\Entity\Recipes"/>
-      </argument>
-    </service>
     <service id=".service_locator..tt6s91" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6703,6 +6765,26 @@
         <argument key="user" type="service" id=".errored..service_locator.q6hA_O0.Symfony\Component\Security\Core\User\UserInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.CN8_8d2" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service" id="App\Repository\CommentsRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.TgQm.qo" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="security" type="service" id="security.helper"/>
+      </argument>
+    </service>
+    <service id=".service_locator.kh6LozE" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="comments" type="service" id=".errored..service_locator.kh6LozE.App\Entity\Comments"/>
+        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.tsjDZN4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6716,14 +6798,20 @@
         <argument key="recipes" type="service" id=".errored..service_locator.WwoHeyl.App\Entity\Recipes"/>
       </argument>
     </service>
-    <service id=".service_locator.PLm8.f_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator._xLTuF." class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id=".service_locator.IwNycRa" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\AdminCommentsController::comments" type="service" id=".service_locator.CN8_8d2"/>
-        <argument key="App\Controller\AdminCommentsController::modification" type="service" id=".service_locator.t5jNp8S"/>
-        <argument key="App\Controller\AdminCommentsController::suppression" type="service" id=".service_locator.kh6LozE"/>
-        <argument key="App\Controller\AdminRecipesController::recipes" type="service" id=".service_locator.PyIw17T"/>
-        <argument key="App\Controller\AdminRecipesController::suppression" type="service" id=".service_locator.CoG0kLa"/>
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="recipes" type="service" id=".errored..service_locator.IwNycRa.App\Entity\Recipes"/>
+      </argument>
+    </service>
+    <service id=".service_locator.d_0f84Q" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
         <argument key="App\Controller\AdminSecuController::login" type="service" id=".service_locator.d2me_LS"/>
         <argument key="App\Controller\AdminSecuController::signin" type="service" id=".service_locator..tt6s91"/>
         <argument key="App\Controller\Admin\CategoriesCrudController::autocomplete" type="service" id=".service_locator.ZOQ9v2d"/>
@@ -6807,12 +6895,16 @@
         <argument key="App\Controller\Admin\UsersCrudController::persistEntity" type="service" id=".service_locator.l2QwsaZ"/>
         <argument key="App\Controller\Admin\UsersCrudController::renderFilters" type="service" id=".service_locator.ZOQ9v2d"/>
         <argument key="App\Controller\Admin\UsersCrudController::updateEntity" type="service" id=".service_locator.l2QwsaZ"/>
+        <argument key="App\Controller\CommentsController::comments" type="service" id=".service_locator.CN8_8d2"/>
+        <argument key="App\Controller\CommentsController::modification" type="service" id=".service_locator.TgQm.qo"/>
+        <argument key="App\Controller\CommentsController::suppression" type="service" id=".service_locator.kh6LozE"/>
         <argument key="App\Controller\FooterController::filterCategory" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\FooterController::home" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController::filterCategory" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController::home" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController::recipes" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController::showRecipe" type="service" id=".service_locator.WwoHeyl"/>
+        <argument key="App\Controller\RecipesController::suppression" type="service" id=".service_locator.IwNycRa"/>
         <argument key="App\Controller\UsersController::editPassword" type="service" id=".service_locator..tt6s91"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.KfbR3DY"/>
@@ -6820,11 +6912,6 @@
         <argument key="kernel::loadRoutes" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.KfwZsne"/>
-        <argument key="App\Controller\AdminCommentsController:comments" type="service" id=".service_locator.CN8_8d2"/>
-        <argument key="App\Controller\AdminCommentsController:modification" type="service" id=".service_locator.t5jNp8S"/>
-        <argument key="App\Controller\AdminCommentsController:suppression" type="service" id=".service_locator.kh6LozE"/>
-        <argument key="App\Controller\AdminRecipesController:recipes" type="service" id=".service_locator.PyIw17T"/>
-        <argument key="App\Controller\AdminRecipesController:suppression" type="service" id=".service_locator.CoG0kLa"/>
         <argument key="App\Controller\AdminSecuController:login" type="service" id=".service_locator.d2me_LS"/>
         <argument key="App\Controller\AdminSecuController:signin" type="service" id=".service_locator..tt6s91"/>
         <argument key="App\Controller\Admin\CategoriesCrudController:autocomplete" type="service" id=".service_locator.ZOQ9v2d"/>
@@ -6908,12 +6995,16 @@
         <argument key="App\Controller\Admin\UsersCrudController:persistEntity" type="service" id=".service_locator.l2QwsaZ"/>
         <argument key="App\Controller\Admin\UsersCrudController:renderFilters" type="service" id=".service_locator.ZOQ9v2d"/>
         <argument key="App\Controller\Admin\UsersCrudController:updateEntity" type="service" id=".service_locator.l2QwsaZ"/>
+        <argument key="App\Controller\CommentsController:comments" type="service" id=".service_locator.CN8_8d2"/>
+        <argument key="App\Controller\CommentsController:modification" type="service" id=".service_locator.TgQm.qo"/>
+        <argument key="App\Controller\CommentsController:suppression" type="service" id=".service_locator.kh6LozE"/>
         <argument key="App\Controller\FooterController:filterCategory" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\FooterController:home" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController:filterCategory" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController:home" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController:recipes" type="service" id=".service_locator.tsjDZN4"/>
         <argument key="App\Controller\RecipesController:showRecipe" type="service" id=".service_locator.WwoHeyl"/>
+        <argument key="App\Controller\RecipesController:suppression" type="service" id=".service_locator.IwNycRa"/>
         <argument key="App\Controller\UsersController:editPassword" type="service" id=".service_locator..tt6s91"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.KfbR3DY"/>
@@ -6984,7 +7075,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.zSV5Q1m" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.DE4HLSV" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CommentsFormType" type="service" id="App\Form\CommentsFormType"/>
@@ -6995,6 +7086,7 @@
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType" type="service" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType" type="service" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType" type="service" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType"/>
+        <argument key="FOS\CKEditorBundle\Form\Type\CKEditorType" type="service" id="fos_ck_editor.form.type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service" id="form.type.color"/>
@@ -7252,18 +7344,6 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.5nX7ca3.App\Controller\AdminCommentsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\AdminCommentsController"/>
-      <argument>App\Controller\AdminCommentsController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.5nX7ca3" method="withContext"/>
-    </service>
-    <service id=".service_locator.5nX7ca3.App\Controller\AdminRecipesController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\AdminRecipesController"/>
-      <argument>App\Controller\AdminRecipesController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.5nX7ca3" method="withContext"/>
-    </service>
     <service id=".service_locator.5nX7ca3.App\Controller\AdminSecuController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\AdminSecuController"/>
       <argument>App\Controller\AdminSecuController</argument>
@@ -7348,6 +7428,12 @@
       <argument>App\Controller\Admin\UsersCrudController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.7Gh9pQb" method="withContext"/>
+    </service>
+    <service id=".service_locator.5nX7ca3.App\Controller\CommentsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CommentsController"/>
+      <argument>App\Controller\CommentsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.5nX7ca3" method="withContext"/>
     </service>
     <service id=".service_locator.5nX7ca3.App\Controller\FooterController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\FooterController"/>
@@ -7534,12 +7620,12 @@
       <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.PLm8.f_"/>
+      <argument type="service" id=".service_locator.d_0f84Q"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.PLm8.f_"/>
+      <argument type="service" id=".service_locator.d_0f84Q"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface">
       <argument type="collection"/>
@@ -7551,8 +7637,6 @@
     </service>
     <service id=".errored..service_locator.KfwZsne.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
-    <service id=".errored..service_locator.kh6LozE.App\Entity\Comments" class="App\Entity\Comments"/>
-    <service id=".errored..service_locator.CoG0kLa.App\Entity\Recipes" class="App\Entity\Recipes"/>
     <service id=".errored..service_locator.4C0Bh8j.EasyCorp\Bundle\EasyAdminBundle\Config\Crud" class="EasyCorp\Bundle\EasyAdminBundle\Config\Crud"/>
     <service id=".errored..service_locator.U4Bbnsn.EasyCorp\Bundle\EasyAdminBundle\Config\Assets" class="EasyCorp\Bundle\EasyAdminBundle\Config\Assets"/>
     <service id=".errored..service_locator.CKlWSja.EasyCorp\Bundle\EasyAdminBundle\Config\Actions" class="EasyCorp\Bundle\EasyAdminBundle\Config\Actions"/>
@@ -7567,10 +7651,12 @@
     <service id=".errored..service_locator.tbo4Jjv.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore" class="EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
     <service id=".errored..service_locator.2dc0eaX.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore" class="EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
     <service id=".errored..service_locator.q6hA_O0.Symfony\Component\Security\Core\User\UserInterface" class="Symfony\Component\Security\Core\User\UserInterface"/>
+    <service id=".errored..service_locator.kh6LozE.App\Entity\Comments" class="App\Entity\Comments"/>
     <service id=".errored..service_locator.WwoHeyl.App\Entity\Recipes" class="App\Entity\Recipes"/>
+    <service id=".errored..service_locator.IwNycRa.App\Entity\Recipes" class="App\Entity\Recipes"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.LggzsXd"/>
+      <argument type="service" id=".service_locator.dGwnj3k"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -7645,6 +7731,7 @@
         <argument key="make:admin:migration">EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand</argument>
         <argument key="make:admin:dashboard">EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand</argument>
         <argument key="make:admin:crud">EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand</argument>
+        <argument key="ckeditor:install">fos_ck_editor.command.installer</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -7670,7 +7757,7 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.LggzsXd" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.dGwnj3k" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
@@ -7738,6 +7825,7 @@
         <argument key="doctrine_migrations.up_to_date_command" type="service" id="doctrine_migrations.up_to_date_command"/>
         <argument key="doctrine_migrations.version_command" type="service" id="doctrine_migrations.version_command"/>
         <argument key="doctrine_migrations.versions_command" type="service" id="doctrine_migrations.versions_command"/>
+        <argument key="fos_ck_editor.command.installer" type="service" id="fos_ck_editor.command.installer"/>
         <argument key="maker.auto_command.make_auth" type="service" id="maker.auto_command.make_auth"/>
         <argument key="maker.auto_command.make_command" type="service" id="maker.auto_command.make_command"/>
         <argument key="maker.auto_command.make_controller" type="service" id="maker.auto_command.make_controller"/>
@@ -7995,7 +8083,7 @@
     <service id="Vich\UploaderBundle\Form\Type\VichImageType" alias="vich_uploader.form.type.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.Kbr2i2X" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.PLm8.f_"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.d_0f84Q"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

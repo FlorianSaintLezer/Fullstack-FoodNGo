@@ -1,26 +1,42 @@
-html { overflow-y: scroll; }
+html {
+  //  overflow-y: scroll; 
+  height: 100%;
+}
 body {
-   background-color: lighten($colThird,30%);
-   font-family: "fontRegular";
-   color: $colSecond;
-   font-size: 1rem;
-   a {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  background-color: lighten($colThird,30%);
+  font-family: "fontRegular";
+  color: $colSecond;
+  font-size: 1rem;
+  margin-bottom: 200px;
+  * { box-sizing: border-box; }
+  a {
     font-family: "fontRegular";
     color: $colSecond;
-    h1,h2,h3,h4,h5,h6 {
-      font-family: "fontSerif";
-    }
   }
-   * { box-sizing: border-box; }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: "fontRegular";
+  }
+  h2 {
+    @extend %section-title;
+  }
+  
  }
  .container {
   @extend %container;
- }
- @media screen and (max-width:$breakPMd) {
-  .container { 
-    width: 100%;
+  @media screen and (max-width:$breakPMd) {
+    & { 
+      width: 100%;
+    }
   }
-}
+ }
+//  @media screen and (max-width:$breakPMd) {
+//   .container { 
+//     width: 100%;
+//   }
+// }
 
 .under-button {
   text-align: center;
@@ -32,20 +48,10 @@ body {
       font-weight: 600;
   }
 }
- .nice-title { 
-   text-transform: uppercase;
-   text-align: center;
-   margin: $marTitle;
-   line-height: 1;
-   :first-child {
-     color: $colSecond;
-     font-size: $sizeTitle1;
-     font-family: "fontSerif";
-   }
-   :nth-child(2){
-     color: $colMain;
-     font-size: $sizeTitle2;
-     font-family: "fontRegular";
-     font-weight: bold;
-   }
- }
+.nice-title { 
+  @extend %nice-title;
+}
+
+.section-title {
+  @extend %section-title;
+}

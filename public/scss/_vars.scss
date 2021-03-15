@@ -7,6 +7,7 @@
     $colDark: rgba(51,51,51,1);
     $colLight: rgba(240,240,240,1);
     $colClear: rgba(255,255,255,1); // white here
+    $colOverlay: rgba(0,0,0,0.4);
     // ALERT
     $colSuccess: rgba(40,167,69,1);
     $colInfo: rgba(23,162,184,1);
@@ -22,8 +23,9 @@
     $colNetGp:rgba(221, 75, 61, 1);
     $colNetIg:rgba(192, 51, 130, 1);
     
-    //DARKEN - LIGHTEN 
+    //DARKEN - LIGHTEN VARIANCE
     $colVar: 8%; // opacity for darken / lighten
+  
 
 
 //SIZE
@@ -45,8 +47,8 @@
 
 // FONT
     $sizeSmall:0.875rem;
-    $sizeMenu:1.4rem; // nav
     $sizeText:1rem; // normal size
+    $sizeMenu:1.4rem; // nav
     $sizeTitle1: 1.8125rem; // title size 1
     $sizeTitle2: 2.125rem; // title size 2
     $letterSpace: 0.1rem; // letter space
@@ -65,7 +67,7 @@
     $padSectionMd: 2rem 0.4rem; // section padding for responsive
     //Title
     $padTitle: 0 0 1rem 0; // Title padding (recipe title)
-    $marTitle: 1rem 0 2rem; // Title margin for big title
+    $marTitle: 1rem 0; // Title margin for big title
     $padBtn: .625rem 2rem; // Button padding
     $padInput: .625rem .9rem; // Input padding
     $marInput: 0 0 1.25rem; // Input margin
@@ -80,9 +82,9 @@
     $transTime: 700ms;
 
 // BREAKPOINTS
-$breakPSm: 480px;
-$breakPMd: 600px;
-$breakPLg: 800px;
+$breakPSm: 540px;
+$breakPMd: 720px;
+$breakPLg: 960px;
 
 // SHADOWS
 $windowShadow: 0 0 3px $colThird; // for windows

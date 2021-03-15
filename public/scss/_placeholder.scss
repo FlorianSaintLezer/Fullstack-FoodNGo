@@ -14,6 +14,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+%fixCenterXY {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 %absCenterY {
     position: absolute;
     top: 50%;
@@ -52,7 +57,7 @@
     outline: $borTransp;
     color: $colLight;
     font-weight: $weightBold;
-    font-size: $sizeText ;
+    font-size: $sizeSmall ;
     letter-spacing: $letterSpace;
     transition: $transSmooth;
     &:hover {
@@ -69,7 +74,7 @@
     display: flex;
     align-items: flex-end;
     // overflow: hidden;
-    padding: 1rem;
+    // padding: 1rem;
     text-align: center;
     color: $colClear;
     background-color: $colClear;
@@ -78,24 +83,37 @@
     background-size: cover;
     border-radius: $borRadius;
     box-shadow: $cardShadow;
-    border: 2px solid white;
+    border: 1px solid white;
     .card-content {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        z-index: 1;
+        .card-title {
+            background-color: white;
+            color: $colMain;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.2;
             width: 100%;
-            z-index: 1;
-            .card-title {
-              background-color: white;
-              color: $colMain;
-              font-size: 1.3rem;
-              font-weight: bold;
-              line-height: 1.2;
-              width: 100%;
-            
-            }
+            text-align: center;
         }
+    }
+    &::after {
+        display: none;
+        content: '';
+        height: 100%;
+        width: 100%;
+        border-radius: $borRadius;
+        position: absolute;
+        background-color: $colOverlay;
+    }
+    &:hover::after {
+        display: block;
+        transition: all .7s;
+    }
 }
 
 
@@ -111,6 +129,7 @@
     font-size: $sizeSmall;
     font-weight: $weightReg;
     transition: $transSmooth;
+    resize: none;
     &:focus {
         outline: $border;
     }
@@ -130,17 +149,31 @@
     text-align: center;
     margin: $marTitle;
     line-height: 1;
-    :first-child {
-      color: $colSecond;
-      font-size: $sizeTitle1;
-      font-family: "fontSerif";
-    }
+    color: $colSecond;
+    font-size: $sizeTitle1;
+    font-family: "fontSerif";
+    
     :nth-child(2){
       color: $colMain;
       font-size: $sizeTitle2;
       font-family: "fontRegular";
       font-weight: bold;
     }
+}
+
+%section-title {
+  text-transform: uppercase;
+  margin: $marTitle;
+  line-height: 1;
+  color: $colSecond;
+  font-size: $sizeMenu;
+  text-align: left;
+  &::after{
+    content: '';
+    display: block;
+    width: 99%;
+    border: 1px solid $colThird;
+  }
 }
 
 // %windowShadow {

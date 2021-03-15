@@ -13,9 +13,6 @@ class CommentsFormType extends AbstractType
     {
         $builder
             ->add('content')
-            ->add('updatedAt')
-            ->add('author')
-            ->add('recipe')
         ;
     }
 

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block titre %}{% endblock %}
+
+
+{% block body %}
+
+	<section class="form-section container">
+		<div class="form-content">
+			<h1 class="nice-title form-header">
+				<span>Propose une recette et
+				</span>
+				<span>Go</span>
+			</h1>
+			{{ form_start(form) }}
+			<div class="form-body">
+				<div class="form-details">
+					<div>
+						<label for="{{ form.title.vars.id }}">
+							{{ form.title.vars.label }}
+						</label>
+						{{ form_widget(form.title) }}
+					</div>
+					<div>
+						<label for="{{ form.imageFile.vars.id }}">
+							{{ form.imageFile.vars.label }}
+						</label>
+						{{ form_widget(form.imageFile) }}
+					</div>
+					<div>
+						<label for="{{ form.category.vars.id }}">
+							{{ form.category.vars.label }}
+						</label>
+						{{ form_widget(form.category) }}
+					</div>
+				</div>
+				<div class="form-description">
+					<label for="{{ form.description.vars.id }}">
+						{{ form.description.vars.label }}
+					</label>
+					{{ form_widget(form.description) }}
+				</div>
+			</div>
+
+			<button class="main-button" type="submit">Envoyer</button>
+
+			{{ form_end(form) }}
+		</div>
+	</section>
+
+
+{% endblock %}

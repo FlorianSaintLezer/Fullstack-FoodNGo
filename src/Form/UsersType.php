@@ -18,6 +18,7 @@ class UsersType extends AbstractType
             ->add('username', TextType::class, ['disabled' => true])
             ->add('email', EmailType::class, ['disabled' => true])
             ->add('imageFile', FileType::class, ['required' => false])
+
         ;
     }
 

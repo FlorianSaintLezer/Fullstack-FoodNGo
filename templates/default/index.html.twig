@@ -4,33 +4,53 @@
 {% endblock %}
 
 {% block body %}
-
-	<h1>Dernières recettes</h1>
-	<section class="latest-recipes container">
-		<div class="not-carousel">
-			{% for last in lasts %}
-				<div class="last-recipe" style="background-image: url('{{ asset('img/' ~ last.image) }}');">
-					<div class="card-content">
-						<h2 class="card-title">{{last.title}}</h2>
-						{# <p class="summary">Bref résumé</p> #}
-						<a href="{{ path('show_recipe', {'id' : last.id }) }}" class="card-button">View Recipe</a>
+	
+		<section class="latest-recipes container">
+			<h2>Les dernières recettes</h2>
+			<div class="not-carousel">
+				{% for last in lasts %}
+					<div class="last-recipe" style="background-image: url('{{ asset('img/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
+						<div class="card-content">
+							<h2 class="card-title">{{last.title}}</h2>
+						</div>
 					</div>
-				</div>
-			{% endfor %}
-		</div>
+				{% endfor %}
+			</div>
 
 
-		<div class="carousel" data-flickity='{ "wrapAround": true }'>
-			{% for last in lasts %}
-				<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ last.image) }}');">
-					<div class="card-content">
-						<h2 class="card-title">{{last.title}}</h2>
-						{# <p class="summary">Bref résumé</p> #}
-						<a href="{{ path('show_recipe', {'id' : last.id }) }}" class="card-button">View Recipe</a>
+			<div class="carousel" data-flickity='{ "wrapAround": true }'>
+				{% for last in lasts %}
+					<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
+						<div class="card-content">
+							<h2 class="card-title">{{last.title}}</h2>
+						</div>
 					</div>
-				</div>
-			{% endfor %}
-		</div>
+				{% endfor %}
+			</div>
+		</section>
 
-	</section>
+		<section class="last-entrees container">
+			<div class="carousel">
+				<div class="carousel-cell"></div>
+				<div class="carousel-cell"></div>
+			</div>
+		</section>
+		<section class="last-dishes container">
+			<div class="carousel">
+				<div class="carousel-cell"></div>
+				<div class="carousel-cell"></div>
+			</div>
+		</section>
+		<section class="last-desserts container">
+			<div class="carousel">
+				<div class="carousel-cell"></div>
+				<div class="carousel-cell"></div>
+			</div>
+		</section>
+		<section class="last-drinks container">
+			<div class="carousel">
+				<div class="carousel-cell"></div>
+				<div class="carousel-cell"></div>
+			</div>
+		</section>
 {% endblock %}

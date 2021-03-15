@@ -49,10 +49,12 @@
             li:last-child{
                 display:block;
                 position: absolute;
-                font-size: 2em;
                 right: 5%;
                 top: 50%;
                 transform: translate(-5%,-50%);
+                a {
+                    font-size: $sizeTitle2;
+                }
             }
         }
         ul.responsive {

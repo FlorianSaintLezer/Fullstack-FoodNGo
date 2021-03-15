@@ -7,12 +7,13 @@
 	<section class="login container">
 		<div class="form-login">
 			{{ form_start(form) }}
-			<h2 class="nice-title">
+			<h1 class="nice-title">
 				<span>Inscris-toi et
 				</span>
 				<span>Go</span>
-			</h2>
+			</h1>
 			{{ form_widget(form) }}
+			
 			<button class="main-button" type="submit">Inscription</button>
 			<p class="under-button">Déjà inscrit ?
 				<a href="{{ path('login') }}" class="go">Je me connecte.</a>

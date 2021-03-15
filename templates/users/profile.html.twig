@@ -5,18 +5,138 @@
 
 {% block body %}
 
-	<section class="form-login">
-		{{form_start(form)}}
-		{{form_widget(form)}}
+	{# <section class="form-login">
+															{{form_start(form)}}
+															{{form_widget(form)}}
+													
+															<button type="submit">
+																<i class="fa fa-save" aria-hidden="true"></i> Confirm
+															</button>
+															{{form_end(form)}}
+															<a href="{{ path('edit_password') }}">
+																<i class="fa fa-lock" aria-hidden="true"></i> Change your password
+															</a>
+														</section> #}
 
-		<button type="submit">
-			<i class="fa fa-save" aria-hidden="true"></i> Confirm
-		</button>
-		{{form_end(form)}}
-		<a href="{{ path('edit_password') }}">
-			<i class="fa fa-lock" aria-hidden="true"></i> Change your password
-		</a>
+	<section class="profile container">
+		<div class='container profile'>
+			<div>
+
+				{# PROFIL HEAD #}
+				<div class='PROFILE'>
+					<div class='columns is-centered is-multiline'>
+
+
+						<div class='column is-2'>
+							<figure class="image is-256x256">
+								<img src="assets/uploads/profilpictures/<?php echo $user['users_image']; ?>">
+							</figure>
+							<br>
+							<form action="process.php" method="post" enctype="multipart/form-data">
+								<label class="file-label">
+									<input class="file-input" type="file" id="profil_image" name="profil_image">
+									<span class="file-cta">
+										<span class="file-icon">
+											<i class="fas fa-upload"></i>
+										</span>
+										<span class="file-label">
+											Change picture
+										</span>
+									</span>
+								</label>
+								<input type="submit" class="button is-primary" name="profil_image_edit">
+							</form>
+						</div>
+
+
+						<div class='column is-7'>
+							<p>
+								<span class='title is-bold'>Nom d'utilisateur</span>
+								<br>
+								<a class='button is-primary is-outlined' href='#' id='edit-preferences' style='margin: 5px 0'>
+									Edit profile
+								</a>
+								<br>
+							</p>
+							<p class='tagline'>
+								coucou
+							</p>
+						</div>
+
+						<div class="column is-3">
+							<div class="columns is-centered is-multiline">
+								<div class='column is-4-tablet has-text-centered'>
+									<p class='title is-1'></p>
+									<p class='subtitle'>Recettes publiées</p>
+								</div>
+								<div class='column is-4-tablet has-text-centered'>
+									<p class='title is-1'></p>
+									<p class='subtitle'>Commentaires</p>
+								</div>
+								<div class='column is-4 has-text-centered'>
+									<p class='title is-1'></p>
+									<p class='subtitle'>Favoris</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{# END OF PROFIL HEAD #}
+
+				{# START OF PROFIL CONTENT #}
+				<div class="container">
+					<div class=' columns'>
+						<div class='column'>
+							<div>
+								<input readonly disabled class='input' placeholder="Nom d'utilisateur">
+							</div>
+							<div>
+								<input readonly disabled class='input' placeholder='Email'>
+							</div>
+						</div>
+					</div>
+				</div>
+				{# END OF PROFIL CONTENT #}
+			</div>
+			{# END OF PROFIL CONTAINER #}
+
+
+			{# START TABS #}
+			{# TABS HEADER #}
+				<section class="section profile-heading"> <nav class="tabs is-fullwidth is-large is-centered">
+					<ul>
+						<li class="tab is-active" onclick="openTab(event,'displayAdverts')">
+							<a>Recettes</a>
+						</li>
+						<li class="tab" onclick="openTab(event,'displayReservations')">
+							<a>Commentaires</a>
+						</li>
+						<li class="tab" onclick="openTab(event,'displayHistory')">
+							<a>Favoris</a>
+						</li>
+					</ul>
+				</nav>
+			</section>
+			{# TAB CONTENT #}
+			<div
+				class="profile-stats">
+
+				{# TAB CONTENT #}
+				<div id="displayAdverts" class="content-tab">
+					Mes recettes
+				</div>
+				{# TAB CONTENT #}
+				<div id="displayReservations" class="content-tab" style="display:none">
+					Mes commentaires
+				</div>
+
+				{# TAB CONTENT #}
+				<div id="displayHistory" class="content-tab" style="display:none">
+					Mes favoris
+				</div>
+			</div>
+
+
+		</div>
 	</section>
-
-
 {% endblock %}

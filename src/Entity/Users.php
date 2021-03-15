@@ -104,7 +104,6 @@ class Users implements UserInterface
      */
     private $roles = [];
 
-
     public function __construct()
     {
         $this->updatedAt = new \DateTime();
@@ -222,6 +221,7 @@ class Users implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
         return $this;
     }
 

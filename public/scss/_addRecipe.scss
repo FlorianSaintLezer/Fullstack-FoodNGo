@@ -1,0 +1,82 @@
+.form-section {
+    padding: $padSection;
+
+    .form-content {
+        width: 100%;
+        @extend %relCenter;
+        box-shadow: $windowShadow;
+        background: $colClear;
+        padding: $padWindow;
+        @media screen and (max-width:$breakPSm) {
+            padding: $padSection;
+            
+        }
+        
+        .form-body {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 300px;
+            margin: $marInput;
+            .form-details {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 40%;
+                input {
+                    @extend %mainInput;
+                }
+                select {
+                    @extend %mainInput;
+                    margin: 0;
+                }
+                
+                li {
+                    color: $colError2;
+                }
+            }
+            .form-description {
+                width: 55%;
+                // height: 300px;
+                // textarea {
+                //     @extend %mainInput;
+                //     height: calc(100% - 16px);
+                //     margin: 0;
+                // } 
+            }
+            @media screen and (max-width:$breakPSm) {
+                & {
+                    height: auto;
+                    flex-direction: column;
+                    .form-details {
+                        width: 100%;
+                        
+                            margin-bottom: 1.25rem;
+                        
+                    }
+                    .form-description {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        button {
+            @extend %mainButton;
+            width:100%;
+        }
+    }
+    
+    
+}
+
+@media screen and (max-width:$breakPLg) {
+    .form-login {
+        width: 100%;
+        margin: 0;
+    }
+}
+@media screen and (max-width:$breakPSm) {
+    .form-login {
+       padding: 1rem;
+    }
+}

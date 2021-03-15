@@ -5,7 +5,7 @@
 
 {% block body %}
 	{% if error %}
-		<div id="alert" class="alert-error">Error<buttonid="alert-close">
+		<div id="alert" class="alert-error">Erreur<buttonid="alert-close">
 				<i class="far fa-times-circle"></i>
 			</button>
 		</div>
@@ -13,17 +13,17 @@
 	<section class="login container">
 		<div class="form-login">
 			<form method="post" action="{{path('login')}}">
-				<h2 class="nice-title">
+				<h1 class="nice-title">
 					<span>Connecte-toi et</span>
 					<span>Go</span>
-				</h2>
+				</h1>
 				<div class="form-group">
-					<Label>Username</Label>
-					<input type="username" require name="_username" class="form-control" placeholder="Username">
+					{# <Label>Username</Label> #}
+					<input type="username" require name="_username" class="form-control" placeholder="Nom d'utilisateur">
 				</div>
 				<div class="form-group">
-					<Label>Password</Label>
-					<input type="password" require name="_password" class="form-control" placeholder="Password">
+					{# <Label>Password</Label> #}
+					<input type="password" require name="_password" class="form-control" placeholder="Mot de passe">
 				</div>
 				<button class="main-button" type="submit">Connexion</button>
 				<p class="under-button">Première visite ? <a href="{{ path('signin') }}" class="go">Je m'inscris.</a>

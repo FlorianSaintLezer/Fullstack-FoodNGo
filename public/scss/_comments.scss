@@ -1,0 +1,17 @@
+.comments {
+    h2{
+        @extend %section-title;
+    }
+    .comment {
+        padding: $padInput;
+        border-bottom: 1px solid $colSecond;
+        &:nth-child(2n+1) {
+            background-color:lighten($colLight, $colVar);
+            box-shadow: -0.2rem 0 0 0 $colLight;
+        }
+        &:nth-child(2n) {
+            background-color: $colLight;
+            box-shadow: -0.2rem 0 0 0 darken($colLight, $colVar);
+        }        
+    }
+}

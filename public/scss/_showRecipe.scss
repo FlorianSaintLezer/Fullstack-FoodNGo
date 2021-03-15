@@ -1,0 +1,151 @@
+.show-recipe {
+    padding: $padSection;
+    .recipe-image{
+        text-align: center;
+        width: 100%;
+        height: 50vh;
+        max-height: 600px;
+        background-color: $colSecond;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .recipe-buttons {
+            position: relative;
+            display: flex;
+            top: 100%;
+            transform: translate(0, -50%);
+            .recipe-btn {
+                @extend %mainButton;
+                vertical-align: center;
+                width: 50%;
+                &:first-child {
+                    border-right: 1px solid white;
+                }
+                i {
+                    display: none;
+                }
+                @media screen and (max-width: $breakPSm) {
+                    & i {
+                        display: block;
+                    }
+                    & span {
+                        display: none;
+                    }
+                
+                }
+                
+            }
+        }
+    }
+    .recipe-content {
+        padding: $padSection;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .content-left {
+            flex: 75%;
+            .recipe-date{
+                font-size: $sizeSmall;
+            }
+            .recipe-title {
+                @extend %section-title;
+            }
+            .recipe-description {
+                box-shadow: -0.4rem 0 0 0 $colMain;
+                border-left: 0.4rem solid transparent;
+            }
+        }
+    }
+}
+@media screen and (max-width:$breakPMd) {
+    .show-recipe {
+        .recipe-image{
+            height: 30vh;
+        }
+        .recipe-content {
+            padding: $padSectionMd;
+        }
+    }
+     
+}
+
+
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: $colOverlay
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    top: 50%;
+    background-color: #fefefe;
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    // box-shadow: $windowShadow;
+    // animation-name: animatetop;
+    // animation-duration: 0.4s
+  }
+  
+//   /* Add Animation */
+//   @-webkit-keyframes animatetop {
+//     from {top:-300px; opacity:0} 
+//     to {top:0; opacity:1}
+//   }
+  
+//   @keyframes animatetop {
+//     from {top:-300px; opacity:0}
+//     to {top:0; opacity:1}
+//   }
+  
+  /* The Close Button */
+  .modal-close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .modal-close:hover,
+  .modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    padding: $padInput;
+    background-color: $colMain;
+    color: $colClear;
+  }
+  
+  .modal-body {
+      padding: 1rem;
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        resize: none;
+      }
+      button {
+          @extend %mainButton;
+          width: 100%;
+      }
+    }

@@ -1,7 +1,6 @@
 .latest-recipes {
     padding: $padSection;
     .not-carousel {
-        // @include flex(column, space-between, center, wrap);
         flex-wrap: wrap;
         justify-content: space-between;
         flex-direction: column;
@@ -16,7 +15,22 @@
                 width: 50%;
                 height: 200px;
             }
-        
+            @media screen and (min-width:$breakPLg) {
+                & {
+                    width:calc(100% / 3) !important;
+                    height: 400px !important;
+                }     
+            }
+        }
+        @media screen and (min-width:calc(#{$breakPSm} + 1px)) {  
+            & {
+                display: flex;
+            }    
+        }
+        @media screen and (max-width: $breakPSm) {  
+            & {
+                display: none;
+            } 
         }
     }
     .carousel {
@@ -34,47 +48,19 @@
           margin-right: 10px;
           background: $colThird;
           border-radius: 5px;
+          background-position: center;
+          background-repeat: no-repeat;
           @extend %mainCard;
-        
-          /* cell number */
-          :before {
-            display: block;
-            text-align: center;
-            line-height: 200px;
-            font-size: 80px;
-            color: white;
-          }
         }
-    }
-}
-@media screen and (min-width:$breakPLg) {
-    .latest-recipes {
-        .not-carousel {
-            .last-recipe {
-                width:calc(100% / 3) !important;
-                height: 400px !important;
+        @media screen and (min-width:calc(#{$breakPSm} + 1px)) {  
+            & {
+                display: none;
+            }    
+        }
+        @media screen and (max-width: $breakPSm) {
+            & {
+                display: block;
             }
-        }
+        }   
     }
-}
-@media screen and (min-width:calc(#{$breakPSm} + 1px)) {
-    .latest-recipes {
-        .carousel {
-            display: none;
-        }
-        .not-carousel {
-            display: flex;
-        }
-    }
-}
-@media screen and (max-width: $breakPSm) {
-    .latest-recipes {
-        .carousel {
-            display: block;
-        }
-        .not-carousel {
-            display: none;
-        }
-    }
-    
 }

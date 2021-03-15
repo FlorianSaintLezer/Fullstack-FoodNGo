@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1a0f79587b503af3b562df8434f79d8d8e500ab2',
+    'reference' => 'adb9e3f90c5f23bf8ec8fa52a87231720ec63410',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1a0f79587b503af3b562df8434f79d8d8e500ab2',
+      'reference' => 'adb9e3f90c5f23bf8ec8fa52a87231720ec63410',
     ),
     'amphp/amp' => 
     array (
@@ -358,6 +358,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '121af47c9aee9c03031bdeca3fac0540f59aa5c3',
+    ),
+    'friendsofsymfony/ckeditor-bundle' => 
+    array (
+      'pretty_version' => '2.3.0',
+      'version' => '2.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '282c79b0d3eda68855ea4c8732ab8d249cd5fbd0',
     ),
     'jms/metadata' => 
     array (
