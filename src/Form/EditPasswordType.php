@@ -17,7 +17,7 @@ class EditPasswordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('currentPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 'constraints' => [
                     new UserPassword(),
                 ],
@@ -26,7 +26,7 @@ class EditPasswordType extends AbstractType
                     'autocomplete' => 'off',
                 ],
             ])
-            ->add('newPassword', RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'constraints' => [
                     new NotBlank(),

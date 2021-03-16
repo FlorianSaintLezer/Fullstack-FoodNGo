@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'adb9e3f90c5f23bf8ec8fa52a87231720ec63410',
+    'reference' => 'b835749fbdd01e4b10dd1f8fc0ce96def5c5c79e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'adb9e3f90c5f23bf8ec8fa52a87231720ec63410',
+      'reference' => 'b835749fbdd01e4b10dd1f8fc0ce96def5c5c79e',
     ),
     'amphp/amp' => 
     array (
@@ -890,6 +890,15 @@ private static $installed = array (
       ),
       'reference' => '11b4217e394c80a2e313d3a4a37262fbe65a7add',
     ),
+    'symfony/lock' => 
+    array (
+      'pretty_version' => 'v5.2.4',
+      'version' => '5.2.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9e8feb3141406dfc98ca57771fc00873b6f4b60e',
+    ),
     'symfony/mailer' => 
     array (
       'pretty_version' => 'v5.2.4',
@@ -1090,6 +1099,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'fd6bb40190b1719abbe831be09adf38e0744d5f5',
+    ),
+    'symfony/rate-limiter' => 
+    array (
+      'pretty_version' => 'v5.2.4',
+      'version' => '5.2.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5cbc5488ca2ed0118616b18664be447fae7c771f',
     ),
     'symfony/routing' => 
     array (

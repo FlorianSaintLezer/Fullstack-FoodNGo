@@ -55,3 +55,20 @@ body {
 .section-title {
   @extend %section-title;
 }
+
+.scroll {
+  &-top {
+    right: 25px;
+  }
+  position: fixed;
+  bottom: 25px;
+
+  z-index: 99;
+  outline: none;
+  background-color: #efefef;
+  border: 1px solid #333;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+}

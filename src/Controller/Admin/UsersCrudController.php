@@ -26,9 +26,10 @@ class UsersCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('username'),
             EmailField::new('email')->hideOnIndex()->hideOnDetail(),
+
             Field::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
             ImageField::new('image')->setBasePath('/img')->hideOnForm(),
-            DateTimeField::new('updatedAt'),
+            DateTimeField::new('updatedAt')->hideOnForm(),
             ChoiceField::new('roles')
                 ->allowMultipleChoices()
                 ->setChoices([

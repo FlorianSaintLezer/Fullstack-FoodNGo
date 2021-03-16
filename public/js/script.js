@@ -1,12 +1,9 @@
 
 // RESPONSIVE NAVBAR TOGGLER
 function responsiveNavbar() {
-  var m = document.getElementById("navbarMenu");
-  if (m.className === "navbarMenu") {
+  var m = document.getElementById("navbarMenu"); if (m.className === "navbarMenu") {
     m.className += " responsive";
-  } else {
-    m.className = "navbarMenu";
-  }
+  } else { m.className = "navbarMenu"; }
 }
 
 
@@ -48,26 +45,30 @@ function responsiveNavbar() {
 
 // Get the modal
 var modal = document.getElementById("comments-modal");
-
 // Get the button that opens the modal
 var modalButton = document.getElementById("modal-button");
-
 // Get the <span> element that closes the modal
 var modalClose = document.getElementsByClassName("modal-close")[0];
-
 // When the user clicks the button, open the modal 
-modalButton.onclick = function() {
-  modal.style.display = "block";
-}
-
+modalButton.onclick = function () { modal.style.display = "block"; }
 // When the user clicks on <span> (x), close the modal
-modalClose.onclick = function() {
-  modal.style.display = "none";
-}
-
+modalClose.onclick = function () { modal.style.display = "none"; }
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none"; }; }
+
+
+
+
+// Get the modal
+var confirmModal = document.getElementById("confirm-modal");
+// Get the button that opens the modal
+var confirmModalButton = document.getElementById("confirm-modal-button");
+// Get the <span> element that closes the modal
+var confirmModalClose = document.getElementsByClassName("confirm-modal-close")[0];
+// When the user clicks the button, open the modal 
+confirmModalButton.onclick = function () { confirmModal.style.display = "block"; }
+// When the user clicks on <span> (x), close the modal
+confirmModalClose.onclick = function () { confirmModal.style.display = "none"; }
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) { if (event.target == confirmModal) { confirmModal.style.display = "none"; }; }
+

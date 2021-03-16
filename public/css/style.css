@@ -91,7 +91,7 @@ a {
   margin: 0 auto;
 }
 
-.form-section .form-content button, .form-login button, .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
+.form-section .form-content button, .form-login button, form .confirm-modal .modal-content .modal-body button, .modal .modal-content .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
   cursor: pointer;
   background-color: #bb727f;
   padding: 0.625rem 2rem;
@@ -103,15 +103,15 @@ a {
   letter-spacing: 0.1rem;
   transition: 400ms all;
 }
-.form-section .form-content button:hover, .form-login button:hover, .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
+.form-section .form-content button:hover, .form-login button:hover, form .confirm-modal .modal-content .modal-body button:hover, .modal .modal-content .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
   background-color: #c88e98;
 }
-.form-section .form-content button:active, .form-login button:active, .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
+.form-section .form-content button:active, .form-login button:active, form .confirm-modal .modal-content .modal-body button:active, .modal .modal-content .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
   outline: 1px dashed #c88e98;
   outline-offset: 3px;
 }
 
-.recipes .cards .card, .latest-recipes .carousel .carousel-cell, .latest-recipes .not-carousel .last-recipe {
+.recipes .cards .card, .last-recipes .last-entrees .carousel .carousel-cell, .last-recipes .last-dishes .carousel .carousel-cell, .last-recipes .last-desserts .carousel .carousel-cell, .last-recipes .last-drinks .carousel .carousel-cell, .new-recipes .carousel .carousel-cell, .new-recipes .not-carousel .last-recipe {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -125,7 +125,7 @@ a {
   box-shadow: 0 1px 1px #b5b5b5, 0 2px 2px #b5b5b5, 0 4px 4px #b5b5b5, 0 8px 8px #b5b5b5, 0 16px 16px #b5b5b5;
   border: 1px solid white;
 }
-.recipes .cards .card .card-content, .latest-recipes .carousel .carousel-cell .card-content, .latest-recipes .not-carousel .last-recipe .card-content {
+.recipes .cards .card .card-content, .last-recipes .last-entrees .carousel .carousel-cell .card-content, .last-recipes .last-dishes .carousel .carousel-cell .card-content, .last-recipes .last-desserts .carousel .carousel-cell .card-content, .last-recipes .last-drinks .carousel .carousel-cell .card-content, .new-recipes .carousel .carousel-cell .card-content, .new-recipes .not-carousel .last-recipe .card-content {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -133,7 +133,7 @@ a {
   width: 100%;
   z-index: 1;
 }
-.recipes .cards .card .card-content .card-title, .latest-recipes .carousel .carousel-cell .card-content .card-title, .latest-recipes .not-carousel .last-recipe .card-content .card-title {
+.recipes .cards .card .card-content .card-title, .last-recipes .last-entrees .carousel .carousel-cell .card-content .card-title, .last-recipes .last-dishes .carousel .carousel-cell .card-content .card-title, .last-recipes .last-desserts .carousel .carousel-cell .card-content .card-title, .last-recipes .last-drinks .carousel .carousel-cell .card-content .card-title, .new-recipes .carousel .carousel-cell .card-content .card-title, .new-recipes .not-carousel .last-recipe .card-content .card-title {
   background-color: white;
   color: #bb727f;
   font-size: 1rem;
@@ -142,7 +142,7 @@ a {
   width: 100%;
   text-align: center;
 }
-.recipes .cards .card::after, .latest-recipes .carousel .carousel-cell::after, .latest-recipes .not-carousel .last-recipe::after {
+.recipes .cards .card::after, .last-recipes .last-entrees .carousel .carousel-cell::after, .last-recipes .last-dishes .carousel .carousel-cell::after, .last-recipes .last-desserts .carousel .carousel-cell::after, .last-recipes .last-drinks .carousel .carousel-cell::after, .new-recipes .carousel .carousel-cell::after, .new-recipes .not-carousel .last-recipe::after {
   display: none;
   content: "";
   height: 100%;
@@ -151,7 +151,7 @@ a {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.recipes .cards .card:hover::after, .latest-recipes .carousel .carousel-cell:hover::after, .latest-recipes .not-carousel .last-recipe:hover::after {
+.recipes .cards .card:hover::after, .last-recipes .last-entrees .carousel .carousel-cell:hover::after, .last-recipes .last-dishes .carousel .carousel-cell:hover::after, .last-recipes .last-desserts .carousel .carousel-cell:hover::after, .last-recipes .last-drinks .carousel .carousel-cell:hover::after, .new-recipes .carousel .carousel-cell:hover::after, .new-recipes .not-carousel .last-recipe:hover::after {
   display: block;
   transition: all 0.7s;
 }
@@ -245,49 +245,65 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   font-weight: 600;
 }
 
-.latest-recipes {
-  padding: 2rem 0;
+.scroll {
+  position: fixed;
+  bottom: 25px;
+  z-index: 99;
+  outline: none;
+  background-color: #efefef;
+  border: 1px solid #333;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  text-decoration: none;
 }
-.latest-recipes .not-carousel {
+.scroll-top {
+  right: 25px;
+}
+
+.new-recipes {
+  padding: 3rem 0;
+}
+.new-recipes .not-carousel {
   flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: column;
-  height: 400px;
+  height: 300px;
 }
-.latest-recipes .not-carousel .last-recipe:first-child {
+.new-recipes .not-carousel .last-recipe:first-child {
   width: 50%;
-  height: 400px;
+  height: 300px;
 }
-.latest-recipes .not-carousel .last-recipe:nth-child(2), .latest-recipes .not-carousel .last-recipe:nth-child(3) {
+.new-recipes .not-carousel .last-recipe:nth-child(2), .new-recipes .not-carousel .last-recipe:nth-child(3) {
   width: 50%;
-  height: 200px;
+  height: 150px;
 }
 @media screen and (min-width: 960px) {
-  .latest-recipes .not-carousel .last-recipe {
+  .new-recipes .not-carousel .last-recipe {
     width: calc(100% / 3) !important;
-    height: 400px !important;
+    height: 300px !important;
   }
 }
 @media screen and (min-width: calc(540px + 1px)) {
-  .latest-recipes .not-carousel {
+  .new-recipes .not-carousel {
     display: flex;
   }
 }
 @media screen and (max-width: 540px) {
-  .latest-recipes .not-carousel {
+  .new-recipes .not-carousel {
     display: none;
   }
 }
-.latest-recipes .carousel .flickity-page-dots .dot {
+.new-recipes .carousel .flickity-page-dots .dot {
   height: 4px;
   width: 40px;
   margin: 0;
   border-radius: 0;
   background-color: #bb727f;
 }
-.latest-recipes .carousel .carousel-cell {
+.new-recipes .carousel .carousel-cell {
   width: 100%;
-  height: 400px;
+  height: 300px;
   margin-right: 10px;
   background: #b5b5b5;
   border-radius: 5px;
@@ -295,18 +311,65 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   background-repeat: no-repeat;
 }
 @media screen and (min-width: calc(540px + 1px)) {
-  .latest-recipes .carousel {
+  .new-recipes .carousel {
     display: none;
   }
 }
 @media screen and (max-width: 540px) {
-  .latest-recipes .carousel {
+  .new-recipes .carousel {
     display: block;
   }
 }
 
+.last-recipes {
+  padding: 3rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.last-recipes .last-entrees, .last-recipes .last-dishes, .last-recipes .last-desserts, .last-recipes .last-drinks {
+  width: 50%;
+  padding: 2rem 0.4rem;
+}
+@media screen and (max-width: 720px) {
+  .last-recipes .last-entrees, .last-recipes .last-dishes, .last-recipes .last-desserts, .last-recipes .last-drinks {
+    width: 100%;
+  }
+}
+.last-recipes .last-entrees .carousel .flickity-page-dots .dot, .last-recipes .last-dishes .carousel .flickity-page-dots .dot, .last-recipes .last-desserts .carousel .flickity-page-dots .dot, .last-recipes .last-drinks .carousel .flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
+  background-color: #bb727f;
+}
+.last-recipes .last-entrees .carousel .carousel-cell, .last-recipes .last-dishes .carousel .carousel-cell, .last-recipes .last-desserts .carousel .carousel-cell, .last-recipes .last-drinks .carousel .carousel-cell {
+  width: 33%;
+  height: 200px;
+  margin-right: 10px;
+  background: #b5b5b5;
+  border-radius: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 960px) {
+  .last-recipes .last-entrees .carousel .carousel-cell, .last-recipes .last-dishes .carousel .carousel-cell, .last-recipes .last-desserts .carousel .carousel-cell, .last-recipes .last-drinks .carousel .carousel-cell {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .last-recipes .last-entrees .carousel .carousel-cell, .last-recipes .last-dishes .carousel .carousel-cell, .last-recipes .last-desserts .carousel .carousel-cell, .last-recipes .last-drinks .carousel .carousel-cell {
+    width: 33%;
+  }
+}
+@media screen and (max-width: 540px) {
+  .last-recipes .last-entrees .carousel .carousel-cell, .last-recipes .last-dishes .carousel .carousel-cell, .last-recipes .last-desserts .carousel .carousel-cell, .last-recipes .last-drinks .carousel .carousel-cell {
+    width: 100%;
+  }
+}
+
 .show-recipe {
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 .show-recipe .recipe-image {
   text-align: center;
@@ -317,12 +380,14 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 0 1px 1px #b5b5b5, 0 2px 2px #b5b5b5, 0 4px 4px #b5b5b5, 0 8px 8px #b5b5b5, 0 16px 16px #b5b5b5;
 }
 .show-recipe .recipe-image .recipe-buttons {
   position: relative;
   display: flex;
   top: 100%;
   transform: translate(0, -50%);
+  box-shadow: 0 0 3px #b5b5b5;
 }
 .show-recipe .recipe-image .recipe-buttons .recipe-btn {
   vertical-align: center;
@@ -343,7 +408,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   }
 }
 .show-recipe .recipe-content {
-  padding: 2rem 0;
+  padding: 3rem 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -371,17 +436,18 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 .modal {
   display: none;
   /* Hidden by default */
+  position: fixed;
   width: 100%;
   height: 100%;
-  position: fixed;
   z-index: 100;
+  left: 0;
+  top: 0;
   overflow: auto;
   /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.4);
+  /* Modal Content */
 }
-
-/* Modal Content */
-.modal-content {
+.modal .modal-content {
   position: relative;
   top: 50%;
   background-color: #fefefe;
@@ -389,33 +455,46 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   padding: 0;
   border: 1px solid #888;
   width: 80%;
+  box-shadow: 0 0 3px #b5b5b5;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+  opacity: 1;
 }
-
-/* The Close Button */
-.modal-close {
+@media screen and (max-width: 720px) {
+  .modal .modal-content {
+    width: 100% !important;
+  }
+}
+@keyframes animatetop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal .modal-content .modal-header {
+  padding: 0.625rem 0.9rem;
+  background-color: #bb727f;
+  color: white;
+  /* The Close Button */
+}
+.modal .modal-content .modal-header .modal-close {
   color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-
-.modal-close:hover,
-.modal-close:focus {
-  color: #000;
+.modal .modal-content .modal-header .modal-close:hover,
+.modal .modal-content .modal-header .modal-close:focus {
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }
-
-.modal-header {
-  padding: 0.625rem 0.9rem;
-  background-color: #bb727f;
-  color: white;
-}
-
-.modal-body {
+.modal .modal-content .modal-body {
   padding: 1rem;
 }
-.modal-body textarea {
+.modal .modal-content .modal-body textarea {
   width: 100%;
   height: 150px;
   padding: 12px 20px;
@@ -425,7 +504,83 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   background-color: #f8f8f8;
   resize: none;
 }
-.modal-body button {
+.modal .modal-content .modal-body button {
+  width: 100%;
+}
+
+form {
+  /* Modal background */
+}
+form .confirm-modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Modal Content */
+}
+form .confirm-modal .modal-content {
+  position: relative;
+  top: 50%;
+  background-color: #fefefe;
+  margin: 0 auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 200px;
+  box-shadow: 0 0 3px #b5b5b5;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+  opacity: 1;
+}
+@media screen and (max-width: 720px) {
+  form .confirm-modal .modal-content {
+    width: 100% !important;
+  }
+}
+@keyframes animatetop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+form .confirm-modal .modal-content .modal-header {
+  padding: 0.625rem 0.9rem;
+  background-color: #bb727f;
+  color: white;
+  /* The Close Button */
+}
+form .confirm-modal .modal-content .modal-header .confirm-modal-close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+form .confirm-modal .modal-content .modal-header .confirm-modal-close:hover,
+form .confirm-modal .modal-content .modal-header .confirm-modal-close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+form .confirm-modal .modal-content .modal-body {
+  padding: 1rem;
+}
+form .confirm-modal .modal-content .modal-body textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+form .confirm-modal .modal-content .modal-body button {
   width: 100%;
 }
 
@@ -436,7 +591,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   background-color: #bb727f;
   color: white;
   width: 100%;
-  padding: 2rem 0;
+  padding: 2rem 0.4rem;
 }
 .site-footer .site-footer-content {
   display: flex;
@@ -512,7 +667,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 }
 
 .login {
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 
 .form-login {
@@ -540,7 +695,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
   }
 }
 .signin {
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 
 .form-login {
@@ -654,7 +809,7 @@ nav a:hover {
 }
 
 .recipes {
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 .recipes .cards {
   display: flex;
@@ -689,7 +844,7 @@ nav a:hover {
 }
 
 .form-section {
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 .form-section .form-content {
   width: 100%;
@@ -699,7 +854,7 @@ nav a:hover {
 }
 @media screen and (max-width: 540px) {
   .form-section .form-content {
-    padding: 2rem 0;
+    padding: 3rem 0;
   }
 }
 .form-section .form-content .form-body {

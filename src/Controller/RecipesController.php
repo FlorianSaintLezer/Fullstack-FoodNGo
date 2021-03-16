@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Comments;
 use App\Entity\Recipes;
-use App\Form\RecipesType;
+use App\Form\CommentsType;
 use App\Repository\CategoriesRepository;
+use App\Repository\CommentsRepository;
 use App\Repository\RecipesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,7 +35,7 @@ class RecipesController extends AbstractController
      */
     public function home(RecipesRepository $repository, CategoriesRepository $repositoryC): Response
     {
-        // find 5 recipes from the latest updated
+        // find 3 recipes from the latest updated
         $lasts = $repository->findBy(
             [],
             [
@@ -42,11 +44,15 @@ class RecipesController extends AbstractController
             3
         )
         ;
+        $recipes = $repository->findAll();
+        $categories = $repositoryC->findAll();
 
         return $this->render(
             'default/index.html.twig',
             [
                 'lasts' => $lasts,
+                'recipes' => $recipes,
+                'categories' => $categories,
             ],
         );
     }
@@ -63,7 +69,7 @@ class RecipesController extends AbstractController
         $recipes = $repository->findAll();
         $categories = $repositoryC->findAll();
 
-        return $this->render('users/all_recipes.html.twig', [
+        return $this->render('default/all_recipes.html.twig', [
             'recipes' => $recipes,
             'categories' => $categories,
         ]);
@@ -83,76 +89,65 @@ class RecipesController extends AbstractController
         $recipes = $repository->getRecipesByCategory($category);
         $categories = $repositoryC->findAll();
 
-        return $this->render('users/all_recipes.html.twig', [
+        return $this->render('default/all_recipes.html.twig', [
             'recipes' => $recipes,
             'categories' => $categories,
             'isCategory' => true,
         ]);
     }
 
-    /////////////////////////////
-    // SHOW ONE RECIPE WITH ID //
-    /////////////////////////////
+    // /////////////////////////////
+    // // SHOW ONE RECIPE WITH ID //
+    // /////////////////////////////
 
     /**
      * @Route("/recipes/{id}", name="show_recipe")
      */
     public function showRecipe(Recipes $recipes): Response
     {
-        return $this->render('users/show_recipe.html.twig', [
+        return $this->render('default/show_recipe.html.twig', [
             'recipes' => $recipes,
         ]);
     }
 
-    //////////////////////////
-    // ADD OR EDIT A RECIPE //
-    //////////////////////////
-
     /**
-     * @Route("/recipe/add", name="recipe_add")
-     * @Route("/recipe/edit/{id}", name="recipe_edit",  methods="GET|POST")
+     * @Route("/recipes/{id}", name="comment_add",methods="POST")
+     *
+     * @param mixed $recipes
      */
-    public function modification(Recipes $recipes = null, Request $request): Response
+    public function addComment(Recipes $recipes, Comments $comments = null, Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
-        if (!$recipes) {
-            $recipes = new Recipes();
-        }
-        $form = $this->createForm(RecipesType::class, $recipes);
+        $comments = new Comments();
+        $form = $this->createForm(CommentsType::class, $comments);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $this->security->getUser();
-            // dd($user); //var_dump
-            $recipes->setAuthor($user);
-            $modif = null !== $recipes->getId();
-            $this->entityManager->persist($recipes);
-            $this->entityManager->flush();
-            $this->addFlash('Bravo', ($modif) ? 'Recette modifiée avec succès' : 'Recette rajoutée avec succès');
+            $user = $security->getUser();
+            $comments->setUpdatedAt(new \DateTime('now'))
+                ->setRecipe($recipes)
+                ->setAuthor($user)
+            ;
+            $entityManager->persist($comments);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('recipes');
+            return $this->redirectToRoute('show_recipe', ['id' => $recipes->getId()]);
         }
-
-        return $this->render('users/edit_recipe.html.twig', [
-            'recipes' => $recipes,
-            'form' => $form->createView(),
-            'isModification' => null !== $recipes->getid(),
-        ]);
     }
 
-    /////////////////////
-    // DELETE A RECIPE //
-    /////////////////////
-
     /**
-     * @Route("/recipes/{id}", name="recipe_delete", methods="delete")
+     * @Route("/recipes/{id}", name="show_recipe",methods="GET")
      */
-    public function suppression(Recipes $recipes, Request $request, EntityManagerInterface $em): Response
+    public function display(Recipes $recipes, CommentsRepository $repoComments): Response
     {
-        if ($this->isCsrfTokenValid('SUP'.$recipes->getId(), $request->get('_token'))) {
-            $em->remove($recipes);
-            $em->flush();
-            $this->addFlash('success', 'Recipe has been successfully deleted');
+        $comments = new Comments();
+        $form = $this->createForm(CommentsType::class, $comments);
+        $comments = $repoComments->findBy([
+            'recipe' => $recipes,
+        ]);
 
-            return $this->redirectToRoute('recipes');
-        }
+        return $this->render('default/show_recipe.html.twig', [
+            'recipes' => $recipes,
+            'comments' => $comments,
+            'commentForm' => $form->createView(),
+        ]);
     }
 }
