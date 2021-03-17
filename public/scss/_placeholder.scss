@@ -6,6 +6,11 @@
     margin: 0 auto;
     position: relative;
 }
+%fullXY {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 
 // POSITION
 %absCenterXY {
@@ -21,8 +26,7 @@
 }
 %absCenterY {
     position: absolute;
-    top: 50%;
-    left: 0%;
+    margin: 0 auto;
     transform: translate(0, -50%);  
 }
 %relCenterXY {
@@ -34,7 +38,7 @@
 %relCenterY {
     position: relative;
     top: 50%;
-    left: 0%;
+    margin: 0 auto;
     transform: translate(0, -50%);  
 }
 %relCenter {
@@ -68,6 +72,24 @@
         outline-offset: 3px; 
     }
 }
+%miniButton {
+    cursor: $cursorClick;
+    background-color: transparent;
+    border: $borTransp;
+    outline: $borTransp;
+    color: $colMain;
+    font-weight: $weightBold;
+    font-size: $sizeText ;
+    letter-spacing: $letterSpace;
+    transition: $transSmooth;
+    // &:hover::after {
+        
+    // }
+    
+        // outline: 1px dashed lighten($colMain, $colVar);
+        // outline-offset: 3px; 
+    
+}
 // CARD
 %mainCard {
     position: relative;
@@ -95,8 +117,9 @@
             background-color: white;
             color: $colMain;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 100;
             line-height: 1.2;
+            display: block;
             width: 100%;
             text-align: center;
         }
@@ -112,7 +135,7 @@
     }
     &:hover::after {
         display: block;
-        transition: all .7s;
+        transition: all 1s;
     }
 }
 
@@ -176,17 +199,31 @@
   }
 }
 
-// %windowShadow {
-//     box-shadow: 0 0 3px $colThird;
-// }
-// %cardShadow {
-//     box-shadow: 0 1px 1px $colThird, 
-//     0 2px 2px $colThird, 
-//     0 4px 4px $colThird, 
-//     0 8px 8px $colThird,
-//     0 16px 16px $colThird;
-// }
-
+// POP UP
+%popup {
+    animation-name: popup;
+    animation-duration: .5s;
+    opacity: 1;
+    @keyframes popup {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+}
+// TOOLTIP
+%tooltip {
+    &:hover em {
+        display: block;
+      }
+      em {
+        display: none;
+        font-size: $sizeSmall;
+        font-weight: 100;
+        background: $colClear;
+        position: absolute;
+        right: 0;
+        z-index: 1000;
+      }
+}
 
 // BG IMAGE
 // %bgImage {

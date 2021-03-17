@@ -86,15 +86,34 @@ a {
   position: relative;
 }
 
+form .confirm-modal, .modal {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+form .confirm-modal, .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+form .confirm-modal .modal-content, .modal .modal-content {
+  position: relative;
+  top: 50%;
+  margin: 0 auto;
+  transform: translate(0, -50%);
+}
+
 .form-section .form-content, .form-login {
   position: relative;
   margin: 0 auto;
 }
 
-.form-section .form-content button, .form-login button, form .confirm-modal .modal-content .modal-body button, .modal .modal-content .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
+.comments .main-button, .form-section .form-content button, .form-login button, form .confirm-modal .modal-content .modal-body button, .modal .modal-content .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
   cursor: pointer;
   background-color: #bb727f;
-  padding: 0.625rem 2rem;
+  padding: 0.625rem 0.9rem;
   border: 1px solid transparent;
   outline: 1px solid transparent;
   color: #f0f0f0;
@@ -103,12 +122,24 @@ a {
   letter-spacing: 0.1rem;
   transition: 400ms all;
 }
-.form-section .form-content button:hover, .form-login button:hover, form .confirm-modal .modal-content .modal-body button:hover, .modal .modal-content .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
+.comments .main-button:hover, .form-section .form-content button:hover, .form-login button:hover, form .confirm-modal .modal-content .modal-body button:hover, .modal .modal-content .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
   background-color: #c88e98;
 }
-.form-section .form-content button:active, .form-login button:active, form .confirm-modal .modal-content .modal-body button:active, .modal .modal-content .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
+.comments .main-button:active, .form-section .form-content button:active, .form-login button:active, form .confirm-modal .modal-content .modal-body button:active, .modal .modal-content .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
   outline: 1px dashed #c88e98;
   outline-offset: 3px;
+}
+
+.comments .comment .comment-content button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  outline: 1px solid transparent;
+  color: #bb727f;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  transition: 400ms all;
 }
 
 .recipes .cards .card, .last-recipes .last-entrees .carousel .carousel-cell, .last-recipes .last-dishes .carousel .carousel-cell, .last-recipes .last-desserts .carousel .carousel-cell, .last-recipes .last-drinks .carousel .carousel-cell, .new-recipes .carousel .carousel-cell, .new-recipes .not-carousel .last-recipe {
@@ -137,8 +168,9 @@ a {
   background-color: white;
   color: #bb727f;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 100;
   line-height: 1.2;
+  display: block;
   width: 100%;
   text-align: center;
 }
@@ -153,7 +185,7 @@ a {
 }
 .recipes .cards .card:hover::after, .last-recipes .last-entrees .carousel .carousel-cell:hover::after, .last-recipes .last-dishes .carousel .carousel-cell:hover::after, .last-recipes .last-desserts .carousel .carousel-cell:hover::after, .last-recipes .last-drinks .carousel .carousel-cell:hover::after, .new-recipes .carousel .carousel-cell:hover::after, .new-recipes .not-carousel .last-recipe:hover::after {
   display: block;
-  transition: all 0.7s;
+  transition: all 1s;
 }
 
 .form-section .form-content .form-body .form-details select, .form-section .form-content .form-body .form-details input, .form-login input {
@@ -189,7 +221,7 @@ a {
   font-weight: bold;
 }
 
-.comments h2, .show-recipe .recipe-content .content-left .recipe-title, .section-title, body h2 {
+.show-recipe .recipe-content .content-left .recipe-title, .section-title, body h2 {
   text-transform: uppercase;
   margin: 1rem 0;
   line-height: 1;
@@ -197,11 +229,38 @@ a {
   font-size: 1.4rem;
   text-align: left;
 }
-.comments h2::after, .show-recipe .recipe-content .content-left .recipe-title::after, .section-title::after, body h2::after {
+.show-recipe .recipe-content .content-left .recipe-title::after, .section-title::after, body h2::after {
   content: "";
   display: block;
   width: 99%;
   border: 1px solid #b5b5b5;
+}
+
+form .confirm-modal .modal-content, .modal .modal-content {
+  animation-name: popup;
+  animation-duration: 0.5s;
+  opacity: 1;
+}
+@keyframes popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tooltip:hover em {
+  display: block;
+}
+.tooltip em {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 100;
+  background: white;
+  position: absolute;
+  right: 0;
+  z-index: 1000;
 }
 
 html {
@@ -436,41 +495,22 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 .modal {
   display: none;
   /* Hidden by default */
-  position: fixed;
-  width: 100%;
-  height: 100%;
   z-index: 100;
-  left: 0;
-  top: 0;
   overflow: auto;
   /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.4);
   /* Modal Content */
 }
 .modal .modal-content {
-  position: relative;
-  top: 50%;
   background-color: #fefefe;
-  margin: 0 auto;
   padding: 0;
   border: 1px solid #888;
   width: 80%;
   box-shadow: 0 0 3px #b5b5b5;
-  animation-name: animatetop;
-  animation-duration: 0.5s;
-  opacity: 1;
 }
 @media screen and (max-width: 720px) {
   .modal .modal-content {
     width: 100% !important;
-  }
-}
-@keyframes animatetop {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 .modal .modal-content .modal-header {
@@ -513,40 +553,21 @@ form {
 }
 form .confirm-modal {
   display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
   z-index: 100;
-  left: 0;
-  top: 0;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
   /* Modal Content */
 }
 form .confirm-modal .modal-content {
-  position: relative;
-  top: 50%;
   background-color: #fefefe;
-  margin: 0 auto;
   padding: 0;
   border: 1px solid #888;
   width: 200px;
   box-shadow: 0 0 3px #b5b5b5;
-  animation-name: animatetop;
-  animation-duration: 0.5s;
-  opacity: 1;
 }
 @media screen and (max-width: 720px) {
   form .confirm-modal .modal-content {
     width: 100% !important;
-  }
-}
-@keyframes animatetop {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 form .confirm-modal .modal-content .modal-header {
@@ -602,6 +623,9 @@ form .confirm-modal .modal-content .modal-body button {
   text-align: center;
   width: 100%;
 }
+.site-footer .site-footer-content .site-footer-head > :first-child {
+  padding: 0 0 1rem 0;
+}
 .site-footer .site-footer-content .site-footer-head :not(:first-child) {
   color: #bb727f;
 }
@@ -610,13 +634,13 @@ form .confirm-modal .modal-content .modal-body button {
 }
 .site-footer .site-footer-content .site-footer-body {
   width: 100%;
-  border: solid 1px yellow;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .site-footer .site-footer-content .site-footer-body > * {
-  border: 1px solid green;
-  width: 50%;
+  width: calc(100% / 3);
 }
 .site-footer .site-footer-content .site-footer-footer {
   padding-top: 2rem;
@@ -962,7 +986,6 @@ nav a:hover {
 }
 .comments .comment {
   padding: 0.625rem 0.9rem;
-  border-bottom: 1px solid #707070;
 }
 .comments .comment:nth-child(2n+1) {
   background-color: white;
@@ -971,6 +994,24 @@ nav a:hover {
 .comments .comment:nth-child(2n) {
   background-color: #f0f0f0;
   box-shadow: -0.2rem 0 0 0 gainsboro;
+}
+.comments .comment .comment-header {
+  padding: 0 0 1rem 0;
+}
+.comments .comment .comment-header h3 {
+  font-size: 1.4rem;
+}
+.comments .comment .comment-header h3 span {
+  font-size: 0.875rem;
+}
+.comments .comment .comment-header p {
+  font-size: 0.875rem;
+}
+.comments .comment .comment-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 /*# sourceMappingURL=style.css.map */

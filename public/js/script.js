@@ -72,3 +72,13 @@ confirmModalClose.onclick = function () { confirmModal.style.display = "none"; }
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) { if (event.target == confirmModal) { confirmModal.style.display = "none"; }; }
 
+
+
+var tooltip = document.querySelectorAll('.tooltip em');
+document.addEventListener('mousemove', fn, false);
+function fn(e) {
+    for (var i=tooltip.length; i--;) {
+        tooltip[i].style.left = e.pageX + 'px';
+        tooltip[i].style.top = e.pageY + 'px';
+    }
+}

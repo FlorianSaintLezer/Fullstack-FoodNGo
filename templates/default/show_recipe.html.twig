@@ -35,7 +35,6 @@
 
 		{# START CONFIRM DELETE MODAL #}
 		<div id="confirm-modal" class="modal">
-
 			<div class="modal-content">
 				<div class="modal-header">
 					<span class="confirm-modal-close">&times;</span>
@@ -57,6 +56,7 @@
 		{# START RECIPE CONTENT #}
 		<div class="recipe-image" style="background-image: url('{{ asset('img/' ~ recipes.image) }}');">
 			{% if app.user and app.user is same as(recipes.author) %}
+
 				<div
 					class="recipe-buttons">
 					{# BUTTON EDIT #}
@@ -64,9 +64,7 @@
 						<i class="fas fa-edit"></i>
 						<span>Modifier</span>
 					</button>
-
-
-					{# TRIGGER CONFIRM MODAL #}
+					{# BUTTON TRIGGER CONFIRM DELETE MODAL #}
 					<button type="button" class="deleteRecipes recipe-btn main-button" id="confirm-modal-button">
 						<i class="far fa-trash-alt"></i>
 						<span>Supprimer</span>
@@ -84,16 +82,13 @@
 	</form>
 	{# END - RECIPE #}
 	{# START - COMMENTS THREAD #}
-	<section
-		class="comments container">
-
+	<section class="comments container">
+		<h2>Commentaires
+		</h2>
 		{# TRIGGER MODAL #}
 		{% if app.user %}
 			<button id="modal-button" class="main-button">Donnez votre avis</button>
 		{% endif %}
-
-
-		<h2>Commentaires</h2>
 		{# START - LOOP #}
 		{% for comment in recipes.comments %}
 
@@ -107,17 +102,27 @@
 			<div class="comment">
 				<div class="comment-header">
 					<h3 class="comment-author">{{comment.author}}
-						{{ author|raw }}</h3>
-					<p>publié le
-						{{recipes.updatedAt|date("d/m/Y")}}</p>
+						<span>{{ author|raw }}</span>
+					</h3>
+					<p class="comment-date">publié le
+						{{comment.updatedAt|date("d/m/Y")}}</p>
 				</div>
 
 				<div class="comment-content">
-					{{comment.content}}
-				</div>
-				<div class="comment-footer">
-					<button type="button">EDIT (peut-être</button>
-					<button type="button">DELETE (peut-être)</button>
+					<div>
+						{{comment.content}}
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero beatae at eaque voluptates facere reprehenderit blanditiis voluptas veritatis excepturi? Nobis unde minus in quo reprehenderit, tenetur eaque fuga rerum reiciendis voluptatum voluptatibus! Quod nihil fuga placeat rerum dolorem accusamus impedit vero iure sit eaque culpa similique ratione expedita explicabo aliquam nesciunt, obcaecati reprehenderit tenetur sed. Ipsa libero impedit harum explicabo dolores temporibus, nulla adipisci omnis eius vitae cum praesentium expedita sint necessitatibus. Eius minus harum qui similique perferendis tenetur expedita, ipsa quasi enim explicabo deserunt? Aliquid autem, possimus aperiam vel nihil nostrum qui, magni culpa dolore suscipit velit ipsa cupiditate.
+					</div>
+					<div class="comment-button">
+						{% if is_granted("ROLE_ADMIN") or app.user is same as(comment.author) %}
+							<button type="button" class="main-button tooltip">
+								<span>
+									<i class="far fa-trash-alt"></i>
+								</span>
+								<em>Supprimer</em>
+							</button>
+						{% endif %}
+					</div>
 				</div>
 			</div>
 		{% endfor %}

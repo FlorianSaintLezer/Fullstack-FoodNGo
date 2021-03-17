@@ -70,8 +70,8 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         198 => [[['_route' => 'filterCategory', '_controller' => 'App\\Controller\\RecipesController::filterCategory'], ['category'], null, null, false, true, null]],
         217 => [
+            [['_route' => 'show_recipe', '_controller' => 'App\\Controller\\RecipesController::showRecipe'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'comment_add', '_controller' => 'App\\Controller\\RecipesController::addComment'], ['id'], ['POST' => 0], null, false, true, null],
-            [['_route' => 'show_recipe', '_controller' => 'App\\Controller\\RecipesController::display'], ['id'], ['GET' => 0], null, false, true, null],
         ],
         261 => [[['_route' => 'comments_edit', '_controller' => 'App\\Controller\\User\\UserCommentsController::modification'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
         277 => [[['_route' => 'comments_delete', '_controller' => 'App\\Controller\\User\\UserCommentsController::suppression'], ['id'], ['DELETE' => 0], null, false, true, null]],

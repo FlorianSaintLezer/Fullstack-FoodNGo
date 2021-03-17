@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Comments;
 use App\Entity\Recipes;
 use App\Form\CommentsType;
@@ -96,47 +97,15 @@ class RecipesController extends AbstractController
         ]);
     }
 
-    // /////////////////////////////
-    // // SHOW ONE RECIPE WITH ID //
-    // /////////////////////////////
+    // ///////////////////////////// //
+    // // SHOW ONE RECIPE WITH ID // //
+    // ///   with comment form   /// //
+    // ///////////////////////////// //
 
     /**
-     * @Route("/recipes/{id}", name="show_recipe")
+     * @Route("/recipes/{id}", name="show_recipe", methods="GET")
      */
-    public function showRecipe(Recipes $recipes): Response
-    {
-        return $this->render('default/show_recipe.html.twig', [
-            'recipes' => $recipes,
-        ]);
-    }
-
-    /**
-     * @Route("/recipes/{id}", name="comment_add",methods="POST")
-     *
-     * @param mixed $recipes
-     */
-    public function addComment(Recipes $recipes, Comments $comments = null, Request $request, EntityManagerInterface $entityManager, Security $security): Response
-    {
-        $comments = new Comments();
-        $form = $this->createForm(CommentsType::class, $comments);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $security->getUser();
-            $comments->setUpdatedAt(new \DateTime('now'))
-                ->setRecipe($recipes)
-                ->setAuthor($user)
-            ;
-            $entityManager->persist($comments);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('show_recipe', ['id' => $recipes->getId()]);
-        }
-    }
-
-    /**
-     * @Route("/recipes/{id}", name="show_recipe",methods="GET")
-     */
-    public function display(Recipes $recipes, CommentsRepository $repoComments): Response
+    public function showRecipe(Recipes $recipes, CommentsRepository $repoComments): Response
     {
         $comments = new Comments();
         $form = $this->createForm(CommentsType::class, $comments);
@@ -150,4 +119,80 @@ class RecipesController extends AbstractController
             'commentForm' => $form->createView(),
         ]);
     }
+
+    // ///////////////////////////////
+    // // ADD A COMMENT TO A RECIPE //
+    // ///////////////////////////////
+
+    /**
+     * @Route("/recipes/{id}", name="comment_add",methods="POST")
+     *
+     * @param mixed $recipes
+     */
+    public function addComment(Recipes $recipes, Comments $comments = null, Request $request): Response
+    {
+        $comments = new Comments();
+        $form = $this->createForm(CommentsType::class, $comments);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->security->getUser();
+            $comments
+                ->setUpdatedAt(new \DateTime('now'))
+
+                ->setRecipe($recipes)
+                ->setAuthor($user)
+            ;
+            $this->entityManager->persist($comments);
+            $this->entityManager->flush();
+            $this->addFlash('success', 'Commentaire ajouté');
+
+            return $this->redirectToRoute('show_recipe', ['id' => $recipes->getId()]);
+        }
+    }
+
+    // // ///////////////////////////// //
+    // // // SHOW ONE RECIPE WITH ID // //
+    // // ///   with comment form   /// //
+    // // ///////////////////////////// //
+
+    // /**
+    //  * @Route("/recipes/{id}", name="show_recipe", methods="GET")
+    //  */
+    // public function showRecipe(Recipes $recipes): Response
+    // {
+    //     $form = $this->createForm(CommentsType::class, $comments);
+
+    //     return $this->render('default/show_recipe.html.twig', [
+    //         'recipes' => $recipes,
+    //         'commentForm' => $form->createView(),
+    //     ]);
+    // }
+
+    // public function getCategories(CategoriesRepository $repo, Categories $categories)
+    // {
+    //     $categories = $repo->findAll();
+    //     $result = '';
+
+    //     $result .= $categories->getName().' - ';
+
+    //     return new Response($result);
+    // }
+
+    // public function getCategories(CategoriesRepository $repo, int $max = 3): Response
+    // {
+    //     $categories = $repo->findAll();
+
+    //     return $this->render('_embed.html.twig', [
+    //         'categories' => $categories,
+    //     ]);
+    // }
+
+    // public function getPartners(PartnersRepository $repo, int $max = 3): Response
+    // {
+    //     $partners = $repo->findAll();
+
+    //     return $this->render('_embed.html.twig', [
+    //         'partners' => $partners,
+    //     ]);
+    // }
 }

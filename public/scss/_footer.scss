@@ -13,6 +13,9 @@
         .site-footer-head {
             text-align: center;
             width: 100%;
+            > :first-child {
+                padding: $padTitle;
+            }
             :not(:first-child){
                 color: $colMain;
                 .icon-background {
@@ -22,13 +25,14 @@
         }
         .site-footer-body {
             width: 100%;
-            border: solid 1px yellow;
             display: flex;
+            flex-direction: row;
             flex-wrap: wrap;
-            >* {
-                border: 1px solid green;
-                width: 50%;
+            justify-content: space-between;
+            > * {
+                width: calc(100% / 3);
             }
+
         }
         .site-footer-footer {
             padding-top: 2rem;

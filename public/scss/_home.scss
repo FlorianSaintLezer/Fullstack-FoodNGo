@@ -70,7 +70,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
     .last-entrees, .last-dishes, .last-desserts, .last-drinks {
         width: 50%;
         padding:$padSectionMd;
@@ -78,9 +77,7 @@
             & {
                 width: 100%;
             }   
-        }
-        
-    
+        } 
         .carousel {
             .flickity-page-dots .dot {
                 height: 4px;
@@ -90,33 +87,31 @@
                 background-color: $colMain;
             }
             .carousel-cell {
-            width: 33%;
-            height: 200px;
-            margin-right: 10px;
-            background: $colThird;
-            border-radius: 5px;
-            background-position: center;
-            background-repeat: no-repeat;
-            @extend %mainCard;
-            @media screen and (max-width:$breakPLg) {
-                & {
-                    width: 50%;
-                }   
+                width: 33%;
+                height: 200px;
+                margin-right: 10px;
+                background: $colThird;
+                border-radius: 5px;
+                background-position: center;
+                background-repeat: no-repeat;
+                @extend %mainCard;
+                @media screen and (max-width:$breakPLg) {
+                    & {
+                        width: 50%;
+                    }   
+                }
+                @media screen and (max-width:$breakPMd) {
+                    & {
+                        width: 33%;
+                    }   
+                }
+                @media screen and (max-width:$breakPSm) {
+                    & {
+                        width: 100%;
+                    
+                    }   
+                }
             }
-            @media screen and (max-width:$breakPMd) {
-                & {
-                    width: 33%;
-                }   
-            }
-            @media screen and (max-width:$breakPSm) {
-                & {
-                    width: 100%;
-                 
-                }   
-            }
-
-            }
-
         }
     }
     
