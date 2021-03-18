@@ -1,17 +1,13 @@
-/* Style the tab */
 .tabs {
-    overflow: hidden;
-    border-bottom:double 1px $colMain;
-
-    width: 90%;
-    max-width: 1284px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Style the buttons that are used to open the tab content */
-  .tabs button {
+  overflow: hidden;
+  border-bottom:double 3px $colMain;
+  font-size: $sizeText;
+  width: 90%;
+  max-width: 1284px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  button {
     background-color: inherit;
     float: left;
     border: none;
@@ -19,33 +15,35 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    width: 20%;
+    &:hover {
+      background-color: lighten($colMain,20%);
+    }
+    &.activeTab {
+      background-color: $colMain;
+      border-radius: 5px 5px 0 0;
+      a {
+        color: $colClear;
+      }
+    }
   }
-  
-  /* Change background color of buttons on hover */
-  .tabs button:hover {
-    background-color: lighten($colMain,20%);
-  }
-  
-  /* Create an active/current tablink class */
-  .tabs button.active {
+  &.active {
     background-color: $colMain;
     color: white;
   }
-  
-  /* Style the tab content */
   .tabcontent {
     display: none;
     padding: 6px 12px;
     // border: 1px solid #ccc;
     // border-top: none;
+    animation: fadeEffect 5s; /* Fading effect takes 1 second */
   }
-
-  .tabcontent {
-    animation: fadeEffect 1s; /* Fading effect takes 1 second */
-  }
-  
   /* Go from zero to full opacity */
   @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
   }
+}
+  
+  
+  

@@ -7,12 +7,25 @@ function responsiveNavbar() {
 }
 
 
-// CLOSE ALERT
+// // CLOSE ALERT
 // var close = document.getElementById("alert-close");
 // close.addEventListener('click', function () {
 //   var alert = document.getElementById("alert");
 //   alert.style.display = 'none';
 // }, false);
+
+
+// var alertt = document.getElementByClassName("alert");
+// var alertClose = document.getElementbyClassName("alertClose");
+// alertClose.onclick = function () {
+//   alertt.style.display = "none"; 
+// }
+
+
+var alertpopup = document.getElementById("alert-popup");
+var closeAlert = document.getElementsByClassName("alert-close")[0];
+closeAlert.onclick = function(){ alertpopup.style.display = "none"; }
+
 
 
 

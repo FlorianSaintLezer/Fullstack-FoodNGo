@@ -4,7 +4,6 @@ html {
 }
 body {
   width: 100%;
-  min-height: 100%;
   position: relative;
   background-color: lighten($colThird,30%);
   font-family: "fontRegular";
@@ -12,6 +11,7 @@ body {
   font-size: 1rem;
   margin-bottom: 200px;
   * { box-sizing: border-box; }
+
   a {
     font-family: "fontRegular";
     color: $colSecond;

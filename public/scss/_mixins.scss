@@ -1,5 +1,5 @@
 // FLEX
-@mixin flex($fdir, $justc, $alit, $fwrap) {
+@mixin flex($fdir: row, $justc: space-between, $alit: center, $fwrap: wrap) {
     display: flex;
     flex-direction: $fdir;
     justify-content: $justc;

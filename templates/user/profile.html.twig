@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
-{% block title %}Food and Go - Edit your profile
+{% block title %}Food and Go - Votre profil
 {% endblock %}
 
 
 {% block body %}
+{# SUCCESS MESSAGE #}
+	{% for message in app.flashes('profil-success') %}
+		<div id="alert" class="alert-success">{{message}}<button id="alert-close">
+				<i class="far fa-times-circle"></i>
+			</button>
+		</div>
+	{% endfor %}
 
 	<section class="form-login">
+	<h1 class="nice-title">
+					<span>Profil et </span>
+					<span>Go</span>
+				</h1>
 		{{form_start(form)}}
 		{{form_widget(form)}}
 
@@ -15,8 +26,7 @@
 		</button>
 		{{form_end(form)}}
 		<a href="{{ path('edit_password') }}">
-			<i class="fa fa-lock" aria-hidden="true"></i>
-			Change your password
+			<i class="fa fa-lock" aria-hidden="true"></i> Changez le mot de passe
 		</a>
 	</section>
 

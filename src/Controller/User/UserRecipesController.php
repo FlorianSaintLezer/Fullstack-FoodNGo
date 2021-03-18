@@ -44,9 +44,10 @@ class UserRecipesController extends AbstractController
             $modif = null !== $recipes->getId();
             $this->entityManager->persist($recipes);
             $this->entityManager->flush();
-            $this->addFlash('Bravo', ($modif) ? 'Recette modifiée avec succès' : 'Recette rajoutée avec succès');
+            $this->addFlash('recipe-edit', ($modif) ? 'Recette modifiée avec succès' : 'Recette rajoutée avec succès');
 
-            return $this->redirectToRoute('recipes');
+            // return $this->redirectToRoute('recipes');
+            return $this->redirectToRoute('show_recipe', ['id' => $recipes->getId()]);
         }
 
         return $this->render('user/edit_recipe.html.twig', [
@@ -69,7 +70,7 @@ class UserRecipesController extends AbstractController
             // dd($recipes);
             $this->entityManager->remove($recipes);
             $this->entityManager->flush();
-            $this->addFlash('success', 'Recipe has been successfully deleted');
+            $this->addFlash('recipe-delete', 'La recette a été supprimée');
 
             return $this->redirectToRoute('recipes');
         }

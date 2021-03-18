@@ -1,40 +1,79 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Food and Go - Recipes
+{% block title %}Food and Go - Recettes
+	{% if isCategory == true %}
+		des
+		{{cat.name}}
+	{% endif %}.
 {% endblock %}
 
-{% block titre %}Recipes
-
-{% endblock %}
+{% block titre %}{% endblock %}
 
 
 {% block body %}
+	{# POPUP MESSAGE #}
+	<div class="alerts">
+		{% for message in app.flashes('recipe-delete') %}
+			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+			</div>
+		{% endfor %}
+	</div>
 
 	<section class="recipes container">
-		<div class="tabs">
-			<button class="tablink">
-				<a href="{{ path("recipes") }}">ALL</a>
+		<h1 class="nice-title">
+			<span>Les recettes
+				{% if isCategory == true %}
+					des
+					{{cat.name}}
+				{% endif %}
+				et</span>
+			<span>Go !</span>
+		</h1>
+
+
+		{# MENU #}
+		{% if isCategory == false %}
+			{% set allTab = "activeTab" %}
+		{% else %}
+			{% set allTab = "" %}
+		{% endif %}
+
+		<div class="categories tabs">
+			<button class="tablink {{allTab}}">
+				<a href="{{ path("recipes") }}">Toutes les recettes</a>
 			</button>
 			{% for category in categories %}
-				<button class="tablink">
+				{# ESSAI #}
+				{% if isCategory == true %}
+					{% if cat == category %}
+						{% set activeTab = "activeTab" %}
+					{% else %}
+						{% set activeTab = "inactive" %}
+					{% endif %}
+				{% else %}
+					{% set activeTab = "inactive" %}
+				{% endif %}
+				{# ESSAI #}
+				<button
+					class="tablink {{activeTab}}">
+					{# <button class="tablink"> #}
 					<a href="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</a>
 				</button>
 			{% endfor %}
 		</div>
-
-
-		{# <div class="tabs">
-									<button class="tablink active" onclick="openTab(event, 'filter1')">ALL</button>
-									<button class="tablink" onclick="openTab(event, 'filter2')">Starters</button>
-									<button class="tablink" onclick="openTab(event, 'filter3')">Dishes</button>
-									<button class="tablink" onclick="openTab(event, 'filter4')">Desserts</button>
-									<button class="tablink" onclick="openTab(event, 'filter5')">Drinks</button>
-								</div> #}
-		{# <div class="tabcontent" id="filter1" style="display:block;"> #}
+		{# MENU RESPONSIVE #}
+		<div class="categoriesResponsive">
+			<select name="categoriesLinks" id="category-select" onchange="location = this.value;">
+				<option value="">-- Filtrez par catégorie --</option>
+				<option value="{{ path("recipes") }}">Toutes les recettes</option>
+				{% for category in categories %}
+					<option value="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 		<div class="cards">
 			{% for recipe in recipes %}
 
-				<div class="card" style="background-image: url('{{ asset('img/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+				<div class="card" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
 					<div class="card-content">
 						<h2 class="card-title">{{recipe.title}}</h2>
 					</div>
@@ -43,23 +82,6 @@
 			{% endfor %}
 		</div>
 	</section>
-	{# </div> #}
-	{# <div id="filter2" class="tabcontent">
-						<h3>
-							Entrées
-			
-			
-						</h3>
-					</div>
-					<div id="filter3" class="tabcontent">
-						<h3>Filtre3</h3>
-					</div>
-					<div id="filter4" class="tabcontent">
-						<h3>Filtre4</h3>
-					</div>
-					<div id="filter5" class="tabcontent">
-						<h3>Filtre5</h3>
-					</div> #}
 
 
 {% endblock %}

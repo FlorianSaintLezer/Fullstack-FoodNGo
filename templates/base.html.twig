@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}FoodGO
+			{% block title %}Food&Go - Des recettes de cuisine
 			{% endblock %}
 		</title>
 		{# BOOTSTRAP is evil #}
@@ -12,19 +12,23 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous"> {# STYLE #}
 		{# FLICKTY for Carousels #}
 		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> <link rel="stylesheet" href="{{ asset("css/style.css") }}"> {% block stylesheets %}{% endblock %}
-		</head>
-		<body>
-			{% include "navbar.html.twig" %}
-			{% block body %}{% endblock %}
+		<link rel="icon" type="image/png" href="{{ asset("img/default/favicon.png") }}">
+	</head>
+	<body>
+		
+		{% include "navbar.html.twig" %}
+		
+		
+		{% block body %}{% endblock %}
+		
+		{% include "footer.html.twig" %}
+		{% block javascripts %}{% endblock %}
 
-			{% include "footer.html.twig" %}
-			{% block javascripts %}{% endblock %}
-			
-			
-			{# FLICKTY for Carousels #}
-			<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-			{# JAVASCRIPT because ... MAGIC ! #}
-			<script type="text/javascript" src="{{ asset("js/script.js") }}"></script>
 
-		</body>
-	</html>
+		{# FLICKTY for Carousels #}
+		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+		{# JAVASCRIPT because ... MAGIC ! #}
+		<script type="text/javascript" src="{{ asset("js/script.js") }}"></script>
+
+	</body>
+</html>

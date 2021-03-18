@@ -1,11 +1,9 @@
 .site-footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
+    padding: 2rem 0 1rem;
     background-color: $colMain;
     color: white;
     width: 100%;
-    padding: $padSectionMd;
+    padding-top: 2rem .4rem;
     .site-footer-content {
         display: flex;
         flex-direction: column;
@@ -18,29 +16,72 @@
             }
             :not(:first-child){
                 color: $colMain;
+                &:hover {
+                    color: $colClear;
+                    transition: all $transTime;
+                    .icon-background {
+                        color: $colMain;
+                        border: 1px solid $colClear;
+                        border-radius: 50%;
+                    }
+                }
                 .icon-background {
-                    color: white;
+                    color: $colClear;
                 } 
             }
         }
         .site-footer-body {
+            padding: $marTitle;
             width: 100%;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            @include flex(row, space-between, flex-start, wrap);
             > * {
+                padding-top: .5rem;
                 width: calc(100% / 3);
+                @media screen and (max-width:$breakPSm) {
+                    & {
+                        width: 50%;
+                    }
+                    &:first-child {
+                        width: 100%;
+                    }
+                }
+            }
+            > ul {
+                text-align: center;
+                li {
+                    a {
+                        color: $colClear;
+                        line-height: $sizeMenu;
+                        
+                        &:hover {                            
+                            background-color: $colClear;
+                            color: $colMain;
+                            transition: all $transTime;
+                        }
+                    }
+                }
+                h3 {
+                   font-weight: 600;
+                   padding: $padTitle;
+                }
             }
 
         }
         .site-footer-footer {
-            padding-top: 2rem;
+            position: relative;
             text-align: center;
             font-size: $sizeSmall;
             width: 100%;
             a {
                 color: $colClear;
+                line-height: $sizeMenu;
+                text-decoration: underline;
+                &:hover {                            
+                    background-color: $colClear;
+                    color: $colMain;
+                    transition: all $transTime;
+                    $font-size: calc(#{$sizeSmall} + .1rem)
+                }
             }
         }
     }

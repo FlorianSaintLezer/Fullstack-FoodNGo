@@ -110,7 +110,7 @@ form .confirm-modal .modal-content, .modal .modal-content {
   margin: 0 auto;
 }
 
-.comments .main-button, .form-section .form-content button, .form-login button, form .confirm-modal .modal-content .modal-body button, .modal .modal-content .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
+.comments .main-button, .blocMessage a, .main .blocMessage a, .form-section .form-content button, .form-login button, form .confirm-modal .modal-content .modal-body button, .modal .modal-content .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
   cursor: pointer;
   background-color: #bb727f;
   padding: 0.625rem 0.9rem;
@@ -122,10 +122,10 @@ form .confirm-modal .modal-content, .modal .modal-content {
   letter-spacing: 0.1rem;
   transition: 400ms all;
 }
-.comments .main-button:hover, .form-section .form-content button:hover, .form-login button:hover, form .confirm-modal .modal-content .modal-body button:hover, .modal .modal-content .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
+.comments .main-button:hover, .blocMessage a:hover, .form-section .form-content button:hover, .form-login button:hover, form .confirm-modal .modal-content .modal-body button:hover, .modal .modal-content .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
   background-color: #c88e98;
 }
-.comments .main-button:active, .form-section .form-content button:active, .form-login button:active, form .confirm-modal .modal-content .modal-body button:active, .modal .modal-content .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
+.comments .main-button:active, .blocMessage a:active, .form-section .form-content button:active, .form-login button:active, form .confirm-modal .modal-content .modal-body button:active, .modal .modal-content .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
   outline: 1px dashed #c88e98;
   outline-offset: 3px;
 }
@@ -188,7 +188,7 @@ form .confirm-modal .modal-content, .modal .modal-content {
   transition: all 1s;
 }
 
-.form-section .form-content .form-body .form-details select, .form-section .form-content .form-body .form-details input, .form-login input {
+.form-section .form-content .form-body .form-details select, .form-section .form-content .form-body .form-details input, .recipes .categoriesResponsive select, .form-login input {
   display: block;
   width: 100%;
   margin: 0 0 1.25rem;
@@ -201,7 +201,7 @@ form .confirm-modal .modal-content, .modal .modal-content {
   transition: 400ms all;
   resize: none;
 }
-.form-section .form-content .form-body .form-details select:focus, .form-section .form-content .form-body .form-details input:focus, .form-login input:focus {
+.form-section .form-content .form-body .form-details select:focus, .form-section .form-content .form-body .form-details input:focus, .recipes .categoriesResponsive select:focus, .form-login input:focus {
   outline: 1px solid #bb727f;
 }
 
@@ -226,7 +226,7 @@ form .confirm-modal .modal-content, .modal .modal-content {
   margin: 1rem 0;
   line-height: 1;
   color: #707070;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   text-align: left;
 }
 .show-recipe .recipe-content .content-left .recipe-title::after, .section-title::after, body h2::after {
@@ -269,7 +269,6 @@ html {
 
 body {
   width: 100%;
-  min-height: 100%;
   position: relative;
   background-color: white;
   font-family: "fontRegular";
@@ -322,6 +321,21 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 
 .new-recipes {
   padding: 3rem 0;
+  padding-bottom: 0;
+}
+@media screen and (max-width: 540px) {
+  .new-recipes {
+    padding: 2rem 0.4rem;
+    padding-bottom: 0;
+  }
+}
+.new-recipes .summary {
+  color: #bb727f;
+  padding: 1.4rem;
+  box-shadow: 0 0 3px #b5b5b5;
+}
+.new-recipes .summary p:first-child {
+  font-size: 1.3rem;
 }
 .new-recipes .not-carousel {
   flex-wrap: wrap;
@@ -393,6 +407,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 @media screen and (max-width: 720px) {
   .last-recipes .last-entrees, .last-recipes .last-dishes, .last-recipes .last-desserts, .last-recipes .last-drinks {
     width: 100%;
+    padding: 0.625rem 0;
   }
 }
 .last-recipes .last-entrees .carousel .flickity-page-dots .dot, .last-recipes .last-dishes .carousel .flickity-page-dots .dot, .last-recipes .last-desserts .carousel .flickity-page-dots .dot, .last-recipes .last-drinks .carousel .flickity-page-dots .dot {
@@ -481,6 +496,9 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 .show-recipe .recipe-content .content-left .recipe-description {
   box-shadow: -0.4rem 0 0 0 #bb727f;
   border-left: 0.4rem solid transparent;
+}
+.show-recipe .recipe-content .content-left .recipe-description > * {
+  padding: 0.625rem 0.9rem;
 }
 
 @media screen and (max-width: 720px) {
@@ -606,13 +624,11 @@ form .confirm-modal .modal-content .modal-body button {
 }
 
 .site-footer {
-  position: relative;
-  left: 0;
-  bottom: 0;
+  padding: 2rem 0 1rem;
   background-color: #bb727f;
   color: white;
   width: 100%;
-  padding: 2rem 0.4rem;
+  padding-top: 2rem 0.4rem;
 }
 .site-footer .site-footer-content {
   display: flex;
@@ -629,65 +645,111 @@ form .confirm-modal .modal-content .modal-body button {
 .site-footer .site-footer-content .site-footer-head :not(:first-child) {
   color: #bb727f;
 }
+.site-footer .site-footer-content .site-footer-head :not(:first-child):hover {
+  color: white;
+  transition: all 700ms;
+}
+.site-footer .site-footer-content .site-footer-head :not(:first-child):hover .icon-background {
+  color: #bb727f;
+  border: 1px solid white;
+  border-radius: 50%;
+}
 .site-footer .site-footer-content .site-footer-head :not(:first-child) .icon-background {
   color: white;
 }
 .site-footer .site-footer-content .site-footer-body {
+  padding: 1rem 0;
   width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 .site-footer .site-footer-content .site-footer-body > * {
+  padding-top: 0.5rem;
   width: calc(100% / 3);
 }
+@media screen and (max-width: 540px) {
+  .site-footer .site-footer-content .site-footer-body > * {
+    width: 50%;
+  }
+  .site-footer .site-footer-content .site-footer-body > *:first-child {
+    width: 100%;
+  }
+}
+.site-footer .site-footer-content .site-footer-body > ul {
+  text-align: center;
+}
+.site-footer .site-footer-content .site-footer-body > ul li a {
+  color: white;
+  line-height: 1.3rem;
+}
+.site-footer .site-footer-content .site-footer-body > ul li a:hover {
+  background-color: white;
+  color: #bb727f;
+  transition: all 700ms;
+}
+.site-footer .site-footer-content .site-footer-body > ul h3 {
+  font-weight: 600;
+  padding: 0 0 1rem 0;
+}
 .site-footer .site-footer-content .site-footer-footer {
-  padding-top: 2rem;
+  position: relative;
   text-align: center;
   font-size: 0.875rem;
   width: 100%;
 }
 .site-footer .site-footer-content .site-footer-footer a {
   color: white;
+  line-height: 1.3rem;
+  text-decoration: underline;
+}
+.site-footer .site-footer-content .site-footer-footer a:hover {
+  background-color: white;
+  color: #bb727f;
+  transition: all 700ms;
 }
 
 @keyframes slideDownAlert {
   0% {
     opacity: 0;
-    transform: translateY(-70px);
+    transform: translateY(-100px);
   }
   100% {
     opacity: 1;
     transform: translateY(0px);
   }
 }
-#alert {
+.alerts #alert-popup {
+  padding: 0.4rem;
   position: absolute;
   z-index: 100;
-  top: 70px;
+  top: calc(100px + 10px);
   left: 0;
   right: 0;
-  text-align: center;
-  line-height: 2em;
+  text-align: left;
+  line-height: 1.2rem;
   overflow: hidden;
-  box-shadow: 0 0 5px #333333;
-  animation: slideDownAlert 1s linear;
+  animation: slideDownAlert 0.5s linear;
   font-size: 1.2em;
 }
-#alert button {
+.alerts #alert-popup .alert-close {
   background-color: transparent;
-  color: #333333;
+  border-radius: 50%;
+  border: 1px solid white;
+  color: white;
   outline: none;
   border: none;
   font-size: 1.5em;
   vertical-align: center;
+  cursor: pointer;
 }
-#alert.alert-error {
-  background: #dc3545;
+.alerts #alert-popup.alert-error {
+  background-color: #ff5868;
 }
-#alert.alert-success {
-  background: #28a745;
+.alerts #alert-popup.alert-success {
+  background-color: #80ff9d;
 }
 
 .login {
@@ -704,7 +766,7 @@ form .confirm-modal .modal-content .modal-body button {
   width: 100%;
 }
 .form-login li {
-  color: #ff5d6d;
+  color: #ff5868;
 }
 
 @media screen and (max-width: 960px) {
@@ -767,8 +829,7 @@ nav ul li:last-child {
 }
 nav a {
   color: #b5b5b5;
-  font-size: 1.4rem;
-  font-family: "fontSerif";
+  font-family: "fontRegular";
 }
 nav a img {
   max-height: calc(100px * 0.75);
@@ -835,6 +896,25 @@ nav a:hover {
 .recipes {
   padding: 3rem 0;
 }
+.recipes .categories {
+  font-size: 1.3rem;
+}
+@media screen and (max-width: 540px) {
+  .recipes .categories {
+    display: none;
+  }
+}
+.recipes .categoriesResponsive {
+  width: 100%;
+}
+.recipes .categoriesResponsive select {
+  font-size: 1.3rem;
+}
+@media screen and (min-width: calc(540px + 1px)) {
+  .recipes .categoriesResponsive {
+    display: none;
+  }
+}
 .recipes .cards {
   display: flex;
   flex-direction: row;
@@ -898,7 +978,7 @@ nav a:hover {
   margin: 0;
 }
 .form-section .form-content .form-body .form-details li {
-  color: #ff5d6d;
+  color: #ff5868;
 }
 .form-section .form-content .form-body .form-description {
   width: 55%;
@@ -931,18 +1011,17 @@ nav a:hover {
     padding: 1rem;
   }
 }
-/* Style the tab */
 .tabs {
   overflow: hidden;
-  border-bottom: double 1px #bb727f;
+  border-bottom: double 3px #bb727f;
+  font-size: 1rem;
   width: 90%;
   max-width: 1284px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  /* Go from zero to full opacity */
 }
-
-/* Style the buttons that are used to open the tab content */
 .tabs button {
   background-color: inherit;
   float: left;
@@ -951,37 +1030,166 @@ nav a:hover {
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+  width: 20%;
 }
-
-/* Change background color of buttons on hover */
 .tabs button:hover {
   background-color: #dcb7bd;
 }
-
-/* Create an active/current tablink class */
-.tabs button.active {
+.tabs button.activeTab {
+  background-color: #bb727f;
+  border-radius: 5px 5px 0 0;
+}
+.tabs button.activeTab a {
+  color: white;
+}
+.tabs.active {
   background-color: #bb727f;
   color: white;
 }
-
-/* Style the tab content */
-.tabcontent {
+.tabs .tabcontent {
   display: none;
   padding: 6px 12px;
-}
-
-.tabcontent {
-  animation: fadeEffect 1s;
+  animation: fadeEffect 5s;
   /* Fading effect takes 1 second */
 }
-
-/* Go from zero to full opacity */
 @keyframes fadeEffect {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+.fundo {
+  animation: scales 3s alternate infinite;
+  transform-origin: center;
+}
+
+.pao-baixo {
+  animation: rotatepao 14s cubic-bezier(0.1, 0.49, 0.41, 0.97) infinite;
+  transform-origin: center;
+}
+
+.pao-cima {
+  animation: rotatepao 7s 1s cubic-bezier(0.1, 0.49, 0.41, 0.97) infinite;
+  transform-origin: center;
+}
+
+.olhos {
+  animation: olhos 2s alternate infinite;
+  transform-origin: center;
+}
+
+.left-sparks {
+  animation: left-sparks 4s alternate infinite;
+  transform-origin: 150px 156px;
+}
+
+.right-sparks {
+  animation: left-sparks 4s alternate infinite;
+  transform-origin: 310px 150px;
+}
+
+.olhos {
+  animation: olhos 2s alternate infinite;
+  transform-origin: center;
+}
+
+@keyframes scales {
+  from {
+    transform: scale(0.98);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes rotatepao {
+  0% {
+    transform: rotate(0deg);
+  }
+  50%, 60% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes olhos {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(30deg);
+  }
+}
+@keyframes left-sparks {
+  0% {
+    opacity: 0;
+  }
+}
+.main {
+  padding: 3rem 0;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main .blocMessage {
+  min-height: calc(100vh - navHeight - 236px);
+  margin: 0 auto;
+  width: 40%;
+  padding: 1rem;
+}
+.main .blocMessage h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  padding: 0 0 1rem 0;
+}
+.main .blocMessage p {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.main .blocMessage a {
+  margin-top: 1rem;
+}
+
+.blocMessage {
+  min-height: calc(100vh - navHeight);
+  margin: 0 auto;
+  width: 40%;
+  padding: 1rem;
+}
+.blocMessage h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  padding: 0 0 1rem 0;
+}
+.blocMessage p {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.blocMessage a {
+  margin-top: 1rem;
+}
+
+.path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: dash 4s alternate infinite;
+}
+
+@keyframes dash {
+  0%, 30% {
+    fill: 4B4B62;
+    stroke-dashoffset: 0;
+  }
+  80%, 100% {
+    fill: transparent;
+    stroke-dashoffset: -200;
   }
 }
 .comments .comment {
@@ -999,7 +1207,7 @@ nav a:hover {
   padding: 0 0 1rem 0;
 }
 .comments .comment .comment-header h3 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 .comments .comment .comment-header h3 span {
   font-size: 0.875rem;

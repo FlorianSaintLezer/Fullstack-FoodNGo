@@ -12,10 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-
 class AdminSecuController extends AbstractController
 {
-    
     /**
      * @Route("/signin", name="signin")
      */
@@ -30,6 +28,7 @@ class AdminSecuController extends AbstractController
             $users->setPassword($passwordCrypt);
             $em->persist($users);
             $em->flush();
+            $this->addFlash('signin-success', 'Inscription réussie. Vous pouvez vous connecter');
 
             return $this->redirectToRoute('home');
         }

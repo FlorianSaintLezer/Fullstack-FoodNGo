@@ -22,8 +22,7 @@
         }
         a {
             color: $colThird;
-            font-size:$sizeMenu;
-            font-family: "fontSerif";
+            font-family: "fontRegular";
             img {
                 max-height: calc(#{$navHeight} * 0.75);
             }

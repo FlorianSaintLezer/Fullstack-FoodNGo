@@ -1,15 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Food and Go - Home
+{% block title %}Food and Go - Accueil
 {% endblock %}
 
 {% block body %}
+	{# POPUP MESSAGE #}
+	<div class="alerts">
+		{% for message in app.flashes('signin-success') %}
+			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+			</div>
+		{% endfor %}
+	</div>
 
 	<section class="new-recipes container">
+		{% if not app.user %}
+			<div class="summary">
+				<p>Food&Go, c'est quoi ?</p>
+				<p>C'est un projet d'apprentissage aux allures d'encyclopédie de recettes de cuisine.<br>
+					On peut proposer ses recettes ou suivre celles de la communauté et  bientôt de nouvelles fonctionnalités à découvrir !
+				</p>
+			</div>
+		{% endif %}
 		<h2>Recettes à la une</h2>
 		<div class="not-carousel">
 			{% for last in lasts %}
-				<div class="last-recipe" style="background-image: url('{{ asset('img/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
+				<div class="last-recipe" style="background-image: url('{{ asset('img/recipes/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
 					<div class="card-content">
 						<h2 class="card-title">{{last.title}}</h2>
 					</div>
@@ -18,7 +33,7 @@
 		</div>
 		<div class="carousel" data-flickity='{ "wrapAround": true }'>
 			{% for last in lasts %}
-				<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
+				<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
 					<div class="card-content">
 						<h2 class="card-title">{{last.title}}</h2>
 					</div>
@@ -34,7 +49,7 @@
 			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
 				{% for recipe in recipes %}
 					{% if recipe.category.name == 'Entrées' %}
-						<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
 							<div class="card-content">
 								<h2 class="card-title">{{recipe.title}}</h2>
 							</div>
@@ -50,7 +65,7 @@
 			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
 				{% for recipe in recipes %}
 					{% if recipe.category.name == 'Plats' %}
-						<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
 							<div class="card-content">
 								<h2 class="card-title">{{recipe.title}}</h2>
 							</div>
@@ -60,13 +75,13 @@
 			</div>
 		</div>
 		{# </section>
-			<section class="last-recipes container"> #}
+													<section class="last-recipes container"> #}
 		<div class="last-desserts">
 			<h2>Les desserts</h2>
 			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
 				{% for recipe in recipes %}
 					{% if recipe.category.name == 'Desserts' %}
-						<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
 							<div class="card-content">
 								<h2 class="card-title">{{recipe.title}}</h2>
 							</div>
@@ -81,8 +96,8 @@
 			<h2>Les boissons</h2>
 			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
 				{% for recipe in recipes %}
-					{% if recipe.category.name == 'Boisson' %}
-						<div class="carousel-cell" style="background-image: url('{{ asset('img/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+					{% if recipe.category.name == 'Boissons' %}
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
 							<div class="card-content">
 								<h2 class="card-title">{{recipe.title}}</h2>
 							</div>

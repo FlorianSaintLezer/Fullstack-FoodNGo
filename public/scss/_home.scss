@@ -1,5 +1,20 @@
 .new-recipes {
     padding: $padSection;
+    padding-bottom: 0;
+    @media screen and (max-width: $breakPSm) {
+        & {
+            padding: $padSectionMd;
+            padding-bottom: 0;
+        }
+    }
+    .summary {
+        color: $colMain;
+        padding: $padInfo;
+        box-shadow: $windowShadow;
+        p:first-child{
+            font-size: $sizeMenu;
+        }
+    }
     .not-carousel {
         flex-wrap: wrap;
         justify-content: space-between;
@@ -76,6 +91,7 @@
         @media screen and (max-width:$breakPMd) {
             & {
                 width: 100%;
+                padding: 0.625rem 0;
             }   
         } 
         .carousel {

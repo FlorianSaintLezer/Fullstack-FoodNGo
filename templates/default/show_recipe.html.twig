@@ -5,6 +5,20 @@
 {% endblock %}
 
 {% block body %}
+<div class="alerts">
+	{# SUCCESS MESSAGE #}
+
+	{% for message in app.flashes('recipe-edit') %}
+		<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+		</div>
+	{% endfor %}
+	{# SUCCESS MESSAGE #}
+	{# {% for message in app.flashes('comment-add') %}
+		<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+		</div>
+	{% endfor %} #}
+	</div>
+
 
 	{# START - ADD COMMENT MODAL #}
 	<div
@@ -19,8 +33,7 @@
 			</div>
 			<div class="modal-body">
 				{{form_start(commentForm)}}
-				{{form_row(commentForm.content,{'attr':{'placeholder':'Write your comment'},'label':' '})}}
-				<button type="button" class="modal-close">Fermer</button>
+				{{form_row(commentForm.content,{'attr':{'placeholder':'Ecrivez votre commentaire ici'},'label':' '})}}
 				<button type="submit" class="btn">Partagez votre avis</button>
 				{{form_end(commentForm)}}
 			</div>
@@ -54,7 +67,7 @@
 		{# END CONFIRM DELETE MODAL #}
 
 		{# START RECIPE CONTENT #}
-		<div class="recipe-image" style="background-image: url('{{ asset('img/' ~ recipes.image) }}');">
+		<div class="recipe-image" style="background-image: url('{{ asset('img/recipes/' ~ recipes.image) }}');">
 			{% if app.user and app.user is same as(recipes.author) %}
 
 				<div
@@ -76,18 +89,19 @@
 			<div class="content-left">
 				<div class="recipe-date">{{recipes.updatedAt|date("d/m/Y")}}</div>
 				<h3 class="recipe-title">{{recipes.title}}</h3>
-				<div class="recipe-description">{{recipes.description | raw}}</div>
+				<div class="recipe-description">{{recipes.description|raw}}</div>
 			</div>
 		</div>
 	</form>
 	{# END - RECIPE #}
+
 	{# START - COMMENTS THREAD #}
 	<section class="comments container">
 		<h2>Commentaires
 		</h2>
 		{# TRIGGER MODAL #}
 		{% if app.user %}
-			<button id="modal-button" class="main-button">Donnez votre avis</button>
+			<button type="button" id="modal-button" class="main-button">Donnez votre avis</button>
 		{% endif %}
 		{# START - LOOP #}
 		{% for comment in recipes.comments %}
@@ -111,7 +125,6 @@
 				<div class="comment-content">
 					<div>
 						{{comment.content}}
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero beatae at eaque voluptates facere reprehenderit blanditiis voluptas veritatis excepturi? Nobis unde minus in quo reprehenderit, tenetur eaque fuga rerum reiciendis voluptatum voluptatibus! Quod nihil fuga placeat rerum dolorem accusamus impedit vero iure sit eaque culpa similique ratione expedita explicabo aliquam nesciunt, obcaecati reprehenderit tenetur sed. Ipsa libero impedit harum explicabo dolores temporibus, nulla adipisci omnis eius vitae cum praesentium expedita sint necessitatibus. Eius minus harum qui similique perferendis tenetur expedita, ipsa quasi enim explicabo deserunt? Aliquid autem, possimus aperiam vel nihil nostrum qui, magni culpa dolore suscipit velit ipsa cupiditate.
 					</div>
 					<div class="comment-button">
 						{% if is_granted("ROLE_ADMIN") or app.user is same as(comment.author) %}

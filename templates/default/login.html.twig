@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Food and Go - Login
+{% block title %}Food and Go - Connexion
 {% endblock %}
 
 {% block body %}
-	{% if error %}
-		<div id="alert" class="alert-error">Erreur<buttonid="alert-close">
-				<i class="far fa-times-circle"></i>
-			</button>
-		</div>
+{% if error %}
+		<i class="far fa-times-circle"></i>
+		<div id="alert" class="alert-error">Informations incorrectes<buttonid="alert-close"><i class="far fa-times-circle"></i></button></div>
 	{% endif %}
 	<section class="login container">
 		<div class="form-login">

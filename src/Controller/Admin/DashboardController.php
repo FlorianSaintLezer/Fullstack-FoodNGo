@@ -4,10 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Categories;
 use App\Entity\Comments;
+use App\Entity\Partners;
 use App\Entity\Recipes;
 use App\Entity\Users;
-use App\Entity\Roles;
-
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -19,7 +18,6 @@ class DashboardController extends AbstractDashboardController
 {
     /**
      * @Route("/admin", name="admin")
-     * 
      */
     public function index(): Response
     {
@@ -39,8 +37,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Comments', 'fas fa-comments', Comments::class);
         yield MenuItem::linkToCrud('Users', 'fas fa-users', Users::class);
         yield MenuItem::section('');
+        yield MenuItem::section('Manage Partners');
+        yield MenuItem::linkToCrud('Partners', 'far fa-handshake', Partners::class);
+        yield MenuItem::section('');
         yield MenuItem::section('Return Home');
-        yield MenuItem::linkToRoute('Back','fas fa-sign-out-alt', 'home');
+        yield MenuItem::linkToRoute('Back', 'fas fa-sign-out-alt', 'home');
     }
 
     public function adminDashboard()
@@ -51,10 +52,10 @@ class DashboardController extends AbstractDashboardController
         // $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'User tried to access a page without having ROLE_ADMIN');
     }
 
-
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('<img src="./img/logo.png"><span class="text-small">Admin</span>');
+            ->setTitle('<img src="./img/logo.png"><span class="text-small">Admin</span>')
+        ;
     }
 }

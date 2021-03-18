@@ -1,156 +1,26 @@
-// .cards {
-//   display: grid;
-//   grid-gap: 1rem;
-//   padding: 1rem;
-//   max-width: 1024px;
-//   margin: 0 auto;
-  
-//   @media (min-width: $breakPMd) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-  
-//   @media (min-width: $breakPLg) {
-//     grid-template-columns: repeat(4, 1fr);
-//   }
-// }
-
-
-
-// .card {  
-//   position: relative;
-//   display: flex;
-//   align-items: flex-end;
-//   overflow: hidden;
-//   padding: 1rem;
-//   text-align: center;
-//   color: $colClear;
-//   background-color: $colClear;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   border-radius: $borRadius;
-//   box-shadow: $cardShadow;
-//   border: 2px solid white;
-  
-//   @media (min-width: $breakPMd) {
-//     height: 400px;
-//   }
-  
-//   // &:before {
-//   //   content: '';
-//   //   position: absolute;
-//   //   top: 0;
-//   //   left: 0;
-//   //   width: 100%;
-//   //   height: 110%;
-//   //   background-size: cover;
-//   //   background-position: 0 0;
-//   //   pointer-events: none;
-    
-//   // }
-  
-//   // &:after {
-//   //   content: '';
-//   //   display: block;
-//   //   position: absolute;
-//   //   top: 0;
-//   //   left: 0;
-//   //   width: 100%;
-//   //   height: 200%;
-//   //   pointer-events: none;
-//   //   background-image: linear-gradient(
-//   //     to bottom,
-//   //     rgba(0, 0, 0, 0) 0%,
-//   //     rgba(0, 0, 0, 0.15) 25%,
-//   //     rgba(0, 0, 0, 0.30) 50%,
-//   //     rgba(0, 0, 0, 0.45) 75%,
-//   //     rgba(0, 0, 0, 0.6) 100%
-//   //   );
-
-//   //   transform: translateY(-50%);
-//   // }
-//   .card-content {
-//     position: relative;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     width: 100%;
-//     padding: 1rem;
-//     transition: transform 1s $effectBezier;
-//     z-index: 1;
-//     .card-title {
-//       background-color: white;
-//       color: $colMain;
-//       font-size: 1.3rem;
-//       font-weight: bold;
-//       line-height: 1.2;
-//       width: 160%;
-    
-//     }
-    
-//     .card-summary {
-//       font-size: 1.125rem;
-//       font-style: italic;
-//       line-height: 1.35;
-//     }
-    
-//     .card-button {
-//       @extend %mainButton;
-     
-//       margin-top: 1.5rem;
-//       text-transform: uppercase;
-//       color: white;
-//     }
-//   }
-// }
-
-
-
-// @media (hover: hover) and (min-width: $breakPMd) {
-//   .card:after {
-//     transform: translateY(0);
-//   }
-  
-//   .card-content {
-//     transform: translateY(calc(100% - 4.5rem));
-    
-//     > *:not(.card-title) {
-//       opacity: 0;
-//       transform: translateY(1rem);
-//       transition:
-//         transform #{$transTime} $effectBezier,
-//         opacity #{$transTime} $effectBezier;
-//     }
-//   }
-  
-//   .card:hover,
-//   .card:focus-within {
-//     align-items: center;
-
-//     &:before { transform: translateY(-4%); }
-//     &:after { transform: translateY(-50%); }
-
-//     .card-content {
-//       transform: translateY(0);
-
-//       > *:not(.card-title) {
-//         opacity: 1;
-//         transform: translateY(0);
-//         transition-delay: calc(#{$transTime} / 8);
-//       }
-//     }
-//   }
-  
-//   .card:focus-within {
-//     &:before,
-//     &:after,
-//     .card-content,
-//     .card-content > *:not(.card-title) {
-//       transition-duration: 0s;
-//     }
-//   }
-// }
 .recipes {
   padding:$padSection;
+  .categories{
+    font-size: $sizeMenu;
+    @media screen and (max-width:$breakPSm) {
+      & {
+        display: none;
+      }
+    }
+  }
+  .categoriesResponsive {
+    width: 100%;
+    select {
+      font-size: $sizeMenu;
+      @extend %mainInput;
+    }
+    @media screen and (min-width: calc(#{$breakPSm} + 1px)) {
+      & {
+        display: none;
+      }
+    }
+  }
+
   .cards {
     display: flex;
     flex-direction: row;

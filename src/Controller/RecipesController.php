@@ -73,6 +73,7 @@ class RecipesController extends AbstractController
         return $this->render('default/all_recipes.html.twig', [
             'recipes' => $recipes,
             'categories' => $categories,
+            'isCategory' => false,
         ]);
     }
 
@@ -89,11 +90,13 @@ class RecipesController extends AbstractController
     {
         $recipes = $repository->getRecipesByCategory($category);
         $categories = $repositoryC->findAll();
+        $cat = $repositoryC->findBy(['id' => $category])[0];
 
         return $this->render('default/all_recipes.html.twig', [
             'recipes' => $recipes,
             'categories' => $categories,
             'isCategory' => true,
+            'cat' => $cat,
         ]);
     }
 
@@ -144,7 +147,7 @@ class RecipesController extends AbstractController
             ;
             $this->entityManager->persist($comments);
             $this->entityManager->flush();
-            $this->addFlash('success', 'Commentaire ajouté');
+            $this->addFlash('comment-add', 'Commentaire ajouté');
 
             return $this->redirectToRoute('show_recipe', ['id' => $recipes->getId()]);
         }
