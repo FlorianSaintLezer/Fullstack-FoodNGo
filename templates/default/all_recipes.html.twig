@@ -18,7 +18,9 @@
 		{% endfor %}
 	</div>
 
+	{# START CONTENT  #}
 	<section class="recipes container">
+		{# SECTION TITLE #}
 		<h1 class="nice-title">
 			<span>Les recettes
 				{% if isCategory == true %}
@@ -29,20 +31,27 @@
 			<span>Go !</span>
 		</h1>
 
-
 		{# MENU #}
+
+		{# Condition to give a background to active tab #}
 		{% if isCategory == false %}
 			{% set allTab = "activeTab" %}
 		{% else %}
 			{% set allTab = "" %}
 		{% endif %}
 
+
+		{# TAB MENU #}
 		<div class="categories tabs">
+			{# Simple link to all recipes #}
 			<button class="tablink {{allTab}}">
 				<a href="{{ path("recipes") }}">Toutes les recettes</a>
 			</button>
+
+			{# Loop for link to each category #}
 			{% for category in categories %}
-				{# ESSAI #}
+
+				{# Condition to give background to active tab #}
 				{% if isCategory == true %}
 					{% if cat == category %}
 						{% set activeTab = "activeTab" %}
@@ -52,36 +61,36 @@
 				{% else %}
 					{% set activeTab = "inactive" %}
 				{% endif %}
-				{# ESSAI #}
-				<button
-					class="tablink {{activeTab}}">
-					{# <button class="tablink"> #}
+				<button class="tablink {{activeTab}}">
 					<a href="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</a>
 				</button>
 			{% endfor %}
 		</div>
+
 		{# MENU RESPONSIVE #}
 		<div class="categoriesResponsive">
 			<select name="categoriesLinks" id="category-select" onchange="location = this.value;">
 				<option value="">-- Filtrez par catégorie --</option>
 				<option value="{{ path("recipes") }}">Toutes les recettes</option>
+				{# Loop for link to each category in SELECT field #}
 				{% for category in categories %}
 					<option value="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
+
+		{# RECIPES DISPLAY #}
 		<div class="cards">
 			{% for recipe in recipes %}
-
 				<div class="card" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
 					<div class="card-content">
 						<h2 class="card-title">{{recipe.title}}</h2>
 					</div>
 				</div>
-
 			{% endfor %}
 		</div>
 	</section>
+	{# END CONTENT  #}
 
 
 {% endblock %}
