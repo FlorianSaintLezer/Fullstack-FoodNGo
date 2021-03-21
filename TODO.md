@@ -98,4 +98,7 @@ Cities  -> name (string)
 4. Historique des actions utilisateurs ou admin (comme edition/suppression par exemple)
 
 
+# METTRE A JOUR LA TODOLIST
+(mais c'est relou)
+
 # PRESENTATION
