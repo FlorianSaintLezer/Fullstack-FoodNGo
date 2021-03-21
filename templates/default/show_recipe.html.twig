@@ -102,8 +102,14 @@
 		{# TRIGGER MODAL #}
 		{% if app.user %}
 			<button type="button" id="modal-button" class="main-button">Donnez votre avis</button>
+		{% else %}
+		<button type="button" class="main-button" onclick="window.location.href='{{ path('login') }}'">Connectez-vous pour apporter votre avis</button>
 		{% endif %}
+
 		{# START - LOOP #}
+		{% if recipes.comments == null %}
+		<p>Aucun commentaire sur cette recette</p>
+		{% endif %}
 		{% for comment in recipes.comments %}
 
 			{# RECOGNIZE RECIPE AUTHOR IN COMMENTS THREAD #}

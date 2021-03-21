@@ -31,6 +31,5 @@ return [
     'recipe_add' => [[], ['_controller' => 'App\\Controller\\User\\UserRecipesController::modification'], [], [['text', '/user/recipe/add']], [], []],
     'recipe_edit' => [['id'], ['_controller' => 'App\\Controller\\User\\UserRecipesController::modification'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user/recipe/edit']], [], []],
     'recipe_delete' => [['id'], ['_controller' => 'App\\Controller\\User\\UserRecipesController::suppression'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/user/recipe']], [], []],
-    'profile' => [[], ['_controller' => 'App\\Controller\\User\\UsersController::edit'], [], [['text', '/user/profile']], [], []],
-    'edit_password' => [[], ['_controller' => 'App\\Controller\\User\\UsersController::editPassword'], [], [['text', '/user/editpassword']], [], []],
+    'profile' => [[], ['_controller' => 'App\\Controller\\User\\UsersController::profile'], [], [['text', '/user/profile']], [], []],
 ];

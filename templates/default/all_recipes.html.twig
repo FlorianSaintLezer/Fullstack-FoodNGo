@@ -17,9 +17,12 @@
 			</div>
 		{% endfor %}
 	</div>
+	
+	{% include "searchbar.html.twig" %}
 
 	{# START CONTENT  #}
-	<section class="recipes container">
+	<section
+		class="recipes container">
 		{# SECTION TITLE #}
 		<h1 class="nice-title">
 			<span>Les recettes
@@ -30,6 +33,9 @@
 				et</span>
 			<span>Go !</span>
 		</h1>
+		<div class="addrecipearea container">
+		<button type="button" class="add-recipes-button" onclick="window.location.href='{{ path('recipe_add') }}'">Ajoutez votre recette</button>
+		</div>
 
 		{# MENU #}
 
@@ -42,7 +48,8 @@
 
 
 		{# TAB MENU #}
-		<div class="categories tabs">
+		<div
+			class="categories tabs">
 			{# Simple link to all recipes #}
 			<button class="tablink {{allTab}}">
 				<a href="{{ path("recipes") }}">Toutes les recettes</a>

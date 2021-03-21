@@ -15,8 +15,8 @@ class UsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, ['disabled' => true])
-            ->add('email', EmailType::class, ['disabled' => true])
+            // ->add('username', TextType::class, ['disabled' => true])
+            // ->add('email', EmailType::class, ['disabled' => true])
             ->add('imageFile', FileType::class, ['required' => false])
 
         ;

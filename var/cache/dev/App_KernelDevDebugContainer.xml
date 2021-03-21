@@ -3637,8 +3637,9 @@
       <tag name="container.private" package="symfony/twig-bundle" version="5.2"/>
       <argument type="service" id="twig.loader.native_filesystem"/>
       <argument type="collection">
+        <argument key="cache">false</argument>
+        <argument key="auto_reload">true</argument>
         <argument key="autoescape">name</argument>
-        <argument key="cache">/home/vlti9184/epcf2.floriansaintlezer.fr/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -3754,12 +3755,6 @@
         <argument key="/home/vlti9184/epcf2.floriansaintlezer.fr/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
       <argument>/home/vlti9184/epcf2.floriansaintlezer.fr/templates</argument>
-    </service>
-    <service id="twig.template_cache_warmer" class="Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheWarmer">
-      <tag name="kernel.cache_warmer"/>
-      <tag name="container.service_subscriber" id="twig"/>
-      <argument type="service" id=".service_locator.aq4MYft.twig.template_cache_warmer"/>
-      <argument type="service" id="twig.template_iterator"/>
     </service>
     <service id="twig.loader.native_filesystem" class="Twig\Loader\FilesystemLoader">
       <tag name="twig.loader"/>
@@ -6903,7 +6898,13 @@
         <argument key="recipes" type="service" id=".errored..service_locator.WwoHeyl.App\Entity\Recipes"/>
       </argument>
     </service>
-    <service id=".service_locator.gSIIm0K" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.lsCK7vy" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repoR" type="service" id="App\Repository\RecipesRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.pUEOZWO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminSecuController::login" type="service" id=".service_locator.d2me_LS"/>
@@ -7022,7 +7023,7 @@
         <argument key="App\Controller\User\UserCommentsController::modification" type="service" id=".service_locator.TgQm.qo"/>
         <argument key="App\Controller\User\UserCommentsController::suppression" type="service" id=".service_locator.rR.Sroq"/>
         <argument key="App\Controller\User\UserRecipesController::suppression" type="service" id=".service_locator.WwoHeyl"/>
-        <argument key="App\Controller\User\UsersController::editPassword" type="service" id=".service_locator..tt6s91"/>
+        <argument key="App\Controller\User\UsersController::profile" type="service" id=".service_locator.lsCK7vy"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::terminate" type="service" id=".service_locator.KfwZsne"/>
@@ -7145,7 +7146,7 @@
         <argument key="App\Controller\User\UserCommentsController:modification" type="service" id=".service_locator.TgQm.qo"/>
         <argument key="App\Controller\User\UserCommentsController:suppression" type="service" id=".service_locator.rR.Sroq"/>
         <argument key="App\Controller\User\UserRecipesController:suppression" type="service" id=".service_locator.WwoHeyl"/>
-        <argument key="App\Controller\User\UsersController:editPassword" type="service" id=".service_locator..tt6s91"/>
+        <argument key="App\Controller\User\UsersController:profile" type="service" id=".service_locator.lsCK7vy"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:terminate" type="service" id=".service_locator.KfwZsne"/>
@@ -7662,18 +7663,6 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.PQK0.4p" method="withContext"/>
     </service>
-    <service id=".service_locator.aq4MYft" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="twig" type="service" id="twig"/>
-      </argument>
-    </service>
-    <service id=".service_locator.aq4MYft.twig.template_cache_warmer" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="twig.template_cache_warmer"/>
-      <argument>twig.template_cache_warmer</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.aq4MYft" method="withContext"/>
-    </service>
     <service id=".service_locator.XXv1IfR" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7781,12 +7770,12 @@
       <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.gSIIm0K"/>
+      <argument type="service" id=".service_locator.pUEOZWO"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.gSIIm0K"/>
+      <argument type="service" id=".service_locator.pUEOZWO"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface">
       <argument type="collection"/>
@@ -8246,7 +8235,7 @@
     <service id="Vich\UploaderBundle\Form\Type\VichImageType" alias="vich_uploader.form.type.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.Kbr2i2X" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.gSIIm0K"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.pUEOZWO"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

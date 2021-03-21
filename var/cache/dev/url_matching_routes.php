@@ -22,8 +22,7 @@ return [
         '/comments' => [[['_route' => 'comments', '_controller' => 'App\\Controller\\User\\UserCommentsController::comments'], null, null, null, true, false, null]],
         '/user/comments/add' => [[['_route' => 'comments_add', '_controller' => 'App\\Controller\\User\\UserCommentsController::modification'], null, null, null, false, false, null]],
         '/user/recipe/add' => [[['_route' => 'recipe_add', '_controller' => 'App\\Controller\\User\\UserRecipesController::modification'], null, null, null, false, false, null]],
-        '/user/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\User\\UsersController::edit'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/user/editpassword' => [[['_route' => 'edit_password', '_controller' => 'App\\Controller\\User\\UsersController::editPassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/user/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\User\\UsersController::profile'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

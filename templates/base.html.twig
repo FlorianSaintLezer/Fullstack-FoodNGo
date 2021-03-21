@@ -12,16 +12,19 @@
 		{# FONTAWESOME is awesome #}
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous"> {# STYLE #}
 		{# FLICKTY for Carousels #}
-		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> <link rel="stylesheet" href="{{ asset("css/style.css") }}"> {% block stylesheets %}{% endblock %}
+		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 		<link rel="icon" type="image/png" href="{{ asset("img/default/favicon.png") }}">
+		<link rel="stylesheet" href="{{ asset("css/style.css") }}"> 
+		<link rel="stylesheet" href="{{ asset("css/dartmerde.css") }}">
+		{% block stylesheets %}{% endblock %}
 	</head>
 	<body>
+	<div class="main-content">
 		
 		{% include "navbar.html.twig" %}
 		
-		
 		{% block body %}{% endblock %}
-		
+		</div>
 		{% include "footer.html.twig" %}
 		{% block javascripts %}{% endblock %}
 

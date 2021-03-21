@@ -110,7 +110,7 @@ form .confirm-modal .modal-content, .modal .modal-content {
   margin: 0 auto;
 }
 
-.comments .main-button, .blocMessage a, .main .blocMessage a, .form-section .form-content button, .form-login button, form .confirm-modal .modal-content .modal-body button, .modal .modal-content .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
+.comments .main-button, .blocMessage a, .main .blocMessage a, #header .add-recipes-button, .form-section .form-content button, .form-login button, form .confirm-modal .modal-content .modal-body button, .modal .modal-content .modal-body button, .show-recipe .recipe-image .recipe-buttons .recipe-btn {
   cursor: pointer;
   background-color: #bb727f;
   padding: 0.625rem 0.9rem;
@@ -122,10 +122,10 @@ form .confirm-modal .modal-content, .modal .modal-content {
   letter-spacing: 0.1rem;
   transition: 400ms all;
 }
-.comments .main-button:hover, .blocMessage a:hover, .form-section .form-content button:hover, .form-login button:hover, form .confirm-modal .modal-content .modal-body button:hover, .modal .modal-content .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
+.comments .main-button:hover, .blocMessage a:hover, #header .add-recipes-button:hover, .form-section .form-content button:hover, .form-login button:hover, form .confirm-modal .modal-content .modal-body button:hover, .modal .modal-content .modal-body button:hover, .show-recipe .recipe-image .recipe-buttons .recipe-btn:hover {
   background-color: #c88e98;
 }
-.comments .main-button:active, .blocMessage a:active, .form-section .form-content button:active, .form-login button:active, form .confirm-modal .modal-content .modal-body button:active, .modal .modal-content .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
+.comments .main-button:active, .blocMessage a:active, #header .add-recipes-button:active, .form-section .form-content button:active, .form-login button:active, form .confirm-modal .modal-content .modal-body button:active, .modal .modal-content .modal-body button:active, .show-recipe .recipe-image .recipe-buttons .recipe-btn:active {
   outline: 1px dashed #c88e98;
   outline-offset: 3px;
 }
@@ -188,7 +188,7 @@ form .confirm-modal .modal-content, .modal .modal-content {
   transition: all 1s;
 }
 
-.form-section .form-content .form-body .form-details select, .form-section .form-content .form-body .form-details input, .recipes .categoriesResponsive select, .form-login input {
+#header .searchBar input, .form-section .form-content .form-body .form-details select, .form-section .form-content .form-body .form-details input, .recipes .categoriesResponsive select, .form-login input {
   display: block;
   width: 100%;
   margin: 0 0 1.25rem;
@@ -201,7 +201,7 @@ form .confirm-modal .modal-content, .modal .modal-content {
   transition: 400ms all;
   resize: none;
 }
-.form-section .form-content .form-body .form-details select:focus, .form-section .form-content .form-body .form-details input:focus, .recipes .categoriesResponsive select:focus, .form-login input:focus {
+#header .searchBar input:focus, .form-section .form-content .form-body .form-details select:focus, .form-section .form-content .form-body .form-details input:focus, .recipes .categoriesResponsive select:focus, .form-login input:focus {
   outline: 1px solid #bb727f;
 }
 
@@ -1011,6 +1011,23 @@ nav a:hover {
     padding: 1rem;
   }
 }
+#header {
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#header .searchBar {
+  width: 60%;
+}
+#header .searchBar input {
+  width: 100%;
+}
+#header .add-recipes-button {
+  width: 100%;
+}
+
 .tabs {
   overflow: hidden;
   border-bottom: double 3px #bb727f;

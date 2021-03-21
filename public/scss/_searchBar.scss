@@ -1,0 +1,18 @@
+#header {
+    padding: $padSection;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    .searchBar {
+        width: 60%;
+        input {
+            @extend %mainInput;
+            width: 100%;
+        }
+    }
+    .add-recipes-button {
+        @extend %mainButton;
+        width: 100%;
+    }
+}
