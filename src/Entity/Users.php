@@ -62,8 +62,8 @@ class Users implements UserInterface
      */
     private $password;
 
+    // * @Assert\NotBlank()
     /**
-     * @Assert\NotBlank()
      * @Assert\EqualTo(
      *      propertyPath="password",
      *      message="passwords don't match"
@@ -103,7 +103,6 @@ class Users implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
-
 
     public function __construct()
     {
@@ -154,6 +153,7 @@ class Users implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }
@@ -222,6 +222,8 @@ class Users implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+        $this->updatedAt = new \DateTime('now');
+
         return $this;
     }
 

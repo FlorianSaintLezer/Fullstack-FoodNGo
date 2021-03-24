@@ -1,33 +1,43 @@
 @keyframes slideDownAlert {
     0% {
         opacity: 0;
-        transform: translateY(-70px);
+        transform: translateY(-#{$navHeight});
     }
     100% {
         opacity: 1;
         transform: translateY(0px);
     }
 }
-#alert {
-    position: absolute;
-    z-index: 100;
-    top: 70px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    line-height: 2em;
-    overflow: hidden;
-    box-shadow: 0 0 5px $colDark;
-    animation: slideDownAlert 1s linear;
-    font-size: 1.2em;
-    button {
-        background-color:transparent ;
-        color: $colDark;
-        outline: none;
-        border: none;
-        font-size: 1.5em;
-        vertical-align: center
+.alerts {
+    #alert-popup {
+        padding: .4rem;
+        position: absolute;
+        z-index: 100;
+        top: calc(#{$navHeight} + 10px);
+        left: 0;
+        right: 0;
+        text-align: left;
+        line-height: 1.2rem;
+        overflow: hidden;
+        // box-shadow: 0 0 5px $colDark;
+        animation: slideDownAlert .5s linear;
+        font-size: 1.2em;
+        .alert-close {
+            background-color:transparent ;
+            border-radius: 50%;
+            border: 1px solid white ;
+            color: $colClear;
+            outline: none;
+            border: none;
+            font-size: 1.5em;
+            vertical-align: center;
+            cursor: pointer;
+        }
+        &.alert-error {
+            background-color: $colError2;
+        }
+        &.alert-success {
+            background-color: $colSuccess2;
+        }
     }
-    &.alert-error {background:$colError;}
-    &.alert-success {background: $colSuccess;}
 }

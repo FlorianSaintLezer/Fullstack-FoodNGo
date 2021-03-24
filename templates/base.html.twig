@@ -2,24 +2,41 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			{% block title %}FoodGO
+			{% block title %}Food&Go - Des recettes de cuisine
 			{% endblock %}
 		</title>
-		{# BOOTSTRAP #}
-		{# <link
-		rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> #}
-		{# FONTAWESOME #}
-		<link
-		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
-		{# STYLE #}
-		<link rel="stylesheet" href="{{ asset("css/style.css") }}"> {% block stylesheets %}{% endblock %}
-		</head>
-		<body>
-            {% include "navbar.html.twig" %}
-			{% block body %}{% endblock %}
-			{% block javascripts %}{% endblock %}
-			<script type="text/javascript" src="{{ asset("js/script.js") }}"></script>
+		{# BOOTSTRAP is evil #}
+		{# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> #}
+		{# FONTAWESOME is awesome #}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous"> {# STYLE #}
+		{# FLICKTY for Carousels #}
+		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+		<link rel="icon" type="image/png" href="{{ asset("img/default/favicon.png") }}">
+		<link rel="stylesheet" href="{{ asset("css/style.css") }}"> 
+		<link rel="stylesheet" href="{{ asset("css/dartmerde.css") }}">
+		{% block stylesheets %}{% endblock %}
+	</head>
+	<body>
+<<<<<<< HEAD
+		<div id="main-content">
+=======
+	<div class="main-content">
+		
+>>>>>>> 2f08515ab6c14f2a5000bf2ee54820b42f638b08
+		{% include "navbar.html.twig" %}
+		
+		{% block body %}{% endblock %}
+		</div>
+		{% include "footer.html.twig" %}
+		{% block javascripts %}{% endblock %}
 
-		</body>
-	</html>
+
+		{# FLICKTY for Carousels #}
+		<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+		{# JAVASCRIPT because ... MAGIC ! #}
+		<script type="text/javascript" src="{{ asset("js/script.js") }}"></script>
+
+	</body>
+</html>

@@ -1,24 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Food and Go - Login
+{% block title %}Food and Go - Connexion
 {% endblock %}
 
 {% block body %}
-	{% if error %}
-		<div id="alert" class="alert-error">Error<buttonid="alert-close"><i class="far fa-times-circle"></i></button></div>
+{% if error %}
+		<i class="far fa-times-circle"></i>
+		<div id="alert" class="alert-error">Informations incorrectes<buttonid="alert-close"><i class="far fa-times-circle"></i></button></div>
 	{% endif %}
-	<section class="form-login">
-		<form method="post" action="{{path('login')}}">
-			<h2>Please login</h2>
-			<div class="form-group">
-				<Label>Username</Label>
-				<input type="username" require name="_username" class="form-control" placeholder="Username">
-			</div>
-			<div class="form-group">
-				<Label>Password</Label>
-				<input type="password" require name="_password" class="form-control" placeholder="Password">
-			</div>
-			<button type="submit">Login</button>
-		</form>
+	<section class="login container">
+		<div class="form-login">
+			<form method="post" action="{{path('login')}}">
+				<h1 class="nice-title">
+					<span>Connecte-toi et</span>
+					<span>Go</span>
+				</h1>
+				<div class="form-group">
+					{# <Label>Username</Label> #}
+					<input type="username" require name="_username" class="form-control" placeholder="Nom d'utilisateur">
+				</div>
+				<div class="form-group">
+					{# <Label>Password</Label> #}
+					<input type="password" require name="_password" class="form-control" placeholder="Mot de passe">
+				</div>
+				<button class="main-button" type="submit">Connexion</button>
+			</form>
+				<p class="under-button">Première visite ? <a href="{{ path('signin') }}" class="go">Je m'inscris.</a>
+				</p>
+		</div>
 	</section>
 {% endblock %}

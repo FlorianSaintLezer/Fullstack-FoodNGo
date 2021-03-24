@@ -1,12 +1,81 @@
+html {
+  //  overflow-y: scroll; 
+  height: 100%;
+}
 body {
-   background-color: lighten($colThird,30%);
-   font-family: "fontRegular";
-   a {
+  width: 100%;
+  position: relative;
+  background-color: lighten($colThird,30%);
+  font-family: "fontRegular";
+  color: $colSecond;
+  font-size: 1rem;
+  * { box-sizing: border-box; }
+  #main-content {
+    position: relative;
+    top: 0;
+    min-height: calc(100vh - 284px);
+  }
+
+  a {
     font-family: "fontRegular";
-    h1,h2,h3,h4,h5,h6 {
-      font-family: "fontBlack";
- 
+    color: $colSecond;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: "fontRegular";
+  }
+  h2 {
+    @extend %section-title;
+  }
+  
+ }
+ .container {
+  @extend %container;
+  @media screen and (max-width:$breakPMd) {
+    & { 
+      width: 100%;
     }
   }
-   * { box-sizing: border-box; }
  }
+//  @media screen and (max-width:$breakPMd) {
+//   .container { 
+//     width: 100%;
+//   }
+// }
+
+.under-button {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 100;
+  :first-child {
+      color: $colMain;
+      font-family: "fontRegular";
+      font-weight: 600;
+  }
+}
+.nice-title { 
+  @extend %nice-title;
+}
+
+.section-title {
+  @extend %section-title;
+}
+.tooltip {
+  @extend %tooltip;
+}
+
+.scroll {
+  &-top {
+    right: 25px;
+  }
+  position: fixed;
+  bottom: 25px;
+
+  z-index: 99;
+  outline: none;
+  background-color: #efefef;
+  border: 1px solid #333;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+}

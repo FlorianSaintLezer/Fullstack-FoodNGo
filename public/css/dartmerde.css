@@ -1,0 +1,187 @@
+:root {
+    /* // COLORS
+    // THEME */
+    --colMain : rgba(187, 114, 127, 1);
+    --colSecond : rgba(112, 112, 112, 1);
+    --colThird : rgba(181, 181, 181, 1);
+    /* // SECONDARY */
+    --colDark: rgba(51,51,51,1);
+    --colLight: rgba(240,240,240,1);
+    --colClear: rgba(255,255,255,1);
+    --colOverlay: rgba(0,0,0,0.4);
+    /* // ALERT */
+    --colSuccess: rgba(40,167,69,1);
+    --colInfo: rgba(23,162,184,1);
+    --colWarning: rgba(255,193,7,1);
+    --colError: rgba(220,53,69,1);
+    --colSuccess2: rgb(128, 255, 157);
+    --colInfo2: rgba(94,233,255,1);
+    --colWarning2: rgba(255,255,69,1);
+    --colError2: rgba(255,88,104,1);
+    /* //NETWORK */
+    --colNetFb:rgba(52, 82, 139, 1);
+    --colNetTw:rgba(88, 175, 237, 1);
+    --colNetGp:rgba(221, 75, 61, 1);
+    --colNetIg:rgba(192, 51, 130, 1);
+    
+    /* //DARKEN - LIGHTEN VARIANCE */
+    --colVar: 8%;
+  
+
+
+/* //SIZE
+    //IMAGE */
+    --imgBig: 200px;
+    --imgSmall: 100px;
+    /* //NAVBAR  */
+    --navHeight:100px;
+
+/* //BORDER - OUTLINE */
+    --borTransp: 1px solid transparent;
+    --border2: 1px solid var(--colSecond);
+    /* // RADIUS */
+    --borRadius: 10px;
+
+/* // CURSOR */
+    --cursorClick: pointer;
+
+/* // FONT */
+    --sizeSmall:0.875rem;
+    --sizeText:1rem; 
+    --sizeMenu:1.3rem;
+    --sizeTitle1: 1.8125rem; 
+    --sizeTitle2: 2.125rem; 
+    --letterSpace: 0.1rem; 
+    --weightBold: 800;
+    --weightReg:500; 
+    --weightThin:100; 
+
+/* //BUTTON */
+    --colBtn: var(--colMain);
+    --padBtn: 15px; 
+    
+
+/* // PADDING & MARGING */
+    --padInfo: 1.4rem;
+    --padWindow: 2.5rem;
+    --padSection: 3rem 0; 
+    --padSectionMd: 2rem 0.4rem; 
+    /* //Title */
+    --padTitle: 0 0 1rem 0; 
+    --marTitle: 1rem 0;
+    --padBtn: .625rem .9rem;
+    --padInput: .625rem .9rem; 
+    --marInput: 0 0 1.25rem; 
+
+
+/* // TRANSITIONS  */
+    --transSmooth: 400ms all; 
+    /* // EFFECTS */
+    --effectBezier: cubic-bezier(0.2, 1, 0.3, 1);
+    /* // GLOBAL TRANSITION TIME */
+    --transTime: 700ms;
+
+/* // BREAKPOINTS */
+--breakPSm: 540px;
+--breakPMd: 720px;
+--breakPLg: 960px;
+
+/* // SHADOWS */
+--windowShadow: 0 0 3px var(--colThird);
+--cardShadow:0 1px 1px var(--colThird), 0 2px 2px --colThird, 0 4px 4px var(--colThird), 0 8px 8px var(--colThird), 0 16px 16px var(--colThird);
+
+}
+
+
+
+#header {
+    margin: 2rem auto 0;
+    box-shadow: var(--windowShadow);
+    padding: var(--padInfo);
+}
+    #header .searchBar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+    #header .searchBar input {
+        display: block;
+        width: calc(100% - 100px);
+        padding: var(--padInput);
+        border: var(--border2);
+        outline: var(--borTransp);
+        color: var(--colMain);
+        font-size: var(--sizeSmall);
+        font-weight: var(--weightReg);
+        transition: var(--transSmooth);
+        resize: none;
+    }
+    #header .searchBar button {
+        display: block;
+        width: 100px;
+        height: 38px;
+    }
+    #header .add-recipes-button {
+        cursor: var(--cursorClick);
+        background-color: var(--colMain);
+        padding: var(--padBtn);
+        border: var(--borTransp);
+        outline: var(--borTransp);
+        color: var(--colLight);
+        font-weight: var(--weightBold);
+        font-size: var(--sizeSmall) ;
+        letter-spacing: var(--letterSpace);
+        transition: var(--transSmooth);
+        width: 200px;
+    }
+    
+    @media screen and (max-width: 540px) {
+        #header .searchbar input{
+            width: 100%;
+        }
+    }
+
+
+  
+    .addrecipearea {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .add-recipes-button {
+        text-align: center;
+        cursor: var(--cursorClick);
+        background-color: var(--colMain);
+        padding: var(--padBtn);
+        border: var(--borTransp);
+        outline: var(--borTransp);
+        color: var(--colLight);
+        font-weight: var(--weightBold);
+        font-size: var(--sizeSmall) ;
+        letter-spacing: var(--letterSpace);
+        transition: var(--transSmooth);
+        width: 200px;
+        margin-bottom: 1rem;
+    }
+    .add-recipes-button:hover {
+        background-color: rgba(187, 114, 127, 0.92);
+    }
+    .add-recipes-button:active {
+        outline: 1px dashed rgba(187, 114, 127, 0.92);
+        outline-offset: 3px;
+    }
+    @media screen and (max-width: 540px) {
+        .add-recipes-button {
+            width: 100%;
+        }
+    }
+
+    .main-content {
+        position: relative;
+        top: 0;
+        min-height: calc(100vh - 284px);
+    }
+    .comments {
+        padding-bottom: 2rem ;
+    }

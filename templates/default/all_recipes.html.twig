@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+{% block title %}Food and Go - Recettes
+	{% if isCategory == true %}
+		des
+		{{cat.name}}
+	{% endif %}.
+{% endblock %}
+
+{% block titre %}{% endblock %}
+
+
+{% block body %}
+	{# POPUP MESSAGE #}
+	<div class="alerts">
+		{% for message in app.flashes('recipe-delete') %}
+			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+			</div>
+		{% endfor %}
+	</div>
+	
+	{% include "searchbar.html.twig" %}
+
+	{# START CONTENT  #}
+	<section
+		class="recipes container">
+		{# SECTION TITLE #}
+		<h1 class="nice-title">
+			<span>Les recettes
+				{% if isCategory == true %}
+					des
+					{{cat.name}}
+				{% endif %}
+				et</span>
+			<span>Go !</span>
+		</h1>
+<<<<<<< HEAD
+		{# ADD RECIPE #}
+		<div class="addrecipearea">
+=======
+		<div class="addrecipearea container">
+>>>>>>> 2f08515ab6c14f2a5000bf2ee54820b42f638b08
+		<button type="button" class="add-recipes-button" onclick="window.location.href='{{ path('recipe_add') }}'">Ajoutez votre recette</button>
+		</div>
+
+		{# MENU #}
+
+		{# Condition to give a background to active tab #}
+		{% if isCategory == false %}
+			{% set allTab = "activeTab" %}
+		{% else %}
+			{% set allTab = "" %}
+		{% endif %}
+
+
+		{# TAB MENU #}
+		<div
+			class="categories tabs">
+			{# Simple link to all recipes #}
+			<button class="tablink {{allTab}}">
+				<a href="{{ path("recipes") }}">Toutes les recettes</a>
+			</button>
+
+			{# Loop for link to each category #}
+			{% for category in categories %}
+
+				{# Condition to give background to active tab #}
+				{% if isCategory == true %}
+					{% if cat == category %}
+						{% set activeTab = "activeTab" %}
+					{% else %}
+						{% set activeTab = "inactive" %}
+					{% endif %}
+				{% else %}
+					{% set activeTab = "inactive" %}
+				{% endif %}
+				<button class="tablink {{activeTab}}">
+					<a href="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</a>
+				</button>
+			{% endfor %}
+		</div>
+
+		{# MENU RESPONSIVE #}
+		<div class="categoriesResponsive">
+			<select name="categoriesLinks" id="category-select" onchange="location = this.value;">
+				<option value="">-- Filtrez par catégorie --</option>
+				<option value="{{ path("recipes") }}">Toutes les recettes</option>
+				{# Loop for link to each category in SELECT field #}
+				{% for category in categories %}
+					<option value="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		{# RECIPES DISPLAY #}
+		<div class="cards">
+			{% for recipe in recipes %}
+				<div class="card" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+					<div class="card-content">
+						<h2 class="card-title">{{recipe.title}}</h2>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	{# END CONTENT  #}
+
+
+{% endblock %}

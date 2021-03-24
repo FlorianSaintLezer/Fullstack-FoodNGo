@@ -1,18 +1,138 @@
-.latest-recipes {
-    width: 90%;
-    max-width: 1024px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 200px 200px;
-    &:first-child { 
-        grid-column: span 6;
-        grid-row: span 2;
+.new-recipes {
+    padding: $padSection;
+    padding-bottom: 0;
+    @media screen and (max-width: $breakPSm) {
+        & {
+            padding: $padSectionMd;
+            padding-bottom: 0;
+        }
     }
-    &:nth-child(2) { 
-        grid-column: span 6;
+    .summary {
+        color: $colMain;
+        padding: $padInfo;
+        box-shadow: $windowShadow;
+        p:first-child{
+            font-size: $sizeMenu;
+        }
     }
-    &:last-child { 
-        grid-column: span 6; 
+    .not-carousel {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 300px;
+        .last-recipe {
+            @extend %mainCard;
+            &:first-child {
+                width: 50% ;
+                height: 300px;
+            }
+            &:nth-child(2), &:nth-child(3) {
+                width: 50%;
+                height: 150px;
+            }
+            @media screen and (min-width:$breakPLg) {
+                & {
+                    width:calc(100% / 3) !important;
+                    height: 300px !important;
+                }     
+            }
+        }
+        @media screen and (min-width:calc(#{$breakPSm} + 1px)) {  
+            & {
+                display: flex;
+            }    
+        }
+        @media screen and (max-width: $breakPSm) {  
+            & {
+                display: none;
+            } 
+        }
+    }
+    .carousel {
+        .flickity-page-dots .dot {
+            height: 4px;
+            width: 40px;
+            margin: 0;
+            border-radius: 0;
+            background-color: $colMain;
+        }
+        // background: #EEE;
+        .carousel-cell {
+          width: 100%;
+          height: 300px;
+          margin-right: 10px;
+          background: $colThird;
+          border-radius: 5px;
+          background-position: center;
+          background-repeat: no-repeat;
+          @extend %mainCard;
+        }
+        @media screen and (min-width:calc(#{$breakPSm} + 1px)) {  
+            & {
+                display: none;
+            }    
+        }
+        @media screen and (max-width: $breakPSm) {
+            & {
+                display: block;
+            }
+        }   
     }
 }
+
+.last-recipes {
+    padding: $padSection;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .last-entrees, .last-dishes, .last-desserts, .last-drinks {
+        width: 50%;
+        padding:$padSectionMd;
+        @media screen and (max-width:$breakPMd) {
+            & {
+                width: 100%;
+                padding: 0.625rem 0;
+            }   
+        } 
+        .carousel {
+            .flickity-page-dots .dot {
+                height: 4px;
+                width: 40px;
+                margin: 0;
+                border-radius: 0;
+                background-color: $colMain;
+            }
+            .carousel-cell {
+                width: 33%;
+                height: 200px;
+                margin-right: 10px;
+                background: $colThird;
+                border-radius: 5px;
+                background-position: center;
+                background-repeat: no-repeat;
+                @extend %mainCard;
+                @media screen and (max-width:$breakPLg) {
+                    & {
+                        width: 50%;
+                    }   
+                }
+                @media screen and (max-width:$breakPMd) {
+                    & {
+                        width: 33%;
+                    }   
+                }
+                @media screen and (max-width:$breakPSm) {
+                    & {
+                        width: 100%;
+                    
+                    }   
+                }
+            }
+        }
+    }
+    
+}
+
+
+
+

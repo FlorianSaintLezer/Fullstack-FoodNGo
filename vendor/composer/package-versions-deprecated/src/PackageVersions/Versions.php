@@ -66,6 +66,7 @@ final class Versions
   'easycorp/easyadmin-bundle' => 'v3.2.7@48f71e3c95a5b1afffd99e5cee350f313dad4038',
   'egulias/email-validator' => '2.1.25@0dbf5d78455d4d6a41d186da50adc1122ec066f4',
   'friendsofphp/proxy-manager-lts' => 'v1.0.3@121af47c9aee9c03031bdeca3fac0540f59aa5c3',
+  'friendsofsymfony/ckeditor-bundle' => '2.3.0@282c79b0d3eda68855ea4c8732ab8d249cd5fbd0',
   'jms/metadata' => '2.5.0@b5c52549807b2d855b3d7e36ec164c00eb547338',
   'kelunik/certificate' => 'v1.1.2@56542e62d51533d04d0a9713261fea546bff80f6',
   'laminas/laminas-code' => '4.0.0@28a6d70ea8b8bca687d7163300e611ae33baf82a',
@@ -141,6 +142,7 @@ final class Versions
   'symfony/translation-contracts' => 'v2.3.0@e2eaa60b558f26a4b0354e1bbb25636efaaad105',
   'symfony/twig-bridge' => 'v5.2.4@4fa4380e5413eb5db24abdef4dfd9fe567b11605',
   'symfony/twig-bundle' => 'v5.2.4@5ebbb5f0e8bfaa0b4b37cb25ff97f83b18caf221',
+  'symfony/twig-pack' => 'v1.0.1@08a73e833e07921c464336deb7630f93e85ef930',
   'symfony/uid' => 'v5.2.4@959f69a8c0d68a37311eeabd630a0ef0979bc1d0',
   'symfony/validator' => 'v5.2.4@db23f365a5646da5f7650c0da4a7a571c1ff37b1',
   'symfony/var-dumper' => 'v5.2.4@6a81fec0628c468cf6d5c87a4d003725e040e223',
@@ -160,10 +162,10 @@ final class Versions
   'symfony/maker-bundle' => 'v1.29.1@313b5669a5370bf36cd34fa8f5b5bbbfa5fb8aa8',
   'symfony/phpunit-bridge' => 'v5.2.4@9d85d900c1afe29138a0d5854505eb684bc3ac6d',
   'symfony/web-profiler-bundle' => 'v5.2.4@4b28c24db64156ad892300be7fae1978bed075ce',
-  'symfony/polyfill-ctype' => '*@1a0f79587b503af3b562df8434f79d8d8e500ab2',
-  'symfony/polyfill-iconv' => '*@1a0f79587b503af3b562df8434f79d8d8e500ab2',
-  'symfony/polyfill-php72' => '*@1a0f79587b503af3b562df8434f79d8d8e500ab2',
-  '__root__' => 'dev-main@1a0f79587b503af3b562df8434f79d8d8e500ab2',
+  'symfony/polyfill-ctype' => '*@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
+  'symfony/polyfill-iconv' => '*@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
+  'symfony/polyfill-php72' => '*@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
+  '__root__' => 'dev-main@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
 );
 
     private function __construct()

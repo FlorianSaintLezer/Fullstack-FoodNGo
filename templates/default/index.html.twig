@@ -1,22 +1,110 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Food and Go - Home
+{% block title %}Food and Go - Accueil
 {% endblock %}
 
 {% block body %}
-
-	<h1>Liste des recettes</h1>
-	<section class="latest-recipes">
-
-		{% for recipe in recipes %}
-			{% set append %}
-			{% if loop.first %}first
-			{% endif %}
-			{% if loop.last %}last
-			{% endif %}
-			{% endset %}
-			<div class="last-recipe {{ append }}" style="background-image: url('{{ asset('img/' ~ recipe.image) }}');"></div>
-			
+	{# POPUP MESSAGE #}
+	<div class="alerts">
+		{% for message in app.flashes('signin-success') %}
+			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+			</div>
 		{% endfor %}
 	</div>
-</section>{% endblock %}
+
+	<section class="new-recipes container">
+		{% if not app.user %}
+			<div class="summary">
+				<p>Food&Go, c'est quoi ?</p>
+				<p>C'est un projet d'apprentissage aux allures d'encyclopédie de recettes de cuisine.<br>
+					On peut proposer ses recettes ou suivre celles de la communauté et  bientôt de nouvelles fonctionnalités à découvrir !
+				</p>
+			</div>
+		{% endif %}
+		<h2>Recettes à la une</h2>
+		<div class="not-carousel">
+			{% for last in lasts %}
+				<div class="last-recipe" style="background-image: url('{{ asset('img/recipes/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
+					<div class="card-content">
+						<h2 class="card-title">{{last.title}}</h2>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="carousel" data-flickity='{ "wrapAround": true }'>
+			{% for last in lasts %}
+				<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ last.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : last.id }) }}';">
+					<div class="card-content">
+						<h2 class="card-title">{{last.title}}</h2>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+
+	<section class="last-recipes container">
+		<div class="last-entrees">
+			<h2><a href="recipes/category/1">Les entrées</a></h2>
+			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
+				{% for recipe in recipes %}
+					{% if recipe.category.name == 'Entrées' %}
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+							<div class="card-content">
+								<h2 class="card-title">{{recipe.title}}</h2>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+
+
+		<div class="last-dishes">
+			<h2><a href="recipes/category/2">Les plats</a></h2>
+			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
+				{% for recipe in recipes %}
+					{% if recipe.category.name == 'Plats' %}
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+							<div class="card-content">
+								<h2 class="card-title">{{recipe.title}}</h2>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+		{# </section>
+													<section class="last-recipes container"> #}
+		<div class="last-desserts">
+			<h2><a href="recipes/category/3">Les Desserts</a></h2>
+			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
+				{% for recipe in recipes %}
+					{% if recipe.category.name == 'Desserts' %}
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+							<div class="card-content">
+								<h2 class="card-title">{{recipe.title}}</h2>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+
+
+		<div class="last-drinks">
+			<h2><a href="recipes/category/4">Les boissons</a></h2>
+			<div class="carousel" data-flickity='{ "cellAlign": "left", "wrapAround": true }'>
+				{% for recipe in recipes %}
+					{% if recipe.category.name == 'Boissons' %}
+						<div class="carousel-cell" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+							<div class="card-content">
+								<h2 class="card-title">{{recipe.title}}</h2>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

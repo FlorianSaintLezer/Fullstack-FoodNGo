@@ -1,0 +1,41 @@
+.comments {
+    padding-bottom: 2rem;
+    .main-button {
+        @extend %mainButton;
+    }
+    .comment {
+        padding: $padInput;
+        // border-bottom: 1px solid $colSecond;
+        &:nth-child(2n+1) {
+            background-color:lighten($colLight, $colVar);
+            box-shadow: -0.2rem 0 0 0 $colLight;
+        }
+        &:nth-child(2n) {
+            background-color: $colLight;
+            box-shadow: -0.2rem 0 0 0 darken($colLight, $colVar);
+        }
+        .comment-header {
+            padding: $padTitle;
+            h3 {
+                font-size: $sizeMenu;
+                span {
+                    font-size: $sizeSmall;
+                }
+            }
+            p {
+                font-size: $sizeSmall;
+            }
+        }
+        .comment-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            button {
+               @extend %miniButton;
+               
+            }
+        }
+    }
+}
+

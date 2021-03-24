@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% block title %}Food and Go - Votre profil
+{% endblock %}
+
+
+{% block body %}
+	{# SUCCESS MESSAGE #}
+	{% for message in app.flashes('profil-success') %}
+		<div id="alert" class="alert-success">{{message}}<button id="alert-close">
+				<i class="far fa-times-circle"></i>
+			</button>
+		</div>
+	{% endfor %}
+
+	
+		<h1 class="nice-title">
+			<span>Profil et
+			</span>
+			<span>Go</span>
+		</h1>
+		{# {{form_start(form)}}
+		{{form_widget(form)}}
+
+		<button type="submit">
+			<i class="fa fa-save" aria-hidden="true"></i>
+			Confirmation
+		</button>
+		{{form_end(form)}}
+		<a href="{{ path('edit_password') }}">
+			<i class="fa fa-lock" aria-hidden="true"></i>
+			Changez le mot de passe
+		</a> #}
+	
+
+
+	<section
+		class="recipes container">
+		{# SECTION TITLE #}
+		<h2>Mes recettes</h2>
+		<div class="addrecipearea container">
+			<button type="button" class="add-recipes-button" onclick="window.location.href='{{ path('recipe_add') }}'">Ajoutez votre recette</button>
+		</div>
+
+		{# MENU #}
+
+		{# RECIPES DISPLAY #}
+		<div class="cards">
+			{% for recipe in recipes %}
+				{% if app.user is same as recipe.author %}
+					<div class="card" style="background-image: url('{{ asset('img/recipes/' ~ recipe.image) }}'); cursor:pointer;" onclick="location.href='{{ path('show_recipe', {'id' : recipe.id }) }}';">
+						<div class="card-content">
+							<h2 class="card-title">{{recipe.title}}</h2>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</section>
+
+	{# START - COMMENTS THREAD #}
+	<section class="comments container">
+
+		<h2>Mes commentaires</h2>
+		{% for comment in comments %}
+			{% if app.user is same as comment.author %}
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2f08515ab6c14f2a5000bf2ee54820b42f638b08
+				<div class="comment">
+					<div class="comment-header">
+						<h3 class="comment-author">
+							<a href="{{ path('show_recipe', {'id' : comment.recipe.id }) }}">{{comment.recipe}}</a>
+
+						</h3>
+						<p class="comment-date">publié le
+							{{comment.updatedAt|date("d/m/Y")}}</p>
+					</div>
+
+					<div class="comment-content">
+						<div>
+							{{comment.content}}
+						</div>
+						<div class="comment-button">
+
+							<button type="button" class="main-button tooltip">
+								<span>
+									<i class="far fa-trash-alt"></i>
+								</span>
+								<em>Supprimer</em>
+							</button>
+
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</section>
+
+
+{% endblock %}

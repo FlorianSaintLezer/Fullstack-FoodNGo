@@ -1,0 +1,29 @@
+.signin {
+    padding: $padSection;
+}
+.form-login {
+    @extend %relCenter;
+    box-shadow: $windowShadow;
+    background: $colClear;
+    width: 600px;
+    padding: $padWindow;
+    input {
+        @extend %mainInput;
+    }
+    button {
+        @extend %mainButton;
+        width:100%;
+    }
+}
+
+@media screen and (max-width:$breakPLg) {
+    .form-login {
+        width: 100%;
+        margin: 0;
+    }
+}
+@media screen and (max-width:$breakPSm) {
+    .form-login {
+       padding: 1rem;
+    }
+}

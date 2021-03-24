@@ -1,0 +1,74 @@
+.recipes {
+  padding:$padSection;
+
+  
+    .addrecipearea {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 1rem;
+      .add-recipes-button {
+        @extend %mainButton;
+        width: 200px;
+        @media screen and (max-width:$breakPSm) {
+          & {
+            width: 100%;
+          }
+        }
+      }
+    }
+  .categories{
+    font-size: $sizeMenu;
+    @media screen and (max-width:$breakPSm) {
+      & {
+        display: none;
+      }
+    }
+  }
+  .categoriesResponsive {
+    width: 100%;
+    select {
+      font-size: $sizeMenu;
+      @extend %mainInput;
+    }
+    @media screen and (min-width: calc(#{$breakPSm} + 1px)) {
+      & {
+        display: none;
+      }
+    }
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .card {  
+      @extend %mainCard;
+      height: 200px;
+      margin: 0.25rem;
+      @media screen and (min-width:calc(#{$breakPLg} + 1px)) { //big screen
+        & {
+        width: calc(25% - 0.5rem);
+        }
+      }
+      @media screen and (max-width:$breakPLg) { // medium screen
+        & {
+        width: calc(33% - 0.5rem);
+        }
+      }
+      @media screen and (max-width:$breakPMd) { //tablet
+        & {
+        width: calc(50% - 0.56rem);
+        }
+      }
+      @media screen and (max-width:$breakPSm) { //smartphone
+        & {
+          width: 100%;
+          height: 100px;
+        }
+      }
+    }
+  }   
+}
+  

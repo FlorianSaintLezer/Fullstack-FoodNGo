@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recette de
+	{{recipes.title}}
+{% endblock %}
+
+{% block body %}
+	<div
+		class="alerts">
+		{# SUCCESS MESSAGE #}
+
+		{% for message in app.flashes('recipe-edit') %}
+			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+			</div>
+		{% endfor %}
+		{# SUCCESS MESSAGE #}
+		{# {% for message in app.flashes('comment-add') %}
+								<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+								</div>
+							{% endfor %} #}
+	</div>
+
+
+	{# START - ADD COMMENT MODAL #}
+	<div
+		id="comments-modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="modal-close">&times;</span>
+				<h3>Un commentaire sur la recette
+					{{recipes.title}}
+					?</h3>
+			</div>
+			<div class="modal-body">
+				{{form_start(commentForm)}}
+				{{form_row(commentForm.content,{'attr':{'placeholder':'Ecrivez votre commentaire ici'},'label':' '})}}
+				<button type="submit" class="btn">Partagez votre avis</button>
+				{{form_end(commentForm)}}
+			</div>
+		</div>
+	</div>
+	{# END - ADD COMMENT MODAL #}
+
+
+	{# START - SECTION RECIPE #}
+	<form
+		class="show-recipe container" method="POST" action="{{ path('recipe_delete', {'id' : recipes.id}) }}">
+
+		{# START CONFIRM DELETE MODAL #}
+		<div id="confirm-modal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="confirm-modal-close">&times;</span>
+					<h3>Confirmer suppression ?</h3>
+				</div>
+				<div class="modal-body">
+					<textarea name="" id="" cols="30" rows="10" readonly>Cette recette sera définitivement supprimée</textarea>
+
+					<input type="hidden" name="_method" value="delete">
+					<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ recipes.id)}}">
+					<button type="submit" class="deleteRecipes recipe-btn">
+						<span>Confirmer</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		{# END CONFIRM DELETE MODAL #}
+
+		{# START RECIPE CONTENT #}
+		<div class="recipe-image" style="background-image: url('{{ asset('img/recipes/' ~ recipes.image) }}');">
+			{% if app.user and app.user is same as(recipes.author) %}
+
+				<div
+					class="recipe-buttons">
+					{# BUTTON EDIT #}
+					<button type="button" onclick="window.location.href='{{ path('recipe_edit',{'id' : recipes.id}) }}'" class="recipe-btn">
+						<i class="fas fa-edit"></i>
+						<span>Modifier</span>
+					</button>
+					{# BUTTON TRIGGER CONFIRM DELETE MODAL #}
+					<button type="button" class="deleteRecipes recipe-btn main-button" id="confirm-modal-button">
+						<i class="far fa-trash-alt"></i>
+						<span>Supprimer</span>
+					</button>
+				</div>
+			{% endif %}
+		</div>
+		<div class="recipe-content">
+			<div class="content-left">
+				<div class="recipe-date">{{recipes.updatedAt|date("d/m/Y")}}</div>
+				<h3 class="recipe-title">{{recipes.title}}</h3>
+				<div class="recipe-description">{{recipes.description|raw}}</div>
+			</div>
+		</div>
+	</form>
+	{# END - RECIPE #}
+
+	{# START - COMMENTS THREAD #}
+	<section class="comments container">
+		<h2>Commentaires
+		</h2>
+		{# TRIGGER MODAL #}
+		{% if app.user %}
+			<button type="button" id="modal-button" class="main-button">Donnez votre avis</button>
+		{% else %}
+			<button type="button" class="main-button" onclick="window.location.href='{{ path('login') }}'">Connectez-vous pour apporter votre avis</button>
+		{% endif %}
+
+
+		{% if recipes.comments == null %}
+			<p>Aucun commentaire sur cette recette Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, provident.</p>
+		{% endif %}
+
+		{# START - LOOP #}
+		{% if recipes.comments == null %}
+		<p>Aucun commentaire sur cette recette</p>
+		{% endif %}
+		{% for comment in recipes.comments %}
+
+			{# RECOGNIZE RECIPE AUTHOR IN COMMENTS THREAD #}
+			{% if (comment.author) is same as(comment.recipe.author) %}
+				{% set author = ' <i class="far fa-star">(AUTEUR)</i>' %}
+			{% else %}
+				{% set author = '' %}
+			{% endif %}
+
+			<div class="comment">
+				<div class="comment-header">
+					<h3 class="comment-author">{{comment.author}}
+						<span>{{ author|raw }}</span>
+					</h3>
+					<p class="comment-date">publié le
+						{{comment.updatedAt|date("d/m/Y")}}</p>
+				</div>
+
+				<div class="comment-content">
+					<div>
+						{{comment.content}}
+					</div>
+					<div class="comment-button">
+						{% if is_granted("ROLE_ADMIN") or app.user is same as(comment.author) %}
+							<button type="button" class="main-button tooltip">
+								<span>
+									<i class="far fa-trash-alt"></i>
+								</span>
+								<em>Supprimer</em>
+							</button>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+{% endblock %}

@@ -26,7 +26,7 @@ class RecipesCrudController extends AbstractCrudController
             AssociationField::new('category'),
             AssociationField::new('author'),
             Field::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex(),
-            ImageField::new('image')->setBasePath('/img')->hideOnForm(),
+            ImageField::new('image')->setBasePath('/img/recipes')->hideOnForm(),
         ];
     }
 }

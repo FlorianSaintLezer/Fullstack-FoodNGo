@@ -1,10 +1,10 @@
 <nav id="nav" class="nav navbar">
-	<a href="{{ path('home') }}"><img src="{{ asset('img/logo.png')}}"></a>
+	<a href="{{ path('home') }}"><img src="{{ asset('img/default/logo.png')}}" alt="logo"></a>
 	<ul id="navbarMenu" class="navbarMenu">
 
 
 		<li>
-			<a href="{{ path('recipes') }}">Recipes</a>
+			<a href="{{ path('recipes') }}">Recettes</a>
 		</li>
 
 
@@ -12,31 +12,32 @@
 
 			{% if is_granted('ROLE_ADMIN') %}
 				<li>
-					<a href="{{ path('admin') }}">Admin Dashboard</a>
+					<a href="{{ path('admin') }}">Admin</a>
 				</li>
 			{% endif %}
 
 			<li>
-				<a href="{{ path('profile') }}">Profile</a>
+				<a href="{{ path('profile') }}">Profil</a>
 			</li>
 			<li>
-				<a href="{{ path('logout') }}">Logout</a>
+				<a href="{{ path('logout') }}">Déconnecter</a>
 			</li>
 
 
 		{% else %}
 			<li>
-				<a href="{{ path('signin') }}">Sign in</a>
+				<a href="{{ path('signin') }}">S'inscrire</a>
 			</li>
 			<li>
-				<a href="{{ path('login') }}">Login</a>
+				<a href="{{ path('login') }}">Se connecter</a>
 			</li>
 		{% endif %}
 
 
 		<li class="toggle">
 			<a href="javascript:void(0);" onclick="responsiveNavbar()">
-				<i class="fa fa-bars"></i>
+				{# <i class="fa fa-bars"></i> #}
+				<i class="far fa-user"></i>
 			</a>
 		</li>
 	</ul>

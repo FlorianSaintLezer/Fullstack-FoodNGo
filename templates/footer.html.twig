@@ -1,0 +1,55 @@
+{# Site footer #}
+<footer class="site-footer">
+	<div class="container site-footer-content">
+		<div class="site-footer-head">
+			<p>Retrouvez-nous sur :</p>
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-linkedin-in fa-stack-1x"></i>
+				</span>
+			</a>
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-instagram fa-stack-1x"></i>
+				</span>
+			</a>
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-twitter fa-stack-1x"></i>
+				</span>
+			</a>
+			<a href="/">
+				<span class="fa-stack icons">
+					<i class="fa fa-circle fa-stack-2x icon-background"></i>
+					<i class="fab fa-youtube fa-stack-1x"></i>
+				</span>
+			</a>
+		</div>
+
+		<div class="site-footer-body">
+
+			<div class="summary">
+				<p>Food&Go, c'est quoi ?</p>
+				<p>C'est un projet d'apprentissage aux allures d'encyclopédie de recettes de cuisine.<br>
+										On peut proposer ses recettes ou suivre celles de la communauté et  bientôt de nouvelles fonctionnalités à découvrir !
+				</p>
+			</div>
+
+			{# START - EMBED #}
+			{{ render(controller(
+        'App\\Controller\\FooterController::getEmbed', {max: 3}
+    )) }}
+			{# END - EMBED #}
+
+		</div>
+
+
+		<div class="site-footer-footer">
+			Site développé par
+			<a href="http://floriansaintlezer.fr" target="_blank">Florian Saint-Lezer</a>
+		</div>
+
+	</footer>

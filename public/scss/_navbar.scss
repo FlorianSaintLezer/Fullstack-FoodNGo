@@ -13,6 +13,7 @@
             flex-direction: row;
             align-items: center;
             li {
+                
                 padding-left: 2em;
                 &:last-child {
                     display: none;
@@ -21,6 +22,13 @@
         }
         a {
             color: $colThird;
+            font-family: "fontRegular";
+            img {
+                max-height: calc(#{$navHeight} * 0.75);
+            }
+            &:hover {
+                color: $colMain;
+            }
         }
     }
 @media screen and (max-width: $breakPMd) {
@@ -40,10 +48,12 @@
             li:last-child{
                 display:block;
                 position: absolute;
-                font-size: 2em;
                 right: 5%;
                 top: 50%;
                 transform: translate(-5%,-50%);
+                a {
+                    font-size: $sizeTitle2;
+                }
             }
         }
         ul.responsive {

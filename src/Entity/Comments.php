@@ -2,12 +2,10 @@
 
 namespace App\Entity;
 
-use App\Entity\Users;
-use App\Entity\Recipes;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CommentsRepository;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=CommentsRepository::class)
@@ -25,8 +23,6 @@ class Comments
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(
-     *     min=10,
-     *     minMessage="Comment too short",
      *     max=2000,
      *     maxMessage="Comment too long. Are you trying to write a novel here ???"
      * )
