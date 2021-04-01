@@ -1,0 +1,146 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Tableau de bord' %}
+
+{% block page_content %}
+	<div class="container">
+		<div
+			class="row">
+			{# USERS COUNT #}
+			<div class="col-lg-3 col-sm-6 my-2">
+				<div class="card text-center h-100 bg-primary">
+					<div class="card-block">
+						<h4 class="card-title text-white">Utilisateurs</h4>
+						<h2>
+							<i class="fa fa-users fa-3x text-white"></i>
+						</h2>
+					</div>
+					<div class="row px-4 no-gutters">
+						<div class="col">
+							<h3 class="card card-block border-left-0 border-bottom-0 border-right-0 text-primary">{{countU['count']}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			{# RECIPES COUNT #}
+			<div class="col-lg-3 col-sm-6 my-2">
+				<div class="card text-center h-100 bg-success">
+					<div class="card-block">
+						<h4 class="card-title text-white">Recettes</h4>
+						<h2>
+							<i class="fas fa-utensils fa-3x text-white"></i>
+						</h2>
+					</div>
+					<div class="row px-4 no-gutters">
+						<div class="col">
+							<h3 class="card card-block border-left-0 border-bottom-0 border-right-0 text-success">{{countR['count']}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			{# COMMENTS COUNT #}
+			<div class="col-lg-3 col-sm-6 my-2">
+				<div class="card text-center h-100 bg-info">
+					<div class="card-block">
+						<h4 class="card-title text-white">Commentaires</h4>
+						<h2>
+							<i class="fa fa-comments fa-3x text-white"></i>
+						</h2>
+					</div>
+					<div class="row px-4 no-gutters">
+						<div class="col">
+							<h3 class="card card-block border-left-0 border-bottom-0 border-right-0 text-info">{{countCom['count']}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			{# PARTNERS COUNT #}
+			<div class="col-lg-3 col-sm-6 my-2">
+				<div class="card text-center h-100 bg-warning">
+					<div class="card-block">
+						<h4 class="card-title text-white">Partenaires</h4>
+						<h2>
+							<i class="far fa-handshake fa-3x text-white"></i>
+						</h2>
+					</div>
+					<div class="row px-4 no-gutters">
+						<div class="col">
+							<h3 class="card card-block border-left-0 border-bottom-0 border-right-0 text-warning">{{countP['count']}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{# LAST USERS #}
+		<div class="row my-0">
+			<div class="col-md-6 my-2">
+				<div class="card text-center h-100 border-primary">
+					<div class="card-block">
+						<h4 class="card-title text-primary">Derniers utilisateurs</h4>
+					</div>
+					<div class="row px-2 no-gutters">
+						{% for lastUser in lastUsers %}
+							<div class="col-12">
+								<div class="row text-left">
+									<p class="col-3 border-right border-primary text-center">{{lastUser.updatedAt|date('d/m')}}<br>{{lastUser.updatedAt|date('Y')}}</p>
+									<h5 class="col-8">{{lastUser.username}}</h5>
+								</div>
+
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+			{# LAST RECIPES #}
+			<div class="col-md-6 my-2 ">
+				<div class="card text-center h-100 border-success">
+					<div class="card-block">
+						<h4 class="card-title text-success">Dernières recettes</h4>
+					</div>
+					<div class="row px-2 no-gutters">
+						{% for lastRecipe in lastRecipes %}
+							<div class="col-12">
+								<div class="row text-left">
+									<p class="col-3 border-right border-success text-center">{{lastRecipe.updatedAt|date('d/m')}}<br>{{lastRecipe.updatedAt|date('Y')}}</p>
+									<h5 class="col-8">{{lastRecipe.title}}</h5>
+								</div>
+
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			{# LAST COMMENTS #}
+			<div class="col-12 my-2">
+				<div class="card text-center h-100 border-info">
+					<div class="card-block">
+						<h4 class="card-title text-info">Derniers commentaires</h4>
+					</div>
+					<div class="row px-2 no-gutters">
+						{% for lastComment in lastComments %}
+							<div class="col-12 text-left border-bottom border-info">
+								<span class="border-right border-info col">Date :
+									{{lastComment.updatedAt|date('d/mY')}}
+								</span>
+								<span class="border-right border-info col">
+									Auteur :
+									{{lastComment.author.username}}
+								</span>
+								<span class="col">
+									Recette :
+									{{lastComment.recipe.title}}
+								</span>
+								<h6>{{lastComment.content}}</h6>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			{# <div class="col-md-6"></div> #}
+
+
+		</div>
+	</div>
+{% endblock %}

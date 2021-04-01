@@ -17,8 +17,8 @@
 			</div>
 		{% endfor %}
 	</div>
-	
-	{% include "searchbar.html.twig" %}
+
+	{% include "_searchbar.html.twig" %}
 
 	{# START CONTENT  #}
 	<section
@@ -33,13 +33,8 @@
 				et</span>
 			<span>Go !</span>
 		</h1>
-<<<<<<< HEAD
-		{# ADD RECIPE #}
-		<div class="addrecipearea">
-=======
 		<div class="addrecipearea container">
->>>>>>> 2f08515ab6c14f2a5000bf2ee54820b42f638b08
-		<button type="button" class="add-recipes-button" onclick="window.location.href='{{ path('recipe_add') }}'">Ajoutez votre recette</button>
+			<button type="button" class="add-recipes-button" onclick="window.location.href='{{ path('recipe_add') }}'">Ajoutez votre recette</button>
 		</div>
 
 		{# MENU #}
@@ -50,7 +45,6 @@
 		{% else %}
 			{% set allTab = "" %}
 		{% endif %}
-
 
 		{# TAB MENU #}
 		<div

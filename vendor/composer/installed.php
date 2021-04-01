@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e07f71bcf3c3256aaa985d980c44a2d6319c014f',
+    'reference' => '0603ee128d6454cbbf3c22ccdb764631b4754399',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'e07f71bcf3c3256aaa985d980c44a2d6319c014f',
+      'reference' => '0603ee128d6454cbbf3c22ccdb764631b4754399',
     ),
     'amphp/amp' => 
     array (
@@ -601,6 +601,15 @@
       array (
       ),
       'reference' => '430d14c01836b77c28092883d195a43ce413ee32',
+    ),
+    'symfony/apache-pack' => 
+    array (
+      'pretty_version' => 'v1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3aa5818d73ad2551281fc58a75afd9ca82622e6c',
     ),
     'symfony/asset' => 
     array (

@@ -19,6 +19,14 @@ class CategoriesRepository extends ServiceEntityRepository
         parent::__construct($registry, Categories::class);
     }
 
+    public function countCategories()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('count(r.id) as count')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 
     // /**
     //  * @return Categories[] Returns an array of Categories objects

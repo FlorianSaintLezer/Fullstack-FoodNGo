@@ -7,8 +7,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Recipes|null find($id, $lockMode = null, $lockVersion = null)
- * @method Recipes|null findOneBy(array $criteria, array $orderBy = null)
+ * @method null|Recipes find($id, $lockMode = null, $lockVersion = null)
+ * @method null|Recipes findOneBy(array $criteria, array $orderBy = null)
  * @method Recipes[]    findAll()
  * @method Recipes[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
@@ -29,6 +29,14 @@ class RecipesRepository extends ServiceEntityRepository
         ;
     }
 
+    public function countRecipes()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('count(r.id) as count')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 
     // /**
     //  * @return Recipes[] Returns an array of Recipes objects

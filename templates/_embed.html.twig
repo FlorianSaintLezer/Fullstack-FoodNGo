@@ -4,7 +4,7 @@
 		<h3>Catégories</h3>
 	</li>
 	{% for category in categories %}
-		<li><a href="">{{category.name}}</a></li>
+		<li><a href="{{ path("filterCategory", {'category':category.id}) }}">{{category.name}}</a></li>
 	{% endfor %}
 </ul>
 <ul class="partners">

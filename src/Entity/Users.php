@@ -15,8 +15,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
- * @UniqueEntity(fields={"email"},message="Email already exists")
- * @UniqueEntity(fields={"username"},message="Username already exists")
+ * @UniqueEntity(fields={"email"},message="L'email existe déjà")
+ * @UniqueEntity(fields={"username"},message="L'utilisateur existe déjà")
  *
  * @author Florian Saint-Lezer <floriansl.webdev@gmail.com>
  *
@@ -36,8 +36,8 @@ class Users implements UserInterface
      * @Assert\Length(
      *      min=5,
      *      max=15,
-     *      minMessage="Username too short",
-     *      maxMessage="Username too long"
+     *      minMessage="Nom d'utilisateur trop court",
+     *      maxMessage="Nom d'utilisateur trop long"
      * )
      * @Assert\NotBlank()
      */
@@ -46,7 +46,7 @@ class Users implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\Email(
-     *      message = "The email '{{ value }}' is not a valid email."
+     *      message = "'{{ value }}' n'est pas une adresse email valide."
      * )
      * @Assert\NotBlank()
      */
@@ -57,7 +57,7 @@ class Users implements UserInterface
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min=6,
-     *      minMessage="Password too short"
+     *      minMessage="Mot de passe trop court"
      * )
      */
     private $password;
@@ -66,7 +66,7 @@ class Users implements UserInterface
     /**
      * @Assert\EqualTo(
      *      propertyPath="password",
-     *      message="passwords don't match"
+     *      message="Les mots de passe ne correspondent pas"
      * )
      */
     private $verificationPassword;

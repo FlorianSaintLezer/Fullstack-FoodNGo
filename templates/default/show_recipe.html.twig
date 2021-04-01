@@ -13,11 +13,19 @@
 			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
 			</div>
 		{% endfor %}
+		{% for message in app.flashes('comment-add') %}
+			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('comment-delete') %}
+			<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+			</div>
+		{% endfor %}
 		{# SUCCESS MESSAGE #}
 		{# {% for message in app.flashes('comment-add') %}
-								<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
-								</div>
-							{% endfor %} #}
+																						<div id="alert-popup" class="alert-success">{{message}}<span class="alert-close">&times;</span>
+																						</div>
+																					{% endfor %} #}
 	</div>
 
 
@@ -88,7 +96,9 @@
 		</div>
 		<div class="recipe-content">
 			<div class="content-left">
-				<div class="recipe-date">{{recipes.updatedAt|date("d/m/Y")}}</div>
+				<div class="recipe-date">{{recipes.author}}
+					le
+					{{recipes.updatedAt|date("d/m/Y")}}</div>
 				<h3 class="recipe-title">{{recipes.title}}</h3>
 				<div class="recipe-description">{{recipes.description|raw}}</div>
 			</div>
@@ -107,18 +117,15 @@
 			<button type="button" class="main-button" onclick="window.location.href='{{ path('login') }}'">Connectez-vous pour apporter votre avis</button>
 		{% endif %}
 
-
+		{# VERIFY IF RECIPE HAS COMMENTS #}
 		{% if recipes.comments == null %}
-			<p>Aucun commentaire sur cette recette Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, provident.</p>
+			<p>Aucun commentaire sur cette recette</p>
 		{% endif %}
 
 		{# START - LOOP #}
-		{% if recipes.comments == null %}
-		<p>Aucun commentaire sur cette recette</p>
-		{% endif %}
 		{% for comment in recipes.comments %}
 
-			{# RECOGNIZE RECIPE AUTHOR IN COMMENTS THREAD #}
+			{# VERIFY IF RECIPE AUTHOR IN COMMENTS THREAD #}
 			{% if (comment.author) is same as(comment.recipe.author) %}
 				{% set author = ' <i class="far fa-star">(AUTEUR)</i>' %}
 			{% else %}
@@ -127,27 +134,46 @@
 
 			<div class="comment">
 				<div class="comment-header">
-					<h3 class="comment-author">{{comment.author}}
-						<span>{{ author|raw }}</span>
-					</h3>
-					<p class="comment-date">publié le
-						{{comment.updatedAt|date("d/m/Y")}}</p>
+					<h3 class="comment-author">{{comment.author}}<span>{{ author|raw }}</span></h3>
+					<p class="comment-date">publié le {{comment.updatedAt|date("d/m/Y")}}</p>
 				</div>
-
 				<div class="comment-content">
-					<div>
-						{{comment.content}}
-					</div>
-					<div class="comment-button">
-						{% if is_granted("ROLE_ADMIN") or app.user is same as(comment.author) %}
-							<button type="button" class="main-button tooltip">
-								<span>
-									<i class="far fa-trash-alt"></i>
-								</span>
-								<em>Supprimer</em>
+					<div>{{comment.content}}</div>
+
+					{# CONDITION TO DISPLAY DELETE COMMENT BUTTON ONLY FOR ADMIN OR COMMENT AUTHOR #}
+					{% if is_granted("ROLE_ADMIN") or app.user is same as(comment.author) %}
+
+						{# START FORM #}
+						<form method="POST" action="{{ path('comment_delete', {'id' : comment.id}) }}">
+
+							{# START DELETE COMMENT MODAL #}
+							<div id="confirm-comment-modal" class="modal">
+								<div class="modal-content">
+									<div class="modal-header">
+										<span class="confirm-comment-modal-close">&times;</span>
+										<h3>Confirmer suppression ?</h3>
+									</div>
+									<div class="modal-body">
+										<textarea name="" id="" cols="30" rows="10" readonly>Ce commentaire sera définitivement supprimé
+										</textarea>
+
+										<input type="hidden" name="_method" value="delete">
+										<input type="hidden" name="_token" value="{{csrf_token('SUPCOMMENT' ~ comment.id)}}">
+										<button type="submit" class="deleteComment recipe-btn">
+											<span>Confirmer</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							{# END DELETE COMMENT MODAL #}
+
+							{# BUTTON TO TRIGGER DELETE COMMENT MODAL #}
+							<button type="button" class="deleteComments comment-btn main-button" id="confirm-comment-modal-button">
+								<i class="far fa-trash-alt"></i>
 							</button>
-						{% endif %}
-					</div>
+						</form>
+						{# END FORM #}
+					{% endif %}
 				</div>
 			</div>
 		{% endfor %}

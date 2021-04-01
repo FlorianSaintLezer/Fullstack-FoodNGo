@@ -87,6 +87,7 @@ final class Versions
   'psr/link' => '1.0.0@eea8e8662d5cd3ae4517c9b864493f59fca95562',
   'psr/log' => '1.1.3@0f73288fd15629204f9d42b7055f72dacbe811fc',
   'sensio/framework-extra-bundle' => 'v5.6.1@430d14c01836b77c28092883d195a43ce413ee32',
+  'symfony/apache-pack' => 'v1.0.1@3aa5818d73ad2551281fc58a75afd9ca82622e6c',
   'symfony/asset' => 'v5.2.4@54a42aa50f9359d1184bf7e954521b45ca3d5828',
   'symfony/cache' => 'v5.2.4@d15fb2576cdbe2c40d7c851e62f85b0faff3dd3d',
   'symfony/cache-contracts' => 'v2.2.0@8034ca0b61d4dd967f3698aaa1da2507b631d0cb',
@@ -142,7 +143,6 @@ final class Versions
   'symfony/translation-contracts' => 'v2.3.0@e2eaa60b558f26a4b0354e1bbb25636efaaad105',
   'symfony/twig-bridge' => 'v5.2.4@4fa4380e5413eb5db24abdef4dfd9fe567b11605',
   'symfony/twig-bundle' => 'v5.2.4@5ebbb5f0e8bfaa0b4b37cb25ff97f83b18caf221',
-  'symfony/twig-pack' => 'v1.0.1@08a73e833e07921c464336deb7630f93e85ef930',
   'symfony/uid' => 'v5.2.4@959f69a8c0d68a37311eeabd630a0ef0979bc1d0',
   'symfony/validator' => 'v5.2.4@db23f365a5646da5f7650c0da4a7a571c1ff37b1',
   'symfony/var-dumper' => 'v5.2.4@6a81fec0628c468cf6d5c87a4d003725e040e223',
@@ -162,10 +162,10 @@ final class Versions
   'symfony/maker-bundle' => 'v1.29.1@313b5669a5370bf36cd34fa8f5b5bbbfa5fb8aa8',
   'symfony/phpunit-bridge' => 'v5.2.4@9d85d900c1afe29138a0d5854505eb684bc3ac6d',
   'symfony/web-profiler-bundle' => 'v5.2.4@4b28c24db64156ad892300be7fae1978bed075ce',
-  'symfony/polyfill-ctype' => '*@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
-  'symfony/polyfill-iconv' => '*@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
-  'symfony/polyfill-php72' => '*@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
-  '__root__' => 'dev-main@e07f71bcf3c3256aaa985d980c44a2d6319c014f',
+  'symfony/polyfill-ctype' => '*@0603ee128d6454cbbf3c22ccdb764631b4754399',
+  'symfony/polyfill-iconv' => '*@0603ee128d6454cbbf3c22ccdb764631b4754399',
+  'symfony/polyfill-php72' => '*@0603ee128d6454cbbf3c22ccdb764631b4754399',
+  '__root__' => 'dev-main@0603ee128d6454cbbf3c22ccdb764631b4754399',
 );
 
     private function __construct()

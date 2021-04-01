@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title>
 			{% block title %}Food&Go - Des recettes de cuisine
 			{% endblock %}
@@ -19,17 +19,13 @@
 		{% block stylesheets %}{% endblock %}
 	</head>
 	<body>
-<<<<<<< HEAD
-		<div id="main-content">
-=======
 	<div class="main-content">
 		
->>>>>>> 2f08515ab6c14f2a5000bf2ee54820b42f638b08
-		{% include "navbar.html.twig" %}
+		{% include "_navbar.html.twig" %}
 		
 		{% block body %}{% endblock %}
 		</div>
-		{% include "footer.html.twig" %}
+		{% include "_footer.html.twig" %}
 		{% block javascripts %}{% endblock %}
 
 
